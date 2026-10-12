@@ -3,11 +3,9 @@
   "addition": {
     "item": "hexcasting:quenched_allay_shard"
   },
-  "base": [
-    {
-      "item": "tide:crystal_fishing_rod"
-    }
-  ],
+  "base": {
+    "item": "tide:crystal_fishing_rod"
+  },
   "result": {
     "count": 1,
     "id": "fishcasting:shepherds_casting_rod"

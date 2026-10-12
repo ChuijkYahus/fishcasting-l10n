@@ -38,7 +38,8 @@
     },
     {
       "type": "patchouli:text",
-      "text": "fishcasting.page.fishy_business.3"
+      "text": "fishcasting.page.fishy_business.3",
+      "recipe": "tide:angling_table"
     },
     {
       "type": "patchouli:crafting",

@@ -2,9 +2,11 @@ package hauveli.fishcasting.features.fish.perhosgata
 
 import at.petrak.hexcasting.common.lib.HexParticles
 import com.li64.tide.registries.entities.fish.AbstractTideFish
-import net.minecraft.client.Minecraft
+import hauveli.fishcasting.Fishcasting
+import hauveli.fishcasting.registry.FishcastingAdvancements
 import net.minecraft.core.BlockPos
 import net.minecraft.core.particles.ParticleOptions
+import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.Mth
@@ -53,13 +55,64 @@ class PerhosgataEntity(
         return true // super.isUnderWater()
     }
 
-    override fun die(p0: DamageSource) {
+    // this is kinda bad but idk how to do a better job at it with less effort
+    // possible issues are recursion and repeated deep searches...
+    // I just check 2 length without checking if it is a duplicate because it fulfils the requirements I want
+    // (at least 2 unique entities at some point in a chain, started by a player)
+    // but this is not at all explicit in the code so I'm writing this here haha...
+    val MAX_CHAIN_LENGTH = 2
+    fun getChainStarterOrNull(entity: PerhosgataEntity, alreadySeen: MutableList<PerhosgataEntity>): ServerPlayer? {
+        Fishcasting.LOGGER.info("BEFORE CHAIN the: ${entity}, ${alreadySeen}")
+        if (alreadySeen.size > MAX_CHAIN_LENGTH)
+            return null
+        Fishcasting.LOGGER.info("AFTER CHAIn")
+        return when (val lastHurtBy = entity.lastHurtByMob) {
+            is PerhosgataEntity -> {
+                alreadySeen.addLast(entity)
+                getChainStarterOrNull(lastHurtBy, alreadySeen)
+            }
+            is ServerPlayer -> {
+                if(alreadySeen.size == MAX_CHAIN_LENGTH) {
+                    lastHurtBy
+                } else null
+            }
+            else -> null
+        }
+    }
+
+    // this fucking megasucks I think but it works so I'll just live with this for now
+    override fun hurt(damageSource: DamageSource, p1: Float): Boolean {
+        val someEntity = damageSource.entity
+        if (!this.isDeadOrDying
+            && this.health > 0f
+            && someEntity is PerhosgataEntity) {
+            this.health = 0f
+            this.lastHurtByMob = someEntity
+            this.die(damageSource)
+        }
+        return super.hurt(damageSource, p1)
+    }
+
+    override fun die(damageSource: DamageSource) {
+        super.die(damageSource) // unsure if I wanna do this still...
+        if (this.level().isClientSide)
+            return
         if (this.tickCount == 0 // this might seem weird but,
             && this.position().equals(Vec3.ZERO)) { // FishDisplays have the entity's tick count set to 0 and pos to Vec3.ZERO
             return
         }
+
+        // I think maybe I should propagate forward instead of backwards.... but this doesn't happen so frequently
+        // so for now, I can get away with it. Tested spawning like 1000 and it was ok.
+        val maybePlayer = getChainStarterOrNull(this, mutableListOf(this))
+        if (maybePlayer is ServerPlayer) {
+            FishcastingAdvancements.tryGrantingAdvancement(
+                maybePlayer, // garuanteed by the check...
+                FishcastingAdvancements.CHAIN_REACTION
+            )
+        }
+
         this.level().explode(this, this.x, this.y, this.z, 1.0f, Level.ExplosionInteraction.MOB)
-        super.die(p0) // unsure if I wanna do this still...
     }
 
     override fun canBeCollidedWith(): Boolean {

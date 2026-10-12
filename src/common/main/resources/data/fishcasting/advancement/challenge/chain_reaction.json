@@ -1,0 +1,29 @@
+{
+  "parent": "tide:catch_legendary",
+  "criteria": {
+    "chain_reaction": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fishcasting.chain_reaction.description",
+      "fallback": ""
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fishcasting:perhosgata"
+    },
+    "title": {
+      "translate": "advancements.fishcasting.chain_reaction.title"
+    }
+  },
+  "requirements": [
+    [
+      "chain_reaction"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

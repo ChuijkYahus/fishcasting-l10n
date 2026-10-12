@@ -406,6 +406,23 @@ hexcasting:
           entity: a fish entity
           bucketable: a bucketable fish
 _commnent_lore: LORE STUFF
+advancements:
+  fishcasting:
+    brainswept_trader_in_void:
+      title: Voice of the Void
+      description: Trade a trader with the void
+    fish_up_cursed:
+      title: From the Deep
+      description: Fish up a friend from the void
+    lightning_struck_cursed:
+      title: In Media, Resurrected!
+      description: Liberate a soul from its fleshy prison
+    fish_in_tacklebox_chair:
+      title: Slurp
+      description: Use a Tacklebox Chair to safely put away a fish
+    chain_reaction:
+      title: Runaway Chain Reaction
+      description: Cause a fish to explode by exploding its neighbor
 advancement:
   fishcasting:lore/newsletter: 'Fishcasting: Newsletter #1'
   fishcasting:lore/newsletter2: 'Fishcasting: Newsletter #2'

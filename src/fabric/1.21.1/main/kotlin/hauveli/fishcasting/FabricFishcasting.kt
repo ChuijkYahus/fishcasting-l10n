@@ -21,6 +21,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.animal.axolotl.Axolotl
 import net.minecraft.world.entity.npc.Villager
 import java.util.function.BiConsumer
@@ -73,6 +74,7 @@ object FabricFishcasting : ModInitializer {
         FabricDefaultAttributeRegistry.register(
             FishcastingEntities.PERHOSGATA.value,
             SmoothSwimmingFish.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 65.0) // survives a blast unless really close or chained
         )
 
         FabricDefaultAttributeRegistry.register(

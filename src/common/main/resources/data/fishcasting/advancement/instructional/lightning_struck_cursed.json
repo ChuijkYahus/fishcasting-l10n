@@ -48,7 +48,7 @@
     "frame": "goal",
     "description": {
       "translate": "advancements.fishcasting.lightning_struck_cursed.description",
-      "fallback": "Liberate a soul from its fleshy prison."
+      "fallback": "Liberate a soul from its fleshy prison"
     },
     "hidden": true,
     "icon": {

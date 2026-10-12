@@ -14,7 +14,7 @@
     "frame": "task",
     "description": {
       "translate": "advancements.fishcasting.fish_up_cursed.description",
-      "fallback": "Fish up a friend from the void."
+      "fallback": "Fish up a friend from the void"
     },
     "icon": {
       "count": 1,

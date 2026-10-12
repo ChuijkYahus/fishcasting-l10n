@@ -7,6 +7,8 @@ import net.minecraft.server.level.ServerPlayer
 
 
 object FishcastingAdvancements {
+    val CHAIN_REACTION: ResourceLocation = Fishcasting.id("challenge/chain_reaction")
+
     @JvmField
     val TACKLEBOX_CHAIR_FISHER = Fishcasting.id("instructional/fished_in_tacklebox_chair")
     @JvmField
