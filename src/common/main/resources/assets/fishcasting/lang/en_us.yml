@@ -158,7 +158,7 @@ fishcasting:
       '1': A truly remarkable invention for such a trite sport. A $(thing)Focus Bobber/$ not only extends my ambit by about an arms length from its origin, it also casts any stored hex within once I pull on it with enough force. This added range does not come for free however, as casting via the Focus Bobber costs $(l:items/amethyst)$(item)Amethyst Dust/$ equal to the square of the length of the vector from myself to the bobber.
       crafting: A construction similar to the $(l:items/focus)$(thing)Focus/$. Much like a focus, it can be written to when in my hand, or when on the ground, as well as when it has been cast by a rod.
     fishy_business:
-      '1': Some useful recipes to be certain, should I ever come across a fool foolish enough to part with these without knowing their true value as sources of _Media. If I wish to fish I will need an Angling Table to better equip my rod.
+      '1': Some useful recipes to be certain, should I ever come across a fool foolish enough to part with these without knowing their true value as sources of _Media. If I wish to fish I will need an Angling Table to better accessorize my rod.
       crystal_shrimp:
         amethyst: These $(thing)Crystal Shrimp$() do look quite delicious... Especially when they're grouped together...
         fried_rice: Fried to perfection, tender and crispy when eaten fresh.$(br)This meal provides some clarity for a duration after consumption and is supposedly popular among merchants and fishers with enough wealth.
@@ -400,6 +400,8 @@ hexcasting:
     bad_item:
       fishcasting:
         fishing_hook: Fishing Hook
+        bad_item:
+          fish_as_entity: a fish as an entity
         not_a_fish:
           .: a fish
           item: a fish item
