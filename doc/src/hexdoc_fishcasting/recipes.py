@@ -5,8 +5,8 @@ from typing import Any, Literal, Self
 from types import SimpleNamespace
 
 from hexdoc.core import ResourceLocation
-from hexdoc.minecraft.assets import ItemWithTexture, PNGTexture
-from hexdoc.minecraft.i18n import I18n, LocalizedStr
+from hexdoc.graphics.texture import ModelTexture
+from hexdoc.core.i18n import I18n, LocalizedStr
 from hexdoc.minecraft.recipe import ItemIngredient, ItemIngredientList, Recipe
 from hexdoc.minecraft.recipe import ItemIngredientList, ItemResult, Recipe
 from pydantic import Field, PrivateAttr, ValidationInfo, model_validator
@@ -18,13 +18,13 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
     entityZap: ResourceLocation = ResourceLocation(namespace="minecraft", path="lightning_bolt")
 
     _nameIn: LocalizedStr = PrivateAttr()
-    _textureIn: PNGTexture = PrivateAttr()
+    _textureIn: ModelTexture = PrivateAttr()
 
     _nameOut: LocalizedStr = PrivateAttr()
-    _textureOut: PNGTexture = PrivateAttr()
+    _textureOut: ModelTexture = PrivateAttr()
 
     _nameZap: LocalizedStr = PrivateAttr()
-    _textureZap: PNGTexture = PrivateAttr()
+    _textureZap: ModelTexture = PrivateAttr()
 
     @property
     def nameIn(self):
@@ -100,7 +100,7 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
 
         self._nameIn = i18n.localize_entity(self.entityIn)
 
-        self._textureIn = PNGTexture.load_id(
+        self._textureIn = ModelTexture.load(
             id="textures/entities" / self.entityIn + ".png",
             context=info.context,
         )
@@ -114,7 +114,7 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
 
         self._nameOut = i18n.localize_entity(self.entityOut)
 
-        self._textureOut = PNGTexture.load_id(
+        self._textureOut = ModelTexture.load(
             id="textures/entities" / self.entityOut + ".png",
             context=info.context,
         )
@@ -128,7 +128,7 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
 
         self._nameZap = i18n.localize_entity(self.entityZap)
 
-        self._textureZap = PNGTexture.load_id(
+        self._textureZap = ModelTexture.load(
             id="textures/entities" / self.entityZap + ".png",
             context=info.context,
         )
