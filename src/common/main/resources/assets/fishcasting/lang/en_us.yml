@@ -269,7 +269,6 @@ item:
       desc: Prevents anything from nibbling or biting
     unlucky_bait:
       .: Unlucky Bait
-      desc:
     benign_bait:
       .: Benign Bait
       desc: Prevents anything but fish from nibbling or biting

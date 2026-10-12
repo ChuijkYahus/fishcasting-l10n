@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Literal, Self
 from types import SimpleNamespace
 
-from hexdoc.core import ResourceLocation
+from hexdoc.core import AssumeTag, ModResourceLoader, ResourceLocation
 from hexdoc.graphics.texture import ModelTexture
 from hexdoc.core.i18n import I18n, LocalizedStr
 from hexdoc.minecraft.recipe import ItemIngredient, ItemIngredientList, Recipe
@@ -97,12 +97,14 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
     def _get_textureIn(self, info: ValidationInfo) -> Self:
         assert info.context is not None
         i18n = I18n.of(info)
+        loader = ModResourceLoader.of(info)
 
         self._nameIn = i18n.localize_entity(self.entityIn)
 
         self._textureIn = ModelTexture.load(
-            id="textures/entities" / self.entityIn + ".png",
-            context=info.context,
+            texture_id="entities" / self.entityIn,
+            loader=loader
+            #context=info.context,
         )
 
         return self
@@ -111,12 +113,14 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
     def _get_textureOut(self, info: ValidationInfo) -> Self:
         assert info.context is not None
         i18n = I18n.of(info)
+        loader = ModResourceLoader.of(info)
 
         self._nameOut = i18n.localize_entity(self.entityOut)
 
         self._textureOut = ModelTexture.load(
-            id="textures/entities" / self.entityOut + ".png",
-            context=info.context,
+            texture_id="entities" / self.entityOut,
+            loader=loader
+            #context=info.context,
         )
 
         return self
@@ -125,12 +129,14 @@ class StruckByLightningIngredient(BrainsweepeeIngredient, type="fishcasting:stru
     def _get_textureZap(self, info: ValidationInfo) -> Self:
         assert info.context is not None
         i18n = I18n.of(info)
+        loader = ModResourceLoader.of(info)
 
         self._nameZap = i18n.localize_entity(self.entityZap)
 
         self._textureZap = ModelTexture.load(
-            id="textures/entities" / self.entityZap + ".png",
-            context=info.context,
+            texture_id="entities" / self.entityZap,
+            loader=loader
+            #context=info.context,
         )
 
         return self
@@ -179,4 +185,5 @@ class StruckByLightningRecipe(Recipe, ABC, type="fishcasting:struck_by_lightning
     @property
     def zapObject(self) -> Any:
         return self.exchange.objectZap
+
 

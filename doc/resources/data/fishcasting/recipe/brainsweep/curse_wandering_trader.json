@@ -1,12 +1,12 @@
 {
   "type": "hexcasting:brainsweep",
   "blockIn": {
-    "type": "block",
+    "type": "hexcasting:block",
     "block": "minecraft:amethyst_block"
   },
   "cost": 100000,
   "entityIn": {
-    "type": "entity_type",
+    "type": "hexcasting:entity_type",
     "entityType": "minecraft:wandering_trader"
   },
   "result": {

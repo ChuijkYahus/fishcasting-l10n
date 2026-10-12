@@ -12,6 +12,10 @@ from pydantic import Field, PrivateAttr, ValidationInfo, model_validator
 class VoidsweepPage(BrainsweepPage, type="hexcasting:fishcasting/brainsweep_void"):
     pass
 
+
+#class VoidsweepPage(BrainsweepPage, type="hexcasting:fishcasting/brainsweep_void_hint"):
+#    pass
+
 # I dont know why this works, my intuition would say it shouldn't but I don't understand python well enough so this is fine
 class VoidsweepPage(BrainsweepPage, type="hexcasting:fishcasting/brainsweep_void_clueless"):
     pass
