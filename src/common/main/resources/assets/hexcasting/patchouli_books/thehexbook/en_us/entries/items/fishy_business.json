@@ -37,9 +37,9 @@
       "text": "fishcasting.page.fishy_business.hexlikes"
     },
     {
-      "type": "patchouli:text",
+      "type": "patchouli:crafting",
       "text": "fishcasting.page.fishy_business.3",
-      "recipe": "tide:angling_table"
+      "recipe2": "tide:angling_table"
     },
     {
       "type": "patchouli:crafting",
