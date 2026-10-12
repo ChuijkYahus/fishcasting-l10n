@@ -158,14 +158,14 @@ fishcasting:
       '1': A truly remarkable invention for such a trite sport. A $(thing)Focus Bobber/$ not only extends my ambit by about an arms length from its origin, it also casts any stored hex within once I pull on it with enough force. This added range does not come for free however, as casting via the Focus Bobber costs $(l:items/amethyst)$(item)Amethyst Dust/$ equal to the square of the length of the vector from myself to the bobber.
       crafting: A construction similar to the $(l:items/focus)$(thing)Focus/$. Much like a focus, it can be written to when in my hand, or when on the ground, as well as when it has been cast by a rod.
     fishy_business:
-      '1': Some useful recipes to be certain, should I ever come across a fool foolish enough to part with these without knowing their true value as sources of _Media.
+      '1': Some useful recipes to be certain, should I ever come across a fool foolish enough to part with these without knowing their true value as sources of _Media. If I wish to fish I will need an Angling Table to better equip my rod.
       crystal_shrimp:
-        shard: These $(thing)Crystal Shrimp$() do look quite delicious...
-        charged: Especially when they're together like this...
+        amethyst: These $(thing)Crystal Shrimp$() do look quite delicious... Especially when they're grouped together...
+        fried_rice: Fried to perfection, tender and crispy when eaten fresh.$(br)This meal provides some clarity for a duration after consumption and is supposedly popular among merchants and fishers with enough wealth.
       crystalline_carp: This imposing $(thing)Crystalline Carp$() looks like it could channel media without any effort at all, if it had the brains to do so.
       '2': These small things seem to have some almost negligible but noticeable effect on less intelligent life. While hardly useful in my research, the sound the line makes is pleasant on the ears. If only the bait were so kind on the nose...
       hexlikes: Media-infused Paraphernalia
-      '3': Recommended by a passing fisher I reluctantly exchanged a few short words with, these oddities would surely come in handy. Should I wish to subject myself to the smell of raw fish on a cold shore.
+      '3': Recommended by a passing fisher I reluctantly exchanged a few short words with, these oddities would surely come in handy. Should I wish to subject myself to the smell of raw fish on a cold, stony shore.
       misc: Fisher's Recommendation
     fanciful_fishing:
       '1': Ha! That even that fisher should have gone to such lengths -- just in order to fish without pause... I shudder to imagine what over a week of non-stop fishing would do to my psyche. As different as this $(l:items/casting_rod#fishcasting:landing)$(thing)Casting Rod/$ may look, it offers me no additional benefits in my work aside from its durability, should I wish to cast using a $(l:items/focus_bobber)$(thing)Focus Bobber/$.

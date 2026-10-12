@@ -6,18 +6,21 @@
   "advancement": "hexcasting:root",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "fishcasting.page.fishy_business.1"
+      "type": "patchouli:crafting",
+      "text": "fishcasting.page.fishy_business.1",
+      "recipe": "tide:angling_table"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "tide:amethyst_from_shrimp",
-      "text": "fishcasting.page.fishy_business.crystal_shrimp.shard"
+      "recipe2": "fishcasting:charged_amethyst_from_shrimp_manual_only",
+      "text": "fishcasting.page.fishy_business.crystal_shrimp.amethyst"
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "fishcasting:charged_amethyst_from_shrimp_manual_only",
-      "text": "fishcasting.page.fishy_business.crystal_shrimp.charged"
+      "recipe": "fishcasting:crystal_shrimp_fried_rice",
+      "text": "fishcasting.page.fishy_business.crystal_shrimp.fried_rice",
+      "anchor": "fishcasting:rice"
     },
     {
       "type": "patchouli:crafting",
@@ -39,7 +42,7 @@
     {
       "type": "patchouli:crafting",
       "text": "fishcasting.page.fishy_business.3",
-      "recipe2": "tide:angling_table"
+      "recipe2": "fishcasting:clingy_fishing_hook"
     },
     {
       "type": "patchouli:crafting",
