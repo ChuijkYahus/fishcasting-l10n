@@ -399,7 +399,7 @@ hexcasting:
         environment: Number-like
     bad_item:
       fishcasting:
-        fishing_hook: Fishing Hook
+        fishing_hook:
         bad_item:
           fish_as_entity: a fish as an entity
         not_a_fish:
