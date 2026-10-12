@@ -4,7 +4,7 @@
 from hexdoc.patchouli.text import FormattingContext, FormatTree
 from hexdoc.patchouli.page import EmptyPage, PageWithText, PageWithTitle
 from hexdoc.core import IsVersion, ItemStack, ResourceLocation
-from hexdoc.minecraft.i18n import I18n, LocalizedStr
+from hexdoc.core.i18n import I18n, LocalizedStr
 from hexdoc_hexcasting.book.page.pages import BrainsweepPage
 from hexdoc_fishcasting.recipes import StruckByLightningRecipe as LightningRecipe
 from pydantic import Field, PrivateAttr, ValidationInfo, model_validator
