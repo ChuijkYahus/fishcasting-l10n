@@ -16,6 +16,7 @@ import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.player.FishStats
 import com.li64.tide.data.player.TidePlayerData
 import com.li64.tide.data.player.TidePlayerData.FishPlayerData
+import hauveli.fishcasting.casting.iota.getFishEntity
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.item.ItemEntity
 
@@ -42,23 +43,16 @@ object OpGetFishMinimum : ConstMediaAction {
             throw MishapBadCaster()
         }
 
-        val target = args.getEntity(env.world, 0, argc)
+        val target = args.getFishEntity(env.world, 0, argc)
         env.assertEntityInRange(target)
-        var maybeFishData = FishData.get(target)
-        if (target is ItemEntity) {
-            maybeFishData = FishData.get(target.item.item)
-        }
-        if (maybeFishData.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
+        val fishData = FishData.get(target).get()
 
         val fishPlayerData = TidePlayerData.getOrCreate(caster)
         if (!fishPlayerData.gotJournal) {
             throw MishapBadEntity.of(caster, "fishcasting.not_a_fish.no_journal") // "No record found" or something...
         }
 
-        val definitelyFish = maybeFishData.get()
-        if (!definitelyFish.hasJournalEntry()) {
+        if (!fishData.hasJournalEntry()) {
             throw MishapBadEntity.of(target, "fishcasting.not_a_fish.no_journal") // "No record found" or something...
         }
 
@@ -68,7 +62,7 @@ object OpGetFishMinimum : ConstMediaAction {
 
         // Ok NOW we can check
 
-        val fishJournalDataForPlayer = fishPlayerData.fishPlayerData[definitelyFish.fish()]
+        val fishJournalDataForPlayer = fishPlayerData.fishPlayerData[fishData.fish()]
         val stats = fishJournalDataForPlayer?.stats
         val fishStats = if (fishPlayerData == null) FishStats() else stats?.orElse(FishStats())
         if (fishStats == null || fishStats.amountCaught == 0) {

@@ -67,6 +67,10 @@ artifacts = [
 [tool.hatch.build.targets.wheel]
 sources = ["doc/src"]
 
+# per [
+[tool.uv.sources]
+hexdoc-hexcasting = {url = "https://raw.githubusercontent.com/FallingColors/HexMod/b9ed14b01bed30ce4ff0714198e60ad372beefee/docs/v/latest/1.21/dist/hexdoc_hexcasting-0.12.0.1.0-py3-none-any.whl" }
+
 # hexdoc entry points
 
 [project.entry-points.hexdoc]

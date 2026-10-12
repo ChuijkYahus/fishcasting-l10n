@@ -4,19 +4,54 @@ import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.casting.mishaps.MishapEntityNotFound
+import at.petrak.hexcasting.api.casting.mishaps.MishapInternalException
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import com.li64.tide.Tide
 import com.li64.tide.config.TideServerConfig
 import com.li64.tide.data.fishing.FishData
+import com.li64.tide.data.fishing.ProfileData
 import com.li64.tide.data.item.TideItemData
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
 
 
-fun List<Iota>.getFishEntity(level: ServerLevel, idx: Int, argc: Int = 0): LivingEntity {
+fun List<Iota>.getFishJouranLEntry(level: ServerLevel, idx: Int, argc: Int = 0): ProfileData {
+    val fishData = this.getFishData(level, idx, argc)
+    if (fishData.hasJournalEntry()) {
+        return fishData.profile()
+    } else {
+        // todo: should I have ap roper mishap for this?
+        throw MishapInternalException(Exception("Fish existed but had no journal entry"))
+    }
+}
+
+fun List<Iota>.getFishData(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
+    val entity = this.getFishEntity(level, idx, argc)
+    val possiblyFish = FishData.get(entity)
+    if (possiblyFish.isPresent) {
+        return possiblyFish.get()
+    } else {
+        throw MishapBadEntity.of(entity, "fishdata_as_entity")
+    }
+}
+
+fun List<Iota>.getFishEntity(level: ServerLevel, idx: Int, argc: Int = 0): Entity {
+    val entity = this.getEntity(level, idx, argc)
+    val possiblyFish = FishData.get(entity)
+    if (possiblyFish.isPresent) {
+        return entity
+    } else {
+        throw MishapBadEntity.of(entity, "fish_as_entity")
+    }
+}
+
+fun List<Iota>.getFishLivingEntity(level: ServerLevel, idx: Int, argc: Int = 0): LivingEntity {
     val entity = this.getEntity(level, idx, argc)
     val possiblyFish = FishData.get(entity)
     if (possiblyFish.isPresent && entity is LivingEntity) {
@@ -48,7 +83,7 @@ fun List<Iota>.getFishDataFromItemEntity(level: ServerLevel, idx: Int, argc: Int
 }
 
 fun List<Iota>.getFishDataFromLivingEntity(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
-    val entity = this.getFishEntity(level, idx, argc)
+    val entity = this.getFishLivingEntity(level, idx, argc)
     val possiblyFish = FishData.get(entity)
     if (possiblyFish.isPresent) {
         return possiblyFish.get()

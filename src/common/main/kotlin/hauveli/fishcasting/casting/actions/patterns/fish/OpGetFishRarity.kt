@@ -17,6 +17,7 @@ import com.li64.tide.data.player.FishStats
 import com.li64.tide.data.player.TidePlayerData
 import com.li64.tide.data.player.TidePlayerData.FishPlayerData
 import hauveli.fishcasting.Fishcasting
+import hauveli.fishcasting.casting.iota.getFishEntity
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.item.ItemEntity
 
@@ -43,21 +44,14 @@ object OpGetFishRarity : ConstMediaAction {
             throw MishapBadCaster()
         }
 
-        val target = args.getEntity(env.world, 0, argc)
-        env.assertEntityInRange(target)
-        var maybeFishData = FishData.get(target)
-        if (target is ItemEntity) {
-            maybeFishData = FishData.get(target.item.item)
-        }
-        if (maybeFishData.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
+        val fish = args.getFishEntity(env.world, 0, argc)
+        env.assertEntityInRange(fish)
+        val fishdata = FishData.get(fish).get()
+
+        if (!fishdata.hasJournalEntry()) {
+            throw MishapBadEntity.of(fish, "fishcasting.not_a_fish.no_journal") // "No record found" or something...
         }
 
-        val definitelyFish = maybeFishData.get()
-        if (!definitelyFish.hasJournalEntry()) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish.no_journal") // "No record found" or something...
-        }
-
-        return listOf(DoubleIota(definitelyFish.profile().rarity().numStars.toDouble()))
+        return listOf(DoubleIota(fishdata.profile().rarity().numStars.toDouble()))
     }
 }
