@@ -8,7 +8,7 @@
   },
   "result": {
     "count": 1,
-    "id": "tide:crystal_fishing_rod"
+    "item": "tide:crystal_fishing_rod"
   },
   "template": {
     "tag": "c:strings"
