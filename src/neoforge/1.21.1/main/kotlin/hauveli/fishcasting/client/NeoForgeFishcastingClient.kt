@@ -88,8 +88,4 @@ object NeoForgeFishcastingClient {
             ::TackleBoxChairRenderer
         )
     }
-
-    @SubscribeEvent
-    fun registerEntityLayerDefinitions(event: EntityRenderersEvent.RegisterLayerDefinitions) {
-    }
 }

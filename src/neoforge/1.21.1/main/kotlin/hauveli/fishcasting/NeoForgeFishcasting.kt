@@ -53,21 +53,6 @@ import java.util.function.Consumer
 @Mod(Fishcasting.MODID)
 class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
 
-
-    fun fuckingUnfreeze() {
-        val rootRegistry = BuiltInRegistries.REGISTRY as? MappedRegistry<*>
-            ?: return
-
-        rootRegistry.unfreeze()
-    }
-
-    fun fuckingFreeze() {
-        val rootRegistry = BuiltInRegistries.REGISTRY as? MappedRegistry<*>
-            ?: return
-
-        rootRegistry.freeze()
-    }
-
     init {
         // thank you
         // https://github.com/VazkiiMods/Botania/blob/1.18.x/Forge/src/main/java/vazkii/botania/forge/ForgeCommonInitializer.java
@@ -90,19 +75,7 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
         // at least it works now........
         // NeoForge.EVENT_BUS.register(NeoForgeFishcasting)
 
-        //bind(Registries.RECIPE_SERIALIZER, FishcastingRecipeRegistry::registerSerializers);
-        //bind(Registries.RECIPE_TYPE, FishcastingRecipeRegistry::registerTypes);
-        //bind(Registries.ENTITY_TYPE, FishcastingEntities::registerEntities)
-        // bind(Registries.SOUND_EVENT, FishcastingSounds::registerSounds)
-        //bind(Registries.ATTRIBUTE, FishcastingAttributes::registerAttributes)
-        // bind(Registries.CREATIVE_MODE_TAB, FishcastingCreativeTabs::registerCreativeTabs)
-        //bind(HexRegistries.IOTA_TYPE, FishcastingIotaTypes::registerTypes)
         bind(HexRegistries.BRAINSWEEPEE_INGREDIENT, FishcastingBrainsweepeeIngredients::registerBrainsweepeeIngredients)
-        Registry.register(HexArithmetics.REGISTRY, Fishcasting.id("patterns"), FishcastingFishArithmetic())
-        /*
-
-
-         */
 
         /*
         // I don't know how much I have to do to register an attribute but I don't like what I've done
@@ -114,37 +87,14 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
             addListener(NeoForgeFishcastingClient::init)
             addListener(NeoForgeFishcastingDatagen::init)
             addListener(NeoForgeFishcastingServer::init)
-            //addListener(::registerAttributeHolder)
             addListener(::registerEntityAttributes)
-            //addListener(::registerLayerDefinitions)
-            //addListener(::registerEntityRenderers)
-            //addListener(::registerCaps)
+            addListener(::registerCaps)
             addListener(::registerCreativeModeTabItems)
             addListener(::registerMoonPhaseFishies)
         }
 
         Fishcasting.init()
     }
-
-    /*
-
-        FabricDefaultAttributeRegistry.register(
-            FishcastingEntities.EDIFIED_FISH.value,
-            SmoothSwimmingFish.createMobAttributes()
-        )
-
-        FabricDefaultAttributeRegistry.register(
-            FishcastingEntities.CURSED.value,
-            Axolotl.createAttributes().build()
-        )
-
-        FabricDefaultAttributeRegistry.register(
-            FishcastingEntities.PERHOSGATA.value,
-            SmoothSwimmingFish.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 65.0) // survives a blast unless really close or chained
-        )
-
-     */
 
     // ugh I couldn't do anything better than this
     fun registerEntityAttributes(event: EntityAttributeCreationEvent) {
@@ -164,37 +114,6 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
         event.put(
             FishcastingEntities.BLESSED.value,
             Villager.createAttributes().build()
-        )
-    }
-
-
-    fun registerLayerDefinitions(event: EntityRenderersEvent.RegisterLayerDefinitions) {
-        event.registerLayerDefinition(
-            TackleBoxChairModel.LAYER_LOCATION,
-            { TackleBoxChairModel.createBodyLayer() }
-        )
-        event.registerLayerDefinition(
-            CursedModel.LAYER_LOCATION,
-            { CursedModel.createBodyLayer() }
-        )
-        event.registerLayerDefinition(
-            BlessedModel.LAYER_LOCATION,
-            { BlessedModel.createBodyLayer() }
-        )
-    }
-
-    fun registerEntityRenderers(event: EntityRenderersEvent.RegisterRenderers) {
-        event.registerEntityRenderer(
-            FishcastingEntities.TACKLEBOX_CHAIR.value,
-            ::TackleBoxChairRenderer
-        )
-        event.registerEntityRenderer(
-            FishcastingEntities.CURSED.value,
-            ::CursedRenderer
-        )
-        event.registerEntityRenderer(
-            FishcastingEntities.BLESSED.value,
-            ::BlessedRenderer
         )
     }
 
