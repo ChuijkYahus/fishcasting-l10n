@@ -1,4 +1,4 @@
-package hauveli.fishcasting.mixin.hexxy5;
+package hauveli.fishcasting.mixin.bugfixes.hexxy5;
 
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHookRenderer;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;

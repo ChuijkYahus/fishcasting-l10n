@@ -7,9 +7,9 @@
     "casting_rod.WindUpCastBarOverlayMixin",
     "casting_rod.getDescriptionLinesTideFishingRodItemMixin",
     "focus_bobber.YoinkTooltipRenderTideClientEventHandlerMixin",
-    "hexxy5.Hexxy5TideFishingHookAccessor",
-    "hexxy5.Hexxy5TideFishingHookMixin",
-    "hexxy5.Hexxy5TideFishingHookRendererMixin"
+    "bugfixes.hexxy5.Hexxy5TideFishingHookAccessor",
+    "bugfixes.hexxy5.Hexxy5TideFishingHookMixin",
+    "bugfixes.hexxy5.Hexxy5TideFishingHookRendererMixin"
   ],
   "mixins": [
     "ChainedLineTideFishingHookMixin",
@@ -28,6 +28,7 @@
     "blessed_bobber.BlessedBobberJingleTideFishingHookMixin",
     "bobber_bonus.BobberBonusesTideFishingManagerMixin",
     "bobber_bonus.BobberBonusesFishingRandomSelectorMixin",
+    "bugfixes.tide.FixDoubledBaitUsageTideFishingHookMixin",
     "casting_rod.RegisterAsCastingRodTideItemsMixin",
     "casting_rod.RodCooldownAndBobberExecutionTideFishingHookMixin",
     "environment_spells.BiomeWhitelistConditionAccessor",
