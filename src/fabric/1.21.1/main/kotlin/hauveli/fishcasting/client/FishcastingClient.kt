@@ -34,11 +34,6 @@ object FabricFishcastingClient : ClientModInitializer {
     override fun onInitializeClient() {
         FishcastingClient.init()
 
-        registerRodWithCastProperty(FishcastingItems.SHEPHERDS_CASTING_ROD.value)
-        registerRodWithCastProperty(FishcastingItems.ROCKY_CASTING_ROD.value)
-        registerItemPropertyForScryingVision(FishcastingItems.PERHOSGATA.value)
-        registerItemPropertyForScryingVision(FishcastingItems.PERHOSGATA_BUCKET.value)
-
         registerLayerDefinitions()
         registerEntityRenderers()
 
@@ -47,36 +42,9 @@ object FabricFishcastingClient : ClientModInitializer {
             && FabricLoader.getInstance().isModLoaded("kilt")
             && FabricLoader.getInstance().isModLoaded("sable")) {
             Fishcasting.LOGGER.info("Detected kilt+sable, setting bugfix to true in client config.")
+            FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFixGate = true
             FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFix.validateAndSet(true)
         }
-    }
-
-    fun registerRodWithCastProperty(item: Item) {
-        ItemProperties.register(
-            item,
-            TideItemModelProperties.CAST_PROPERTY,
-            TideItemModelProperties.CAST_FUNCTION
-        )
-    }
-
-    fun registerItemPropertyForScryingVision(item: Item) {
-        ItemProperties.register(
-            item,
-            Fishcasting.id("no_scry_sight"), // todo: put this somewhere...
-            {
-                stack: ItemStack?, level: ClientLevel?, entity: LivingEntity?, seed: Int ->
-                val player = Minecraft.getInstance().player // thank god this is on the client side of things
-                if (player == null) {
-                    1f
-                } else {
-                    if (player.getAttributeValue(HexAttributes.SCRY_SIGHT) > 0.0
-                        && player.getAttributeValue(HexAttributes.FEEBLE_MIND) <= 0.0)
-                        0f
-                    else
-                        1f
-                }
-            }
-        )
     }
 
     fun registerLayerDefinitions() {

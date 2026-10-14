@@ -6,10 +6,7 @@
   "client": [
     "casting_rod.WindUpCastBarOverlayMixin",
     "casting_rod.getDescriptionLinesTideFishingRodItemMixin",
-    "focus_bobber.YoinkTooltipRenderTideClientEventHandlerMixin",
-    "bugfixes.hexxy5.Hexxy5TideFishingHookAccessor",
-    "bugfixes.hexxy5.Hexxy5TideFishingHookMixin",
-    "bugfixes.hexxy5.Hexxy5TideFishingHookRendererMixin"
+    "focus_bobber.YoinkTooltipRenderTideClientEventHandlerMixin"
   ],
   "mixins": [
     "ChainedLineTideFishingHookMixin",

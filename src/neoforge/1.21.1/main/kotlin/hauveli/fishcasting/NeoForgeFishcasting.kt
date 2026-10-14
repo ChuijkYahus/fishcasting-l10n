@@ -2,10 +2,18 @@ package hauveli.fishcasting
 
 //import hauveli.fishcasting.common.registries.FishcastingEntities
 import at.petrak.hexcasting.api.addldata.ADIotaHolder
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.casting.math.HexDir
+import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.utils.TreeList
 import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.common.lib.hex.HexArithmetics
 import at.petrak.hexcasting.forge.cap.HexCapabilities
+import at.petrak.hexcasting.forge.cap.adimpl.CapStaticIotaHolder
 import com.li64.tide.registries.TideEntityTypes
+import com.li64.tide.registries.TideFish
+import com.li64.tide.registries.entities.fish.SmoothSwimmingFish
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
 import hauveli.fishcasting.client.NeoForgeFishcastingClient
 import hauveli.fishcasting.features.chair.TackleBoxChairModel
@@ -18,6 +26,7 @@ import hauveli.fishcasting.datagen.NeoForgeFishcastingDatagen
 import hauveli.fishcasting.features.trader.BlessedModel
 import hauveli.fishcasting.features.trader.BlessedRenderer
 import hauveli.fishcasting.casting.arithmetic.FishcastingFishArithmetic
+import hauveli.fishcasting.features.fish.perhosgata.PerhosgataEntity
 import hauveli.fishcasting.registry.FishcastingBrainsweepeeIngredients
 import hauveli.fishcasting.registry.FishcastingEntities
 import net.minecraft.core.MappedRegistry
@@ -25,6 +34,7 @@ import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.animal.axolotl.Axolotl
 import net.minecraft.world.entity.npc.Villager
 import net.neoforged.bus.api.IEventBus
@@ -106,20 +116,50 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
             addListener(NeoForgeFishcastingServer::init)
             //addListener(::registerAttributeHolder)
             addListener(::registerEntityAttributes)
-            addListener(::registerLayerDefinitions)
-            addListener(::registerEntityRenderers)
-            addListener(::registerCaps)
+            //addListener(::registerLayerDefinitions)
+            //addListener(::registerEntityRenderers)
+            //addListener(::registerCaps)
             addListener(::registerCreativeModeTabItems)
+            addListener(::registerMoonPhaseFishies)
         }
 
         Fishcasting.init()
     }
 
+    /*
+
+        FabricDefaultAttributeRegistry.register(
+            FishcastingEntities.EDIFIED_FISH.value,
+            SmoothSwimmingFish.createMobAttributes()
+        )
+
+        FabricDefaultAttributeRegistry.register(
+            FishcastingEntities.CURSED.value,
+            Axolotl.createAttributes().build()
+        )
+
+        FabricDefaultAttributeRegistry.register(
+            FishcastingEntities.PERHOSGATA.value,
+            SmoothSwimmingFish.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 65.0) // survives a blast unless really close or chained
+        )
+
+     */
+
     // ugh I couldn't do anything better than this
     fun registerEntityAttributes(event: EntityAttributeCreationEvent) {
         event.put(
+            FishcastingEntities.EDIFIED_FISH.value,
+            SmoothSwimmingFish.createMobAttributes().build()
+        )
+        event.put(
             FishcastingEntities.CURSED.value,
             Axolotl.createAttributes().build()
+        )
+        event.put(
+            FishcastingEntities.PERHOSGATA.value,
+            SmoothSwimmingFish.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 65.0).build()
         )
         event.put(
             FishcastingEntities.BLESSED.value,
@@ -171,6 +211,39 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
         FishcastingItems.registerItemCreativeTab(event, event.tab);
     }
 
+
+    fun registerMoonPhaseFishies(event: RegisterCapabilitiesEvent ) {
+
+        // hee hee hee...
+        // todo:
+        // I'll have to fix this in dev 53 and/or dev 54
+        val mindsReflection = HexPattern.fromAngleString("qaq", HexDir.NORTH_EAST)
+        val compassPurification = HexPattern.fromAngleString("aa", HexDir.EAST)
+        val alidadesPurification = HexPattern.fromAngleString("wa", HexDir.NORTH_EAST)
+        val archersDistillation = HexPattern.fromAngleString("wqaawdd", HexDir.EAST)
+        val sillyIota = ListIota(
+            TreeList.from(
+                listOf(
+                    PatternIota(mindsReflection),
+                    PatternIota(compassPurification),
+                    PatternIota(mindsReflection),
+                    PatternIota(alidadesPurification),
+                    PatternIota(archersDistillation),
+                )
+            )
+        )
+
+
+        event.registerItem(
+            HexCapabilities.Item.IOTA,
+            {stack, ctx ->
+                CapStaticIotaHolder({
+                    sillyIota
+                }, stack)
+            },
+            TideFish.MANTA_RAY
+        )
+    }
 
 
     // I decided against it but I'm keeping it here just in case

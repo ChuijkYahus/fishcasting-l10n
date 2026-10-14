@@ -4,6 +4,9 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "bugfixes.hexxy5.Hexxy5TideFishingHookAccessor",
+    "bugfixes.hexxy5.Hexxy5TideFishingHookMixin",
+    "bugfixes.hexxy5.Hexxy5TideFishingHookRendererMixin"
   ],
   "mixins": [
     "babysittingfabric.stupidmixin",

@@ -36,7 +36,12 @@ class FishcastingClientConfig : Config(Fishcasting.id("client_config")) {
                 FishcastingPatchouliConfigStuff.configurePatchouliFlags(FishcastingConfigs)
             }
 
-    var hexxy5KiltSableBugFix: ValidatedBoolean = ValidatedBoolean(false).withListener {
-
-    }
+    var hexxy5KiltSableBugFixGate: Boolean = false
+    var hexxy5KiltSableBugFix: ValidatedCondition<Boolean> =
+        ValidatedBoolean(false)
+            .toCondition({hexxy5KiltSableBugFixGate}, // I think this will reference the variable and not the value...
+                Component.literal("Gate must be true"),
+                { false })
+            .withFailTitle(Component.literal("Condition not met"),
+                Component.literal("Conditions not net"))
 }
