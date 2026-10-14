@@ -11,7 +11,9 @@
       "text": "fishcasting.page.fanciful_fishing.1"
     },
     {
-      "type": "patchouli:text",
+      "type": "patchouli:smithing",
+      "recipe": "fishcasting:shepherds_rod_smithing",
+      "recipe2": "fishcasting:blessed_bobber_smithing",
       "text": "fishcasting.page.fanciful_fishing.smithing"
     },
     {
