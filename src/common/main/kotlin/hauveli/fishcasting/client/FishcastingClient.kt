@@ -4,6 +4,7 @@ import at.petrak.hexcasting.client.render.GaslightingTracker
 import at.petrak.hexcasting.common.lib.HexAttributes
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions
 import com.li64.tide.client.TideItemModelProperties
+import com.li64.tide.registries.TideItems
 import hauveli.fishcasting.Fishcasting
 import hauveli.fishcasting.interop.inline.InlineFishcastingClient
 import hauveli.fishcasting.registry.FishcastingItems
@@ -27,6 +28,7 @@ object FishcastingClient {
 
         registerRodWithCastProperty(FishcastingItems.SHEPHERDS_CASTING_ROD.value)
         registerRodWithCastProperty(FishcastingItems.ROCKY_CASTING_ROD.value)
+        registerRodWithCastProperty(TideItems.MIDAS_FISHING_ROD)
 
         registerItemPropertyForScryingVision(FishcastingItems.PERHOSGATA.value)
         registerItemPropertyForScryingVision(FishcastingItems.PERHOSGATA_BUCKET.value)
@@ -43,10 +45,18 @@ object FishcastingClient {
     }
 
     fun registerRodWithCastProperty(item: Item) {
+        val propertyMaybe = ItemProperties
+            .getProperty(item.defaultInstance,
+                TideItemModelProperties.CAST_PROPERTY)
+        // avoid re-registering just in case?
+        if (propertyMaybe != null) {
+            return
+        }
+
         ItemProperties.register(
             item,
             TideItemModelProperties.CAST_PROPERTY,
-            TideItemModelProperties.CAST_FUNCTION// ?????? fucking neoforge
+            TideItemModelProperties.CAST_FUNCTION
         )
     }
 
