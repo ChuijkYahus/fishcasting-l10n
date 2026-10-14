@@ -1,5 +1,5 @@
 {
-   "parent": "tide:item/shooting_starfish_spawn_egg",
+   "parent": "minecraft:item/generated",
    "textures": {
       "layer0": "tide:item/shooting_starfish_spawn_egg"
    }

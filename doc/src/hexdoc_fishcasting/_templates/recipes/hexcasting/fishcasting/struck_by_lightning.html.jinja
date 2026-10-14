@@ -1,4 +1,5 @@
-{% import "macros/textures.html.jinja" as texture_macros with context -%}
+{% import "macros/images.html.jinja" as image_macros with context -%}
+{% import "macros/old_texture_macros.html.jinja" as texture_macros with context -%}
 
 <details class="details-collapsible flay-recipe-details">
   {% block collapse %}
@@ -17,7 +18,8 @@
           class="flay-recipe-background"
           alt="Flay Mind Recipe GUI"
           src="{% block background_image %}{{
-            'fishcasting:textures/gui/hexdoc/struck_by_lightning.png'|hexdoc_texture
+            ('fishcasting:textures/gui/hexdoc/struck_by_lightning.png'|hexdoc_texture_image).url
+            | replace('v/0.2.16+1.21.1/1.0/renders/', '../renders/')
           }}{% endblock %}"
         >
       {% endblock background %}

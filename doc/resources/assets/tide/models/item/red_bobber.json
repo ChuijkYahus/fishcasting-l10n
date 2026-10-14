@@ -1,5 +1,5 @@
 {
-   "parent": "tide:item/red_bobber",
+   "parent": "minecraft:item/generated",
    "textures": {
       "layer0": "tide:item/red_bobber"
    }

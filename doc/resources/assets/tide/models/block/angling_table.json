@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "tide:block/angling_table_bottom",
+    "up": "tide:block/angling_table_top",
+    "north": "tide:block/angling_table",
+    "south": "tide:block/angling_table",
+    "east": "tide:block/angling_table_side",
+    "west": "tide:block/angling_table_side",
+    "particle": "tide:block/angling_table"
+  }
+}

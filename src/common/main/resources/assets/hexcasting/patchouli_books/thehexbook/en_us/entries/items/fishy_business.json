@@ -42,7 +42,7 @@
     {
       "type": "patchouli:crafting",
       "text": "fishcasting.page.fishy_business.3",
-      "recipe2": "fishcasting:clingy_fishing_hook"
+      "recipe": "fishcasting:clingy_fishing_hook"
     },
     {
       "type": "patchouli:crafting",

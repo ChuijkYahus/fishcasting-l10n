@@ -1,0 +1,30 @@
+{% macro render_texture(name, texture, class_names=[], lazy=true, title=true) -%}
+  {% if texture.meta is defined -%}
+    <div
+      role="img"
+      {{ ('title="'~name~'"')|safe if title }}
+      aria-label="{{ name }} (animated)"
+      class="{{
+        (class_names + [
+          'texture',
+          'animated-sync',
+          texture.css_class,
+          'pixelated',
+        ])|join(' ')
+      }}"
+    ></div>
+  {%- else -%}
+    <img
+      {{ ('title="'~name~'"')|safe if title }}
+      alt="{{ name }}"
+      src="{{ texture.texture_id }}"
+      {{ 'loading="lazy"'|safe if lazy }}
+      class="{{
+        (class_names + [
+          'texture',
+          'pixelated',
+        ])|join(' ')
+      }}"
+    >
+  {%- endif %}
+{%- endmacro %}

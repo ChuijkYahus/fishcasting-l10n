@@ -1,5 +1,5 @@
 {
-   "parent": "tide:item/fish_satchel",
+   "parent": "minecraft:item/generated",
    "textures": {
       "layer0": "tide:item/fish_satchel"
    }

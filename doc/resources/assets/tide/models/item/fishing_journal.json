@@ -1,5 +1,5 @@
 {
-   "parent": "tide:item/fishing_journal",
+   "parent": "minecraft:item/generated",
    "textures": {
       "layer0": "tide:item/fishing_journal"
    }

@@ -6,11 +6,11 @@
   "base": {
     "item": "minecraft:fishing_rod"
   },
+  "template": {
+    "item": "minecraft:string"
+  },
   "result": {
     "count": 1,
-    "item": "tide:crystal_fishing_rod"
-  },
-  "template": {
-    "tag": "c:strings"
+    "id": "tide:crystal_fishing_rod"
   }
 }
