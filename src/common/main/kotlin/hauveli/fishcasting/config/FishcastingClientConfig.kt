@@ -36,12 +36,29 @@ class FishcastingClientConfig : Config(Fishcasting.id("client_config")) {
                 FishcastingPatchouliConfigStuff.configurePatchouliFlags(FishcastingConfigs)
             }
 
-    var hexxy5KiltSableBugFixGate: Boolean = false
     var hexxy5KiltSableBugFix: ValidatedCondition<Boolean> =
         ValidatedBoolean(false)
-            .toCondition({hexxy5KiltSableBugFixGate}, // I think this will reference the variable and not the value...
-                Component.literal("Gate must be true"),
+            .toCondition(::bugFixIsRelevant, // I think this will reference the variable and not the value...
+                Component.literal("Kilt and Sable must be loaded"),
                 { false })
-            .withFailTitle(Component.literal("Condition not met"),
-                Component.literal("Conditions not net"))
+            .withFailTitle(Component.literal("Fix not needed"),
+                Component.literal("Fix not needed (but plural)"))
+
+    companion object {
+        var hexxy5KiltSableBugFixGate: Boolean = false
+        fun bugFixIsRelevant(): Boolean {
+            return hexxy5KiltSableBugFixGate
+        }
+        // todo: figure out how to put this into the bugFixIsRelevant function in common instead...
+        // would remove the need for the bool hexxy5KiltSableBugFixGate...
+        /*
+        if (!FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFix.get()
+            && FabricLoader.getInstance().isModLoaded("kilt")
+            && FabricLoader.getInstance().isModLoaded("sable")) {
+            Fishcasting.LOGGER.info("Detected kilt+sable, setting bugfix to true in client config.")
+            FishcastingClientConfig.hexxy5KiltSableBugFixGate = true
+            FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFix.validateAndSet(true)
+        }
+         */
+    }
 }

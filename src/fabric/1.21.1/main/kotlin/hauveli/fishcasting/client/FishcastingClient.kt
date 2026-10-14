@@ -4,6 +4,7 @@ package hauveli.fishcasting.client
 import at.petrak.hexcasting.common.lib.HexAttributes
 import com.li64.tide.client.TideItemModelProperties
 import hauveli.fishcasting.Fishcasting
+import hauveli.fishcasting.config.FishcastingClientConfig
 import hauveli.fishcasting.config.FishcastingConfigs
 import hauveli.fishcasting.features.chair.TackleBoxChairModel
 import hauveli.fishcasting.features.chair.TackleBoxChairRenderer
@@ -42,7 +43,7 @@ object FabricFishcastingClient : ClientModInitializer {
             && FabricLoader.getInstance().isModLoaded("kilt")
             && FabricLoader.getInstance().isModLoaded("sable")) {
             Fishcasting.LOGGER.info("Detected kilt+sable, setting bugfix to true in client config.")
-            FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFixGate = true
+            FishcastingClientConfig.hexxy5KiltSableBugFixGate = true
             FishcastingConfigs.CLIENT_CONFIG.hexxy5KiltSableBugFix.validateAndSet(true)
         }
     }
