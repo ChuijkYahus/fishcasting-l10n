@@ -186,4 +186,3 @@ class StruckByLightningRecipe(Recipe, ABC, type="fishcasting:struck_by_lightning
     def zapObject(self) -> Any:
         return self.exchange.objectZap
 
-
