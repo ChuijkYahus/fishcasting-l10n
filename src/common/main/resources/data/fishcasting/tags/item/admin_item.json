@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "fishcasting:edified_fish_spawn_egg",
+    "fishcasting:cursed_spawn_egg",
+    "fishcasting:perhosgata_spawn_egg",
+    "fishcasting:blessed_spawn_egg"
+  ]
+}
