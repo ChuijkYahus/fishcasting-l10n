@@ -1,13 +1,13 @@
 {
   "parent": "fishcasting:lore/root",
   "criteria": {
-    "granted": {
-      "trigger": "minecraft:impossible"
+    "requirement": {
+      "trigger": "minecraft:tick"
     }
   },
   "rewards": {
     "experience": 0,
-    "function": "fishcasting:maybe_revoke_unneeded_hints"
+    "function": "fishcasting:maybe_grant_voidsweep_clueless_hint"
   },
   "sends_telemetry_event": false
 }
