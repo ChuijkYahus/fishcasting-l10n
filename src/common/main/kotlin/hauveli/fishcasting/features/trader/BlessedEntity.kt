@@ -91,6 +91,8 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
+
+// todo: make it only able to trade for the funny fish once, then disappear asap. (with a funny visual) (maybe just hurt it instantly to make it go poof)
 class BlessedEntity(entityType: EntityType<out WanderingTrader?>, level: Level) : WanderingTrader(entityType, level) {
     private val wanderTarget: BlockPos? = null
     private var pigment: FrozenPigment = FrozenPigment.ANCIENT.get()
