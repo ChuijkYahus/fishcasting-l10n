@@ -5,17 +5,16 @@ import com.li64.tide.data.FishLengthHolder
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.item.TideItemData
 import com.li64.tide.registries.entities.fish.AmphibiousFish
-import com.li64.tide.registries.entities.fish.TideVoidFish
 import hauveli.fishcasting.registry.FishcastingAdvancements.tryGrantingAdvancement
 import hauveli.fishcasting.registry.FishcastingAdvancements
 import hauveli.fishcasting.registry.FishcastingItems
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.damagesource.DamageSource
-import net.minecraft.world.damagesource.DamageSources
 import net.minecraft.world.damagesource.DamageTypes
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
@@ -28,6 +27,7 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.Vec3
+import java.security.MessageDigest
 import java.util.function.Function
 
 
@@ -44,6 +44,28 @@ class CursedEntity(
         return 0 //super.getAirSupply()
     }
      */
+
+
+    // todo: https://github.com/hauveli/fishcasting/issues/78
+    // https://gist.github.com/lovubuntu/164b6b9021f5ba54cefc67f60f7a1a25
+    fun hash(theName: String): String {
+        val messageDigest = MessageDigest.getInstance("SHA-256")
+        val digest = messageDigest.digest(theName.toByteArray())
+        return digest.fold("", { str, it -> str + "%02x".format(it) })
+    }
+
+    // low effort sneaky that anyone can figure out with a bit of thinking, I'm unsure if I want to use plaintext or not though...
+    val secretVariantName = "cf4bb1d03b7e274b73e002e9888018469c4b76173fe108a7bac5fd8752a49bf2"
+    // todo: figure out why intellij  nags about the nullability but fails to compile when the nullability is correct
+    override fun setCustomName(component: Component?) {
+        if (component == null)
+            return
+        if (false && hash(component.string) == secretVariantName) {
+            // this is where I would put the variant if I had the energy to do so right now...
+            // putting the false there so I don't have to compute a hash for no reason
+        }
+        super.setCustomName(component)
+    }
 
     override fun aiStep() {
         // this.setOnGround(false) // no flopping please, does this mess with friction?
