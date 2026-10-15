@@ -18,7 +18,8 @@
       "anchor": "fishcasting:landing"
     },
     {
-      "type": "patchouli:text",
+      "type": "patchouli:smithing",
+      "recipe": "fishcasting:crystal_casting_rod_smithing",
       "text": "fishcasting.page.casting_rod.smithing"
     }
   ]
