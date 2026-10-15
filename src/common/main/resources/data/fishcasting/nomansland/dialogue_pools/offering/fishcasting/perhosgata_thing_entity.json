@@ -1,0 +1,22 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "nomansland"
+      ]
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "nomansland"
+    }
+  ],
+  "condition": {
+    "type": "nomansland:entity_conditional",
+    "entity": "fishcasting:perhosgata"
+  },
+  "weight": 1,
+  "text": "What/./././ is /this/?/\nI /can /not /see /it /from /here/./"
+}

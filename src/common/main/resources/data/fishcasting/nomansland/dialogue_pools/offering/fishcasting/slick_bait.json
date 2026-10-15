@@ -14,9 +14,9 @@
     }
   ],
   "condition": {
-    "type": "nomansland:entity_conditional",
-    "entity": "fishcasting:cursed"
+    "type": "nomansland:item_conditional",
+    "items": "fishcasting:slick_bait"
   },
   "weight": 1,
-  "text": "A sad sight, torn from its home/./././\nYou would do well to return it to the depths."
+  "text": "Greed begets greed./\nWill you ever have enough?/"
 }

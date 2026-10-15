@@ -1,0 +1,22 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "nomansland"
+      ]
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "nomansland"
+    }
+  ],
+  "condition": {
+    "type": "nomansland:entity_conditional",
+    "entity": "fishcasting:edified_fish"
+  },
+  "weight": 1,
+  "text": "What /a /majestic /amphibian./\nEven out of water, /it stands proud,/\nand strong./"
+}
