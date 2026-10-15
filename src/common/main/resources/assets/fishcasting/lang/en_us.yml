@@ -477,8 +477,7 @@ yapping_tooltips:
       perhosgata_spawn_egg.desc: Frozen in time?
       blessed_spawn_egg.desc: Be mean to them!
       music_disc:
-        returning_to_the_surface.desc: Can be inserted into a jukebox to play cult-like tunes.
-      music_disc/returning_to_the_surface.desc: Their song, it was beautiful. Terrifying, but beautiful.
+        returning_to_the_surface.desc: Can be inserted into a jukebox to play cult-like tunes
 commands:
   fishing:
     entries:
