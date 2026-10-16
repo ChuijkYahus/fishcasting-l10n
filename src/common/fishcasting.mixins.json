@@ -40,6 +40,7 @@
     "tacklebox_chair.ContentAccessorBucketItemMixin",
     "tacklebox_chair.TackleBoxSlurpEntityMixin",
     "unlucky_bait.UnluckyBaitTideFishingHookMixin",
+    "unlucky_bait.UnluckyConsumesBaitTideFishingHookMixin",
     "voidsweep.AbstractVillagerInvoker",
     "voidsweep.VoidsweepAiStepWanderingTraderMixin"
   ],
