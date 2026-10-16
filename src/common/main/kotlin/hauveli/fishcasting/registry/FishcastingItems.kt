@@ -182,6 +182,7 @@ object FishcastingItems : FishcastingRegistrar<Item>(
     val ODIOUS_BAIT = make("odious_bait", {newItem()})
     @JvmField
     val BENIGN_BAIT = make("benign_bait", {newItem()})
+    @JvmField
     val UNLUCKY_BAIT = make("unlucky_bait", {newItem()})
     val SLICK_BAIT = make("slick_bait", {Item(uncommon())})
     val TINY_BAIT = make("tiny_bait", {

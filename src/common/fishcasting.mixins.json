@@ -14,9 +14,9 @@
     "CursedMostlyIndestructibleItemEntityMixin",
     "HooklessFishingHookTideFishingHookMixin",
     "NearbyBlockForFishProfile",
+    "OdiousBaitTideFishingHookMixin",
     "SetHookedEntityTideFishingHookAccessor",
     "TagRecentlyCaughtByTideFishingHookMixin",
-    "OdiousBaitTideFishingHookMixin",
     "advancements.AllFishingRodsAdvancementMixin",
     "advancements.OpBrainsweepSpellMixin",
     "advancements.OpLightningSpellMixin",
@@ -39,6 +39,7 @@
     "shepherds_rod.EndInAnyVoidBonusFishingHookMixin",
     "tacklebox_chair.ContentAccessorBucketItemMixin",
     "tacklebox_chair.TackleBoxSlurpEntityMixin",
+    "unlucky_bait.UnluckyBaitTideFishingHookMixin",
     "voidsweep.AbstractVillagerInvoker",
     "voidsweep.VoidsweepAiStepWanderingTraderMixin"
   ],

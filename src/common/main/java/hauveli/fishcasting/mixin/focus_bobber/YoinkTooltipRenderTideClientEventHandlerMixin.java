@@ -52,6 +52,8 @@ public class YoinkTooltipRenderTideClientEventHandlerMixin {
             lines.add(Component.translatable("item.fishcasting.benign_bait.desc").withStyle(ChatFormatting.GOLD));
         } else if (stack.getItem() == FishcastingItems.ODIOUS_BAIT.getValue()) {
             lines.add(Component.translatable("item.fishcasting.odious_bait.desc").withStyle(ChatFormatting.GOLD));
+        } else if (stack.getItem() == FishcastingItems.UNLUCKY_BAIT.getValue()) {
+            lines.add(Component.translatable("item.fishcasting.unlucky_bait.desc").withStyle(ChatFormatting.GOLD));
         }
     }
 }
