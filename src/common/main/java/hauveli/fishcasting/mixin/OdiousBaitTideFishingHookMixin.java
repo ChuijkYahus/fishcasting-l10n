@@ -1,5 +1,6 @@
 package hauveli.fishcasting.mixin;
 
+import com.li64.tide.data.fishing.FishingContext;
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook;
 import com.li64.tide.util.BaitUtils;
 import hauveli.fishcasting.registry.FishcastingItems;
@@ -19,6 +20,9 @@ public abstract class OdiousBaitTideFishingHookMixin {
     @Shadow
     protected ItemStack rod;
 
+    @Shadow
+    public abstract FishingContext getContext();
+
     @Inject(method = "catchingFish", at = @At("TAIL"))
     private void fishcasting$setHugeLureTime(BlockPos pos, CallbackInfo ci) {
         if (fishcasting$shouldPreventFish()) {
@@ -28,7 +32,6 @@ public abstract class OdiousBaitTideFishingHookMixin {
 
     @Unique
     private boolean fishcasting$shouldPreventFish() {
-        return BaitUtils.getBaitItems(rod).stream()
-                .anyMatch(stack -> stack.is(FishcastingItems.ODIOUS_BAIT.getValue()));
+        return BaitUtils.hasBait(FishcastingItems.ODIOUS_BAIT.getValue(), getContext().rod());
     }
 }
