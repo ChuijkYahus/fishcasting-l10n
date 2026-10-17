@@ -8,7 +8,7 @@ import dev.emi.emi.api.EmiRegistry
 import net.minecraft.resources.ResourceLocation
 
 @EmiEntrypoint
-class HexagonyEMIPlugin : EmiPlugin {
+class FishcastingEMIPlugin : EmiPlugin {
     override fun register(registry: EmiRegistry) {
     }
 
