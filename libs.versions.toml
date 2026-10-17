@@ -59,6 +59,7 @@ pkpcpbp = "0.2.0-pre-95"
 
 # emi
 emi = "1.1.24+1.21.1"
+trinkets = "3.10.0"
 curios = "9.5.1+1.21.1"
 
 # create mod stuff
@@ -73,7 +74,7 @@ tide-fabric = ["tide-fabric"] # just in case they add a dependency, I'll know ho
 tide-neoforge = ["tide-neoforge"] # just in case they add a dependency, I'll know how to do this
 
 # stuff I don't actually need-need
-qualityoflife-fabric = ["emi-fabric", "curios-fabric"]
+qualityoflife-fabric = ["emi-fabric", "trinkets-fabric"]
 qualityoflife-neoforge = ["emi-neoforge", "curios-neoforge"]
 createmod-neoforge = ["createmod-neoforge", "curios-neoforge"]
 
@@ -133,7 +134,7 @@ tide-neoforge  = { module="com.li64:tide-neoforge-1.21.1", version.ref="tide" }
 # emi is optional
 emi-fabric          = {module="dev.emi:emi-fabric", version.ref="emi"}
 emi-neoforge        = {module="dev.emi:emi-neoforge", version.ref="emi"}
-curios-fabric        = {module="top.theillusivec4.curios:curios-fabric", version.ref="curios"}
+trinkets-fabric        = {module="dev.emi:trinkets", version.ref="trinkets"}
 curios-neoforge        = {module="top.theillusivec4.curios:curios-neoforge", version.ref="curios"}
 
 # create is optional

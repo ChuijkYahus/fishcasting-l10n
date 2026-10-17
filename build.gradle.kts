@@ -63,6 +63,9 @@ repositories {
     // Fzzy Config
     maven("https://maven.fzzyhmstrs.me/")
 
+    // EMI, Trinkets
+    maven("https://maven.gnomecraft.net/releases")
+
 
     // stuff I don't really need but am including for ease of dev
     // all of these things are needed for create vvvv
