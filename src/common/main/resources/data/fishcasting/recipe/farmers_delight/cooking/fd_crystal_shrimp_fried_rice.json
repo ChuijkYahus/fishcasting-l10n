@@ -17,6 +17,10 @@
     "type": "forge:mod_loaded",
     "modid": "farmersdelight"
   },
+  "container": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  },
   "type": "farmersdelight:cooking",
   "experience": 1.0,
   "ingredients": [

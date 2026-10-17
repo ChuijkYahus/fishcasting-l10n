@@ -55,12 +55,27 @@ modPublish = "0.5.1"
 yamlang = "1.5.0"
 pkpcpbp = "0.2.0-pre-95"
 
+# extra stuff
+
+# emi
+emi = "1.1.24+1.21.1"
+curios = "9.5.1+1.21.1"
+
+# create mod stuff
+createmod = "6.0.10-281"
+# curios is needed for create mod, too
+
 [bundles]
 cardinalComponents = ["cardinalComponents-base", "cardinalComponents-entity", "cardinalComponents-item", "cardinalComponents-block"]
 hexcasting-fabric = ["hexcasting-fabric", "paucal-fabric", "patchouli-fabric", "clothConfig-fabric", "inline-fabric"] #, "accessories-fabric"]
 hexcasting-neoforge = ["hexcasting-neoforge", "paucal-neoforge", "patchouli-neoforge", "clothConfig-neoforge", "inline-neoforge", "caelus-neoforge"] #, "accessories-neoforge"]
 tide-fabric = ["tide-fabric"] # just in case they add a dependency, I'll know how to do this
 tide-neoforge = ["tide-neoforge"] # just in case they add a dependency, I'll know how to do this
+
+# stuff I don't actually need-need
+qualityoflife-fabric = ["emi-fabric", "curios-fabric"]
+qualityoflife-neoforge = ["emi-neoforge", "curios-neoforge"]
+createmod-neoforge = ["createmod-neoforge", "curios-neoforge"]
 
 [libraries]
 kotlin-stdlib = { module="org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref="kotlin" }
@@ -115,9 +130,19 @@ tide-common     = { module="com.li64:tide-common-1.21.1", version.ref="tide" }
 tide-fabric    = { module="com.li64:tide-fabric-1.21.1", version.ref="tide" }
 tide-neoforge  = { module="com.li64:tide-neoforge-1.21.1", version.ref="tide" }
 
+# emi is optional
+emi-fabric          = {module="dev.emi:emi-fabric", version.ref="emi"}
+emi-neoforge        = {module="dev.emi:emi-neoforge", version.ref="emi"}
+curios-fabric        = {module="top.theillusivec4.curios:curios-fabric", version.ref="curios"}
+curios-neoforge        = {module="top.theillusivec4.curios:curios-neoforge", version.ref="curios"}
+
+# create is optional
+createmod-neoforge        = {module="com.simibubi.create:create-1.21.1", version.ref="createmod"}
+# curios is needed for create
+
 [plugins]
 kotlin-jvm = { id="org.jetbrains.kotlin.jvm", version.ref="kotlin" }
 modPublish = { id="me.modmuss50.mod-publish-plugin", version.ref="modPublish" }
 cloche = { id="earth.terrarium.cloche", version.ref="cloche"}
-yamlang = { id = "me.fallenbreath.yamlang", version.ref = "yamlang" }
+yamlang = { id="me.fallenbreath.yamlang", version.ref = "yamlang" }
 pkJson5    = { id="at.petra-k.pkpcpbp.PKJson5Plugin", version.ref="pkpcpbp" }

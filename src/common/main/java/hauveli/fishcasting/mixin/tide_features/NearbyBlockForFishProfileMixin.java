@@ -1,4 +1,4 @@
-package hauveli.fishcasting.mixin;
+package hauveli.fishcasting.mixin.tide_features;
 
 import com.li64.tide.client.gui.screens.journal.FishProfile;
 import com.li64.tide.client.gui.screens.journal.ProfileComponent;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Mixin(FishProfile.class)
-public class NearbyBlockForFishProfile {
+public class NearbyBlockForFishProfileMixin {
 
     @Inject(
             method = "buildComponents",

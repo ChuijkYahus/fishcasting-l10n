@@ -63,6 +63,13 @@ public class getDescriptionLinesTideFishingRodItemMixin {
     }
 
 
+    // ROCKY_CASTING_ROD stuff is here, todo: make it easier to find...
+    // also todo: determine if I want to care about light updates...
+    // the issue is that the light level may change after casting the hook,
+    // and while it's a small edge case, it exists and is something with unexpected behavior...
+    // the fix would probably be to mixin to the getContext method in TideFishingHook and then
+    // that would fix the luck value, but how would I fix speed in a way that makes sense........
+    // communicating the edge case to the player in some way might be the easiest fix all around
     @ModifyVariable(
             method = "castHook",
             at = @At("STORE"),
@@ -75,9 +82,10 @@ public class getDescriptionLinesTideFishingRodItemMixin {
             Level level,
             float charge
     ) {
-        if (rod.is(FishcastingTags.LUCK_REDUCING_RODS)) {
+        if (rod.is(FishcastingTags.LUCK_REDUCING_RODS)
+                && !level.isClientSide) {
             // pretty sure level can't become null between when the method is invoked and here so this is fine
-            if (player.level().getMaxLocalRawBrightness(player.blockPosition()) < 1)
+            if (level.getMaxLocalRawBrightness(player.blockPosition()) < 1)
                 luck -= 2;
         }
 
@@ -96,9 +104,10 @@ public class getDescriptionLinesTideFishingRodItemMixin {
             Level level,
             float charge
     ) {
-        if (rod.is(FishcastingTags.LUCK_REDUCING_RODS)) {
+        if (rod.is(FishcastingTags.LUCK_REDUCING_RODS)
+                && !level.isClientSide) {
             // pretty sure level can't become null between when the method is invoked and here so this is fine
-            if (player.level().getMaxLocalRawBrightness(player.blockPosition()) < 1)
+            if (level.getMaxLocalRawBrightness(player.blockPosition()) < 1)
                 speed += 2;
         }
 

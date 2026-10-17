@@ -267,13 +267,13 @@ item:
       desc: Prevents entities from getting hooked
     clingy_fishing_hook:
       .: Clingy Fishing Hook
-      desc: Keeps catch from escaping until reeled, but takes longer to nibble
+      desc: Takes longer to bite but won't escape
     odious_bait:
       .: Odious Bait
       desc: Prevents anything from nibbling or biting
     unlucky_bait:
       .: Unlucky Bait
-      desc: Significantly decreases odds of catching anything except junk
+      desc: More likely to catch junk
     benign_bait:
       .: Benign Bait
       desc: Prevents anything but fish from nibbling or biting
@@ -290,7 +290,7 @@ item:
     tacklebox_chair_floaty: Floaty Tacklebox Chair
     tacklebox_chair_secret: 'NUCLEAR-HEX-MACHINE "[WEST, wweewaqdeeweewawe]KOOL[NORTH_EAST, wawdwedaqedwwwe]U" MK[SOUTH_EAST, aqaaqawqaaq] TURBOMAX!!!!!'
     fishy_fragment: Soggy Lore Fragment
-    glass_shard: Glass Shard
+    glass_shard: Bottle Shard
     edified_fish: Edified Guppy
     edified_fish_bucket: Edified Guppy Bucket
     edified_fish_spawn_egg: Edified Guppy Spawn Egg

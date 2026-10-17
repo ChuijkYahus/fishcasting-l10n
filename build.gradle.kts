@@ -63,6 +63,18 @@ repositories {
     // Fzzy Config
     maven("https://maven.fzzyhmstrs.me/")
 
+
+    // stuff I don't really need but am including for ease of dev
+    // all of these things are needed for create vvvv
+    // https://github.com/Creators-of-Create/Create/blob/mc1.21.1/dev/build.gradle#L98
+    maven("https://maven.createmod.net")
+    maven("https://maven.ithundxr.dev/snapshots")
+    maven("https://maven.ftb.dev/releases")
+    maven("https://maven.theillusivec4.top/") // curios
+    maven("https://maven.squiddev.cc")
+    maven("https://jm.gserv.me/repository/maven-public/")
+    // all of these things are needed for create ^^^^
+
     // for deps that are not hosted on any maven repository
     flatDir { dir(rootProject.file("libs")) }
 
@@ -153,6 +165,12 @@ cloche {
             libs.bundles.tide.fabric.get().forEach {
                 modImplementation(it)
             }
+
+            // optional things
+            libs.bundles.qualityoflife.fabric.get().forEach {
+                modCompileOnlyApi(it)
+                modRuntimeOnly(it)
+            }
         }
 
         metadata {
@@ -180,7 +198,11 @@ cloche {
                     version(libs.versions.fzzyConfig.fabric.get())
                 }
             }
-            // custom("cardinal-components", listOf("hexcasting:iota_holder"))
+
+            entrypoint("emi") {
+                value = "hauveli.fishcasting.interop.FishcastingEMIPlugin"
+                adapter = "kotlin"
+            }
         }
 
         runs {
@@ -219,6 +241,17 @@ cloche {
             // tide and dependencies
             libs.bundles.tide.neoforge.get().forEach {
                 modImplementation(it)
+            }
+
+            // optional things
+            libs.bundles.qualityoflife.neoforge.get().forEach {
+                modCompileOnlyApi(it)
+                modRuntimeOnly(it)
+            }
+
+            libs.bundles.createmod.neoforge.get().forEach {
+                modCompileOnlyApi(it)
+                modRuntimeOnly(it)
             }
         }
 
