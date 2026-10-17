@@ -42,6 +42,7 @@ class CursedModel(context: EntityRendererProvider.Context) : FishModel( context,
     private val legFR: ModelPart
     private val legBL: ModelPart
     private val legBR: ModelPart
+    val head: ModelPart
 
     init {
         val front = root().getChild("body")
@@ -49,6 +50,7 @@ class CursedModel(context: EntityRendererProvider.Context) : FishModel( context,
         this.legFR = front.getChild("right_front_leg")
         this.legBL = front.getChild("left_hind_leg")
         this.legBR = front.getChild("right_hind_leg")
+        this.head = front.getChild("head")
         //this.addSwimAnimation("front/head", 0.4f, -0.05f)
         //this.addSwimAnimation("rear", 0.4f, 0.15f)
         //this.addSwimAnimation("rear/tail", 0.4f, 0.22f)

@@ -26,6 +26,7 @@ import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.gameevent.GameEvent
 import net.minecraft.world.phys.Vec3
 import java.security.MessageDigest
 import java.util.function.Function
@@ -119,6 +120,11 @@ class CursedEntity(
     }
 
     override fun hurt(source: DamageSource, amount: Float): Boolean {
+        if (this.level().isClientSide) {
+            return super.hurt(source, amount)
+        }
+
+        this.gameEvent(GameEvent.ENTITY_DAMAGE)
         if (relevantDamageSource(source)) {
             doAllaySpawnOnLightningHitMob(this, source)
             return super.hurt(source, amount)

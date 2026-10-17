@@ -11,6 +11,7 @@ import java.util.Set;
 
 public class FishcastingMixinPlugin implements IMixinConfigPlugin {
     private static final Map<String, String> MIXIN_MAP = Map.of(
+            "FixCreateHatArmorLayerMixin", "create",
             "FixCreateSeatOffsetsSeatEntityMixin", "create"
     );
 

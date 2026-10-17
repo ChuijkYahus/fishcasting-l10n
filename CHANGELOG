@@ -56,7 +56,7 @@ Mechanics:
 Misc:
     Added 1 Advancement for the Legendary Fish
     Changed some wording and ordering and items in the hex book (I hope it's more friendly...)
-
+    Fix create seat offset for all mobs added by Fishcasting
 
 Notable Bugfixes:
     I'm putting this here so I don't forget to bring it up: fixed client-side tide rendering/minigame bugs with kilt+sable (the minigame should work) (this was fixed in 0.2.15)

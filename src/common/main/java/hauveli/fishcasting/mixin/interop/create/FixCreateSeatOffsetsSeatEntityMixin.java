@@ -19,12 +19,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 )
 public class FixCreateSeatOffsetsSeatEntityMixin {
 
+    // https://github.com/JensenJ-Modding/Create/blob/mc1.21.1/dev/src/main/java/com/simibubi/create/content/contraptions/actors/seat/SeatEntity.java
+    // so why is it that the return type is double but the values being returned are all floats, except spider?
+    // whatever I'm returning doubles
     @Inject(
             method = "getCustomEntitySeatOffset",
             at = @At("HEAD"),
             cancellable = true
     )
-    private static void customSeatOffset(
+    private static void fishcasting$customSeatOffset(
             Entity entity,
             CallbackInfoReturnable<Double> cir
     ) {
