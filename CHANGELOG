@@ -56,11 +56,13 @@ Mechanics:
 Misc:
     Added 1 Advancement for the Legendary Fish
     Changed some wording and ordering and items in the hex book (I hope it's more friendly...)
-    Fix create seat offset for all mobs added by Fishcasting
+    Fix create seat offset for all mobs added by Fishcasting (I learned something new doing this!)
+    Fix cursed thing not activating sculk sensors on hurt from drowning
+    Tried to fix the create mod hat position for my creature, too, but in the process of fixing stuff up, only the trader kept its hat.
+        - Create 6.0.10 or 6.0.11 may add an API for this that I can use...
 
 Notable Bugfixes:
     I'm putting this here so I don't forget to bring it up: fixed client-side tide rendering/minigame bugs with kilt+sable (the minigame should work) (this was fixed in 0.2.15)
     Made the fish I had added work better (I hope). (No longer axolotl-based)
 
 If I added or changed anything else I forgot because it was a bugfix or insignificant, I think I fixed some bad spell circle oversights at least, when I looked over it again...
-Tried to fix the create mod hat position for my creature, too.
