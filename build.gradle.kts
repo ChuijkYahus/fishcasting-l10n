@@ -203,7 +203,7 @@ cloche {
             }
 
             entrypoint("emi") {
-                value = "hauveli.fishcasting.interop.FishcastingEMIPlugin"
+                value = "hauveli.fishcasting.interop.emi.FishcastingEMIPlugin"
                 adapter = "kotlin"
             }
         }
