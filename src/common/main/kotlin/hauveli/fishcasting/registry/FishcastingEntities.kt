@@ -33,6 +33,7 @@ object FishcastingEntities : FishcastingRegistrar<EntityType<*>>(
         }
     }
 
+    @JvmField
     val EDIFIED_FISH = registerEntity(
         "edified_fish", {
             EntityType.Builder.of(::SmoothSwimmingFish, MobCategory.WATER_AMBIENT)
@@ -41,6 +42,7 @@ object FishcastingEntities : FishcastingRegistrar<EntityType<*>>(
         }
     )
 
+    @JvmField
     val PERHOSGATA = registerEntity(
         "perhosgata", {
             EntityType.Builder.of(::PerhosgataEntity, MobCategory.AMBIENT)
@@ -63,6 +65,7 @@ object FishcastingEntities : FishcastingRegistrar<EntityType<*>>(
     // Provides access to budding amethyst (eventually)
     // @JvmField
     // : EntityType<BlessedEntity>
+    @JvmField
     val BLESSED = registerEntity(
         "blessed", {
         EntityType.Builder.of(::BlessedEntity,MobCategory.CREATURE)

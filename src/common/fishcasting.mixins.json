@@ -3,12 +3,14 @@
   "package": "hauveli.fishcasting.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
+  "plugin": "hauveli.fishcasting.mixin.FishcastingMixinPlugin",
   "client": [
     "casting_rod.WindUpCastBarOverlayMixin",
     "casting_rod.getDescriptionLinesTideFishingRodItemMixin",
     "focus_bobber.YoinkTooltipRenderTideClientEventHandlerMixin"
   ],
   "mixins": [
+    "interop.create.FixCreateSeatOffsetsSeatEntityMixin",
     "ChainedLineTideFishingHookMixin",
     "ClingyFishingHookTideFishingHookMixin",
     "CursedMostlyIndestructibleItemEntityMixin",
