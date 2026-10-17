@@ -99,6 +99,10 @@ class NeoForgeFishcasting(modBus: IEventBus, container: ModContainer) {
     // ugh I couldn't do anything better than this
     fun registerEntityAttributes(event: EntityAttributeCreationEvent) {
         event.put(
+            FishcastingEntities.GOOP.value,
+            SmoothSwimmingFish.createMobAttributes().build()
+        )
+        event.put(
             FishcastingEntities.EDIFIED_FISH.value,
             SmoothSwimmingFish.createMobAttributes().build()
         )

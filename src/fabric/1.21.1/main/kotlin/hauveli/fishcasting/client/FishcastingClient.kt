@@ -13,6 +13,8 @@ import hauveli.fishcasting.features.fish.cursed.CursedModel
 import hauveli.fishcasting.features.fish.cursed.CursedRenderer
 import hauveli.fishcasting.features.fish.edified.EdifiedFishModel
 import hauveli.fishcasting.features.fish.edified.EdifiedFishRenderer
+import hauveli.fishcasting.features.fish.goop.GoopModel
+import hauveli.fishcasting.features.fish.goop.GoopRenderer
 import hauveli.fishcasting.features.fish.perhosgata.PerhosgataModel
 import hauveli.fishcasting.features.fish.perhosgata.PerhosgataRenderer
 import hauveli.fishcasting.features.trader.BlessedModel
@@ -50,6 +52,10 @@ object FabricFishcastingClient : ClientModInitializer {
 
     fun registerLayerDefinitions() {
         EntityModelLayerRegistry.registerModelLayer(
+            GoopModel.LAYER_LOCATION,
+            { GoopModel.createBodyLayer() }
+        )
+        EntityModelLayerRegistry.registerModelLayer(
             EdifiedFishModel.LAYER_LOCATION,
             { EdifiedFishModel.createBodyLayer() }
         )
@@ -76,6 +82,11 @@ object FabricFishcastingClient : ClientModInitializer {
     }
 
     fun registerEntityRenderers() {
+
+        EntityRendererRegistry.register(
+            FishcastingEntities.GOOP.value,
+            ::GoopRenderer
+        )
 
         EntityRendererRegistry.register(
             FishcastingEntities.EDIFIED_FISH.value,

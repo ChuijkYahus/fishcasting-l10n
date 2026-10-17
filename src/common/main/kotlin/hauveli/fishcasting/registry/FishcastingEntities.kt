@@ -4,6 +4,7 @@ import com.li64.tide.registries.entities.fish.SmoothSwimmingFish
 import hauveli.fishcasting.Fishcasting.id
 import hauveli.fishcasting.features.chair.TackleBoxChairEntity
 import hauveli.fishcasting.features.fish.cursed.CursedEntity
+import hauveli.fishcasting.features.fish.goop.GoopEntity
 import hauveli.fishcasting.features.fish.perhosgata.PerhosgataEntity
 import hauveli.fishcasting.features.trader.BlessedEntity
 import net.minecraft.core.Registry
@@ -32,6 +33,15 @@ object FishcastingEntities : FishcastingRegistrar<EntityType<*>>(
             return@make built
         }
     }
+
+    @JvmField
+    val GOOP = registerEntity(
+        "goop", {
+            EntityType.Builder.of(::GoopEntity, MobCategory.WATER_AMBIENT)
+                .sized(8f / 16f, 6f / 16f)
+                .clientTrackingRange(8)
+        }
+    )
 
     @JvmField
     val EDIFIED_FISH = registerEntity(

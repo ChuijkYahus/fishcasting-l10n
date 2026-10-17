@@ -10,6 +10,8 @@ import hauveli.fishcasting.features.fish.cursed.CursedModel
 import hauveli.fishcasting.features.fish.cursed.CursedRenderer
 import hauveli.fishcasting.features.fish.edified.EdifiedFishModel
 import hauveli.fishcasting.features.fish.edified.EdifiedFishRenderer
+import hauveli.fishcasting.features.fish.goop.GoopModel
+import hauveli.fishcasting.features.fish.goop.GoopRenderer
 import hauveli.fishcasting.features.fish.perhosgata.PerhosgataModel
 import hauveli.fishcasting.features.fish.perhosgata.PerhosgataRenderer
 import hauveli.fishcasting.features.trader.BlessedModel
@@ -34,6 +36,10 @@ object NeoForgeFishcastingClient {
     @SubscribeEvent
     @JvmStatic
     fun registerLayerDefinitions(event: EntityRenderersEvent.RegisterLayerDefinitions) {
+        event.registerLayerDefinition(
+            GoopModel.LAYER_LOCATION,
+            { GoopModel.createBodyLayer() }
+        )
         event.registerLayerDefinition(
             EdifiedFishModel.LAYER_LOCATION,
             { EdifiedFishModel.createBodyLayer() }
@@ -63,6 +69,11 @@ object NeoForgeFishcastingClient {
     @SubscribeEvent
     @JvmStatic
     fun registerEntityRenderers(event: EntityRenderersEvent.RegisterRenderers) {
+        event.registerEntityRenderer(
+            FishcastingEntities.GOOP.value,
+            ::GoopRenderer
+        )
+
         event.registerEntityRenderer(
             FishcastingEntities.EDIFIED_FISH.value,
             ::EdifiedFishRenderer

@@ -203,6 +203,22 @@ object FishcastingItems : FishcastingRegistrar<Item>(
         musicDiscItem(FishcastingSounds.RETURNING_TO_THE_SURFACE.jukeboxSong)
     }
     @JvmField
+    val GOOP = makeNoCreativeMenu("goop", {newItem()})
+    @JvmField
+    val GOOP_BUCKET = makeNoCreativeMenu(
+        "goop_bucket", {MobBucketItem(
+            FishcastingEntities.GOOP.value,
+            WATER,
+            BUCKET_EMPTY_FISH,
+            unstackable()
+        )}
+    )
+    val GOOP_SPAWN_EGG = makeNoCreativeMenu(
+        "goop_spawn_egg", {
+            newEggItem(FishcastingEntities.GOOP.value)
+        }
+    )
+    @JvmField
     val EDIFIED_FISH = make("edified_fish", {newItem()})
     @JvmField
     val EDIFIED_FISH_BUCKET = make(

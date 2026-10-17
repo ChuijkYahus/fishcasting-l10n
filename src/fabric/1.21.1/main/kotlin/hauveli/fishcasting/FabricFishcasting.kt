@@ -62,6 +62,11 @@ object FabricFishcasting : ModInitializer {
 
     fun registerEntityAttributes() {
         FabricDefaultAttributeRegistry.register(
+            FishcastingEntities.GOOP.value,
+            SmoothSwimmingFish.createMobAttributes()
+        )
+
+        FabricDefaultAttributeRegistry.register(
             FishcastingEntities.EDIFIED_FISH.value,
             SmoothSwimmingFish.createMobAttributes()
         )
