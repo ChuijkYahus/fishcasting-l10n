@@ -23,6 +23,8 @@ public abstract class TestingColorMixin {
     // to anyone whom it may concern, I am testing this to see which colors I may want to request in the future.
     @Inject(method = "<init>", at = @At("RETURN"))
     private void replaceColors(UUID owner, CallbackInfo ci) {
+        // not-made-overly-vibrant
+        /*
         this.colors = new int[] {
                 0xFF5D7A76,
                 0xFFBF87A0,
@@ -40,6 +42,7 @@ public abstract class TestingColorMixin {
                 0xFFF1E9EC,
                 0xFFCBCEE4
         };
+         */
 
         /*
         this.colors = new int[] {
