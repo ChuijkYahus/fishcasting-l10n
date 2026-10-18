@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.common.lib.hex.HexActions
+import hauveli.fishcasting.casting.actions.patterns.bobber.OpGetBiting
 import hauveli.fishcasting.casting.actions.patterns.bobber.OpGetBobbersCatch
 import hauveli.fishcasting.casting.actions.patterns.bobber.OpGetBobbersOwner
 import hauveli.fishcasting.casting.actions.patterns.bobber.OpGetCatchesBobber
@@ -51,7 +52,8 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val BOBBER_ATTACH = make("bobber/attach", HexDir.SOUTH_EAST, "weeedd", OpAttachBobber)
     val BOBBER_DETACH = make("bobber/detach", HexDir.NORTH_EAST, "aaqqqw", OpDetachBobber)
 
-    val BOBBER_MEDIM = make("bobber/medium", HexDir.SOUTH_EAST, "weeedew", OpGetMedium)
+    val BOBBER_BITING = make("bobber/biting", HexDir.SOUTH_EAST, "weeedewaa", OpGetBiting)
+    val BOBBER_MEDIUM = make("bobber/medium", HexDir.SOUTH_EAST, "weeedew", OpGetMedium)
 
     val FISHIFY_ITEM = make("fish/from_item", HexDir.SOUTH_EAST, "dewqdaqeqqqeaeqwede", OpFishifyItem)
     val ITEMIFY_FISH = make("fish/to_item", HexDir.SOUTH_EAST, "dewqeaeqqqeqadqwede", OpItemifyFish)

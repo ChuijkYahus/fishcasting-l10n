@@ -78,6 +78,11 @@ repositories {
     maven("https://jm.gserv.me/repository/maven-public/")
     // all of these things are needed for create ^^^^
 
+    // sable
+    maven("https://maven.ryanhcode.dev/releases")
+    maven("https://raw.githubusercontent.com/Fuzss/modresources/main/maven/") // forgeconfigapiport
+    // end sable
+
     // for deps that are not hosted on any maven repository
     flatDir { dir(rootProject.file("libs")) }
 
@@ -174,6 +179,14 @@ cloche {
                 modCompileOnlyApi(it)
                 modRuntimeOnly(it)
             }
+
+            /*
+            libs.bundles.sablestuff.fabric.get().forEach {
+                modCompileOnlyApi(it)
+                modRuntimeOnly(it)
+            }
+
+             */
         }
 
         metadata {
@@ -256,6 +269,14 @@ cloche {
                 modCompileOnlyApi(it)
                 modRuntimeOnly(it)
             }
+
+            /*
+            libs.bundles.sablestuff.neoforge.get().forEach {
+                modCompileOnlyApi(it)
+                modRuntimeOnly(it)
+            }
+
+             */
         }
 
         metadata {

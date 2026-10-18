@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
+import hauveli.fishcasting.casting.iota.getBobber
 import net.minecraft.server.level.ServerPlayer
 
 object OpGetBobbersOwner : ConstMediaAction {
@@ -20,21 +21,15 @@ object OpGetBobbersOwner : ConstMediaAction {
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
         val caster = env.castingEntity
         val serverLevel = env.world
-        val unknownEntity = args.getEntity(serverLevel, 0, OpGetBobbersCatch.argc)
+        val someBobber = args.getBobber(serverLevel, 0, OpGetBobbersCatch.argc)
 
-        // Not a player
-        if (unknownEntity !is TideFishingHook) {
-            throw MishapBadEntity.of(unknownEntity, "fishcasting.fishing_hook")
-        }
-
-        val target = unknownEntity
         // Too far, only check if not owned by self
-        if (caster is ServerPlayer && !target.playerOwner.`is`(caster)) {
-            env.assertEntityInRange(target)
+        if (caster is ServerPlayer && !someBobber.playerOwner.`is`(caster)) {
+            env.assertEntityInRange(someBobber)
         }
 
         // These should not error, as they are expected behaviour despite returning null
-        val owner = target.owner ?: return listOf(NullIota())
+        val owner = someBobber.owner ?: return listOf(NullIota())
 
         return listOf(EntityIota(owner))
     }

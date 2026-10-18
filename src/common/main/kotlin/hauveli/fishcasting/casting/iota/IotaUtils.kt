@@ -15,13 +15,23 @@ import com.li64.tide.config.TideServerConfig
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.fishing.ProfileData
 import com.li64.tide.data.item.TideItemData
+import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
 
 
-fun List<Iota>.getFishJouranLEntry(level: ServerLevel, idx: Int, argc: Int = 0): ProfileData {
+fun List<Iota>.getBobber(level: ServerLevel, idx: Int, argc: Int = 0): TideFishingHook {
+    val entity = this.getEntity(level, idx, argc)
+    if (entity is TideFishingHook) {
+        return entity
+    } else {
+        throw MishapBadEntity.of(entity, "fishcasting.fishing_hook")
+    }
+}
+
+fun List<Iota>.getFishJournalEntry(level: ServerLevel, idx: Int, argc: Int = 0): ProfileData {
     val fishData = this.getFishData(level, idx, argc)
     if (fishData.hasJournalEntry()) {
         return fishData.profile()

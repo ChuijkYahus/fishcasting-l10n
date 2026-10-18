@@ -12,6 +12,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
 import hauveli.fishcasting.Fishcasting
+import hauveli.fishcasting.casting.iota.getBobber
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.item.ItemEntity
 
@@ -24,22 +25,16 @@ object OpGetBobbersCatch : ConstMediaAction {
         val caster = env.castingEntity
         val serverLevel = env.world
 
-        val unknownEntity = args.getEntity(serverLevel, 0, argc)
+        val someBobber = args.getBobber(serverLevel, 0, argc)
 
-        // Not a hook
-        if (unknownEntity !is TideFishingHook) {
-            throw MishapBadEntity.of(unknownEntity, "fishcasting.fishing_hook")
-        }
-
-        val target = unknownEntity
         // Too far, only check if not owned by self
-        if (caster is ServerPlayer && !target.playerOwner.`is`(caster)) {
-            env.assertEntityInRange(target)
+        if (caster is ServerPlayer && !someBobber.playerOwner.`is`(caster)) {
+            env.assertEntityInRange(someBobber)
         }
 
         // These should not error, as they are expected behaviour despite returning null
-        val justReeled = getFishOnHook(target)
-        val haul = target.hookedIn
+        val justReeled = getFishOnHook(someBobber)
+        val haul = someBobber.hookedIn
         if (justReeled != null) {
             return listOf<Iota>(EntityIota(justReeled))
         } else if (haul != null) {

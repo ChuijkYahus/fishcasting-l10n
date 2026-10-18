@@ -66,6 +66,16 @@ curios = "9.5.1+1.21.1"
 createmod = "6.0.10-281"
 # curios is needed for create mod, too
 
+# sable
+veil = "4.3.2"
+sable = "2.0.4"
+sable_companion = "1.6.0"
+flywheel_version = "1.0.6"
+
+# aeronautics
+
+
+
 [bundles]
 cardinalComponents = ["cardinalComponents-base", "cardinalComponents-entity", "cardinalComponents-item", "cardinalComponents-block"]
 hexcasting-fabric = ["hexcasting-fabric", "paucal-fabric", "patchouli-fabric", "clothConfig-fabric", "inline-fabric"] #, "accessories-fabric"]
@@ -77,6 +87,8 @@ tide-neoforge = ["tide-neoforge"] # just in case they add a dependency, I'll kno
 qualityoflife-fabric = ["emi-fabric", "trinkets-fabric"]
 qualityoflife-neoforge = ["emi-neoforge", "curios-neoforge"]
 createmod-neoforge = ["createmod-neoforge", "curios-neoforge"]
+sablestuff-fabric = ["sable-fabric"]
+sablestuff-neoforge = ["sable-neoforge"]
 
 [libraries]
 kotlin-stdlib = { module="org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref="kotlin" }
@@ -140,6 +152,9 @@ curios-neoforge        = {module="top.theillusivec4.curios:curios-neoforge", ver
 # create is optional
 createmod-neoforge        = {module="com.simibubi.create:create-1.21.1", version.ref="createmod"}
 # curios is needed for create
+sable-companion-common    = {module="dev.ryanhcode.sable-companion:sable-companion-common-1.21.1", version.ref="sable_companion"}
+sable-fabric              = {module="dev.ryanhcode.sable:sable-fabric-1.21.1", version.ref="sable"}
+sable-neoforge              = {module="dev.ryanhcode.sable:sable-neoforge-1.21.1", version.ref="sable"}
 
 [plugins]
 kotlin-jvm = { id="org.jetbrains.kotlin.jvm", version.ref="kotlin" }

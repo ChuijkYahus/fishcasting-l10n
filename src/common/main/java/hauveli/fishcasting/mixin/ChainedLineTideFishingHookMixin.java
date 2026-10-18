@@ -66,12 +66,12 @@ public abstract class ChainedLineTideFishingHookMixin {
 
         Vec3 newPos = hookPos;
 
+        Level level = hook.level();
         for (int i = 0; i < 15; i++) {
             Vec3 candidate = newPos.add(direction);
 
             BlockPos blockPos = BlockPos.containing(candidate);
 
-            Level level = hook.level();
             BlockState blockState = level.getBlockState(blockPos);
             if (blockState.isAir()
                     || !blockState.getFluidState().isEmpty()) {
