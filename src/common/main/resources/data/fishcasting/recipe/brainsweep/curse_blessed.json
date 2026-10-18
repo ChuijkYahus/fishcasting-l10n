@@ -4,7 +4,7 @@
     "type": "hexcasting:block",
     "block": "minecraft:amethyst_block"
   },
-  "cost": 100000,
+  "cost": 1000000,
   "entityIn": {
     "type": "fishcasting:fishing_void_entity_type",
     "entityType": "fishcasting:blessed"
