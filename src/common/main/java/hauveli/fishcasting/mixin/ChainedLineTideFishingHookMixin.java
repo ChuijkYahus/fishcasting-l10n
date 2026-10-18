@@ -1,5 +1,6 @@
 package hauveli.fishcasting.mixin;
 
+import com.li64.tide.data.fishing.mediums.FishingMedium;
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook;
 import hauveli.fishcasting.registry.FishcastingItems;
 import hauveli.fishcasting.registry.FishcastingTags;
@@ -43,6 +44,15 @@ public abstract class ChainedLineTideFishingHookMixin {
             return;
         // correct line, and we are too far
         moveHookTowardsPlayerRespectTerrain(hook);
+
+        // if there's something already caught, just return
+        if (hook.getCatchType() != TideFishingHook.CatchType.NOTHING)
+            return;
+
+        // what if the hook is pulled out of the water before something snagged?
+        if (hook.getCurrentMedium() == null)  {
+            hook.restartFishingSequence();
+        }
     }
 
     // maybe todo: care about teleporting.
