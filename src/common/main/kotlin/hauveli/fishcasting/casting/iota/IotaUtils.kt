@@ -22,6 +22,17 @@ import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
 
 
+
+
+fun List<Iota>.getHookable(level: ServerLevel, idx: Int, argc: Int = 0): Entity {
+    val entity = this.getEntity(level, idx, argc)
+    if (entity.canBeHitByProjectile()) { // or whatever the check should be....
+        return entity
+    } else {
+        throw MishapBadEntity.of(entity, "fishcasting.fishing_hookable")
+    }
+}
+
 fun List<Iota>.getBobber(level: ServerLevel, idx: Int, argc: Int = 0): TideFishingHook {
     val entity = this.getEntity(level, idx, argc)
     if (entity is TideFishingHook) {

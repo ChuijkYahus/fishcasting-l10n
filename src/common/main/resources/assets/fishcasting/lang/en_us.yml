@@ -95,6 +95,7 @@ fishcasting:
       catch/from_bobber: Transforms a bobber on the stack into the entity caught on its hook (or $(thing)Null/$ if there isn't one). Costs a negligible amount of _media.
       bobber/from_catch: Transforms an entity on the stack into the bobber it is caught on (or $(thing)Null/$ if there isn't one). Costs about one $(l:items/amethyst)$(item)Amethyst Shard/$.
       bobber/medium: Transforms a bobber on the stack into the medium it is in, or $(thing)Null/$ if it is not in one. Costs a negligible amount of _media.
+      bobber/biting: Transforms a bobber on the stack into a boolean which is true if there is an unreeled catch or false otherwise.
     bobber_spells:
       title: Bobber Spells
       '1': A small collection of spells pertaining to the hook and bobber of the fishing rod itself.
@@ -364,6 +365,7 @@ hexcasting:
     fishcasting:bobber/attach: Attach Bobber
     fishcasting:bobber/detach: Detach Bobber
 
+    fishcasting:bobber/biting: Biting Purification
 
     fishcasting:fish/min: Fishy Minimum Reflection
     fishcasting:fish/max: Fishy Maximum Reflection
@@ -404,6 +406,7 @@ hexcasting:
         environment: Number-like
     bad_item:
       fishcasting:
+        already_hooked: Catch-free Hook
         fishing_hook: Fishing Hook
         bad_item:
           fish_as_entity: a fish as an entity

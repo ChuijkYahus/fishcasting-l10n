@@ -3,6 +3,7 @@ package hauveli.fishcasting.casting.actions.patterns.bobber
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.getPlayer
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
@@ -24,20 +25,15 @@ object OpGetOwnersBobber : ConstMediaAction {
         // in favor of applying it for no reason at all and also likely incorrectly
         val caster = env.castingEntity
         val serverLevel = env.world
-        val unknownEntity = args.getEntity(serverLevel, 0, OpGetBobbersCatch.argc)
-        // Not a player
-        if (unknownEntity !is Player) {
-            throw MishapBadEntity.of(unknownEntity, "player")
-        }
+        val somePlayer = args.getPlayer(serverLevel, 0, OpGetBobbersCatch.argc)
 
-        val target = unknownEntity
         // Too far, only check if not owned by self
-        if (caster is ServerPlayer && !target.`is`(caster)) {
-            env.assertEntityInRange(target)
+        if (caster is ServerPlayer && !somePlayer.`is`(caster)) {
+            env.assertEntityInRange(somePlayer)
         }
 
         // These should not error, as they are expected behaviour despite returning null
-        val activeHook = HookAccessor.getHook(target) ?: return listOf(NullIota())
+        val activeHook = HookAccessor.getHook(somePlayer) ?: return listOf(NullIota())
 
         val optEntity = activeHook.selfAndPassengers.findFirst()
         if (optEntity.isEmpty) {
