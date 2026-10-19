@@ -1,16 +1,13 @@
-package hauveli.fishcasting.casting.actions.patterns.environment
+package hauveli.fishcasting.casting.actions.patterns.environment.unused
 
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
-import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import com.li64.tide.data.fishing.conditions.types.WeatherType
 import hauveli.fishcasting.casting.iota.EnvironmentValue
-import hauveli.fishcasting.casting.iota.MoonPhaseIota
 import hauveli.fishcasting.casting.iota.RealEnvironmentIota
-import hauveli.fishcasting.casting.iota.WeatherIota
 import net.minecraft.core.BlockPos
 import net.minecraft.server.level.ServerLevel
 

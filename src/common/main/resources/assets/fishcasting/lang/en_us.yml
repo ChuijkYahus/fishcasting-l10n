@@ -85,6 +85,8 @@ fishcasting:
       environment/depth: Transforms a vector on the stack into the sea level at that position. Costs a negligible amount of _media.
       environment/structure: Transforms a vector on the stack into a list of structures at that position. Costs a negligible amount of _media.
       environment/weather: Transforms a vector on the stack into the precipitation at that position. Costs a negligible amount of _media.
+      environment/precipitation: Transforms a vector on the stack into true if there is precipitation at that position and false otherwise. Costs a negligible amount of _media.
+      environment/thundering: Pushes true if it is stormy and false otherwise. Costs a negligible amount of _media.
       environment/climate: Transforms a vector on the stack into the water climate at that position. Costs a negligible amount of _media.
       environment/arithmetic/length: Transforms an environment on the stack into its numerical representation. Mishaps if it does not have one.
     bobber_patterns:
@@ -382,6 +384,8 @@ hexcasting:
     fishcasting:fish/structure: Fishy Structure Distillation
     fishcasting:fish/daytime: Fishy Daytime Distillation
     fishcasting:fish/weather: Fishy Weather Distillation
+    fishcasting:fish/precipitation: Fishy Precipitation Distillation
+    fishcasting:fish/thundering: Fishy Thundering Distillation
     fishcasting:fish/length: Glub's Purification
     fishcasting:fish/rarity: Seelo's Purification
     _comment_rarity: seelo as in Coelacanth
@@ -397,6 +401,8 @@ hexcasting:
     fishcasting:environment/biome: Biome Purification
     fishcasting:environment/structure: Structure Purification
     fishcasting:environment/weather: Weather Purification
+    fishcasting:environment/precipitation: Precipitation Purification
+    fishcasting:environment/thundering: Storm Purification
     fishcasting:environment/climate: Climate Purification
     fishcasting:environment/depth: Depth Purification
     fishcasting:bobber/medium: Medium Purification

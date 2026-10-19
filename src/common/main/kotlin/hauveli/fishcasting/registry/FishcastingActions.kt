@@ -18,8 +18,10 @@ import hauveli.fishcasting.casting.actions.patterns.environment.OpGetClimate
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDayTime
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDepth
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDimension
+import hauveli.fishcasting.casting.actions.patterns.environment.OpGetPrecipitation
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetStructure
-import hauveli.fishcasting.casting.actions.patterns.environment.OpGetWeather
+import hauveli.fishcasting.casting.actions.patterns.environment.OpGetThundering
+import hauveli.fishcasting.casting.actions.patterns.environment.unused.OpGetWeather
 import hauveli.fishcasting.casting.actions.patterns.fish.OpFishFoundFromCondition
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromBiome
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDimension
@@ -76,12 +78,14 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     // please dont be mean to me oh great hexdoc
     // val MOVE_SUN = // make("environment/sun", // HexDir.SOUTH_WEST, "awaw", OpSpinTheEarth)
 
+    val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "wqaqwqaeawwaeawdd", OpGetThundering)
+
     // medium, biome, structure can be their own base shape
     val BIOME_FROM_BLOCKPOS = make("environment/biome", HexDir.NORTH_EAST, "wqaqwdaaeaeawwaea", OpGetBiome)
     val STRUCTURES_FROM_BLOCKPOS = make("environment/structure", HexDir.NORTH_EAST, "wqaqwdwdqdwwdqdqd", OpGetStructure)
     val CLIMATE_FROM_BLOCKPOS = make("environment/climate", HexDir.NORTH_EAST, "wqaqweddwaeawwaea", OpGetClimate)
     val DEPTH_FROM_BLOCKPOS = make("environment/depth", HexDir.NORTH_EAST, "wqaqwedqdqdwwdqdw", OpGetDepth)
-    val PRECIPITATION_FROM_BLOCKPOS = make("environment/weather", HexDir.NORTH_EAST, "wqaqwqaeawwaeawdd", OpGetWeather)
+    val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "wqaqwqaeawwaeawdd", OpGetPrecipitation)
     // unused: wqaqwqaeawwaeaeaa
 
     // I didnt check the regex but I'm hoping this stops it
