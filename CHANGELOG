@@ -6,14 +6,15 @@ Great Spell:
     Increment Moon Phase (pretty expensive, maintains relative position of moon/sun)
 
 Spells:
-    Kill Still Fish (makes stackable) (free)
+    Kill Fish (makes stackable) (free)
     Attach/Detach Hook (hook must intersect the targets bounding box)
 
 Patterns:
     Envirnomental:
         Get DayTime (0 args, Distinct from GameTime which Hexal adds, as DayTime takes sleeping in bed into account)
         Get Biome (From blockPos)
-        Get Weather (From BlockPos) (Unsure if I want to split this into two patterns...)
+        Get Precipitation (From BlockPos)
+        Get Storminess (0 args)
         Get Medium (from bobber)
         Get Dimension (0 args)
         Get Moon Phase (0 args)
@@ -26,10 +27,10 @@ Patterns:
 Items:
     Added a chair variant
     Added 1 Rare Fish (requires at least 1 player on the server to have edified at least 1 tree, very instructional:tm:)
-    Added 1 Legendary Fish
-    Added Sampling Focus Bobber (cosmetic) (1.21.1 prevents me from making the item model look how I want...)
+    Added 1 Legendary Fish (I think it has a fun little gimmick...)
+    Added Sampling Focus Bobber (cosmetic) (1.21.1 prevents me from making the item model look how I want without a lot of extra work...)
     Added Rocky Rod
-        reduces luck and increases speed
+        reduces luck and increases speed in the dark
     Added Chain fishing Line
         Limits distance to player, when terrain allows for it
     Added Clingy Hook
@@ -48,6 +49,7 @@ Balance Changes:
     Modified trader spawn chance
     Trade now spawns at most once every 2 hours per player (I forget if this was 0.2.15 or if I did it just after)
         These changes in practice make the trader more rare, but less tedious to encounter.
+        This is configurable
 
 Mechanics:
     Music Disc was made less miserable to get
