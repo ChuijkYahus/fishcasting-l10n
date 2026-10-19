@@ -57,10 +57,6 @@ abstract class EnvironmentIota(
     wait a minute, IotaType?
     can I just lie and say they are the same IotaType? please
  */
-    override fun isTruthy(): Boolean {
-        return true
-    }
-
     override fun toleratesOther(otherIota: Iota?): Boolean {
         return otherIota is EnvironmentIota
     }

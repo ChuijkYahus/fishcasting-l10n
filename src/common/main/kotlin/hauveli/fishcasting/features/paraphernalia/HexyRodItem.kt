@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.HexAttributes
 import at.petrak.hexcasting.common.lib.HexDataComponents
 import at.petrak.hexcasting.common.lib.HexSounds
+import at.petrak.hexcasting.common.lib.hex.HexImageComponents
 import at.petrak.hexcasting.common.msgs.MsgClearSpiralPatternsS2C
 import at.petrak.hexcasting.common.msgs.MsgNewSpiralPatternsS2C
 import at.petrak.hexcasting.common.msgs.MsgOpenSpellGuiS2C
@@ -256,8 +257,7 @@ class HexyRodItem // why does TideFishingRodItem take no baitslots here when it 
             val vm = IXplatAbstractions.INSTANCE.getStaffcastVM(player, hand)
             val patterns = IXplatAbstractions.INSTANCE.getPatternsSavedInUi(player)
 
-            val ravenmind = vm.image.ravenmind().orElse(null)
-
+            val ravenmind = vm.image.getComponent(HexImageComponents.RAVENMIND.get())
 
             IXplatAbstractions.INSTANCE.sendPacketToPlayer(
                 player,

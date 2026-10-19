@@ -1,5 +1,6 @@
 package hauveli.fishcasting.casting.iota
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
@@ -40,14 +41,14 @@ class FishIota : Iota {
     val namespacedId: String
         get() = this.resourceLocation.namespace
 
+    override fun isTruthy(p0: CastingEnvironment?): Boolean {
+        return true
+    }
+
     public override fun toleratesOther(that: Iota?): Boolean {
         return typesMatch(this, that)
                 && that is FishIota
                 && this.fishData.get() === this.fishData.get()
-    }
-
-    override fun isTruthy(): Boolean {
-        return true
     }
 
     override fun display(): Component {

@@ -1,5 +1,6 @@
 package hauveli.fishcasting.casting.iota
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
@@ -58,14 +59,14 @@ class MediumIota : Iota {
         this.medium = Medium.of(medium)
     }
 
+    override fun isTruthy(p0: CastingEnvironment?): Boolean {
+        return true
+    }
+
     override fun toleratesOther(that: Iota?): Boolean {
         return typesMatch(this, that)
                 && that is MediumIota
                 && this.medium == that.medium
-    }
-
-    override fun isTruthy(): Boolean {
-        return true
     }
 
     // in case I decided I need to check it later
@@ -85,18 +86,6 @@ class MediumIota : Iota {
     companion object {
 
         var TYPE: IotaType<MediumIota> = object : IotaType<MediumIota>() {
-
-            // I couldn't think of a lower effort way, since they all have their own renderer thingies...
-            // I suppose I should re-do the renderers if I ever redo this, so that my equality check doesn't look like this..
-            // (for making them all actually a single type of Iota)
-            override fun equals(other: Any?): Boolean {
-                return BiomeIota.TYPE === other
-                        || DimensionIota.TYPE === other
-                        || MediumIota.TYPE === other
-                        || MoonPhaseIota.TYPE === other
-                        || StructureIota.TYPE === other
-                        || WeatherIota.TYPE === other
-            }
 
             val CODEC: MapCodec<MediumIota> =
                 RecordCodecBuilder.mapCodec { inst ->

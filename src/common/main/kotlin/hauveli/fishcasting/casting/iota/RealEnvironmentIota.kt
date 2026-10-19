@@ -1,5 +1,6 @@
 package hauveli.fishcasting.casting.iota
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
@@ -591,7 +592,8 @@ class RealEnvironmentIota(
     val value: EnvironmentValue
 ) : Iota(Supplier { FishcastingIotaTypes.ENVIRONMENT.value }) {
 
-    override fun isTruthy(): Boolean {
+
+    override fun isTruthy(p0: CastingEnvironment?): Boolean {
         return true
     }
 
