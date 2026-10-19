@@ -136,6 +136,14 @@ fishcasting:
         showForbiddenPatchouliKnowledge field
         to false in the fishcasting config
         fishcasting.toml)[Fishcasting]$()
+      fish/condition/biome: Transforms a fish and a biome on the stack into a boolean if the fish can or can not be found in that biome, or null if the fish lives in all biomes. Costs a negligible amount of _media.
+      fish/condition/climate: Transforms a fish and a climate on the stack into a boolean if the fish can or can not be found in that climate, or null if the fish lives in all climates. Costs a negligible amount of _media.
+      fish/condition/daytime: Transforms a fish and a time of day on the stack into a boolean if the fish can or can not be found at that time of day, or null if the fish is found at all times of day. Costs a negligible amount of _media.
+      fish/condition/depth: Transforms a fish and a depth on the stack into a boolean if the fish can or can not be found at that depth, or null if the fish is found at all elevations. Costs a negligible amount of _media.
+      fish/condition/dimension: Transforms a fish and a dimension on the stack into a boolean if the fish can or can not be found in that dimension, or null if the fish is found in all dimensions. Costs a negligible amount of _media.
+      fish/condition/structure: Transforms a fish and a structure on the stack into a boolean if the fish can or can not be found in that structure, or null if the fish is found in any or no structure. Costs a negligible amount of _media.
+      fish/condition/rain: Transforms a fish and a boolean on the stack into true if the fish can be found during rain, false if it can be found during clear skies, or null if the fish is found in any weather. Costs a negligible amount of _media.
+      fish/condition/storm: Transforms a fish and a boolean on the stack into true if the fish can be found during a storm, false if it can be found during clear skies, or null if the fish is found in any weather. Costs a negligible amount of _media.
   spelldata:
     fish:
       whoknows: An unknown fish
@@ -373,21 +381,20 @@ hexcasting:
     fishcasting:fish/min: Fishy Minimum Reflection
     fishcasting:fish/max: Fishy Maximum Reflection
 
-
     fishcasting:fish/condition: Condition Fishtillation
 
-    fishcasting:fish/biome: Fishy Biome Distillation
-    fishcasting:fish/climate: Fishy Climate Distillation
-    fishcasting:fish/depth: Fishy Depth Distillation
-    fishcasting:fish/dimension: Fishy Dimension Distillation
-    fishcasting:fish/medium: Fishy Medium Distillation
-    fishcasting:fish/moon: Fishy Moon Phase Distillation
-    fishcasting:fish/structure: Fishy Structure Distillation
-    fishcasting:fish/daytime: Fishy Daytime Distillation
-    fishcasting:fish/weather: Fishy Weather Distillation
-    fishcasting:fish/precipitation: Fishy Precipitation Distillation
-    fishcasting:fish/thundering: Fishy Thundering Distillation
-    fishcasting:fish/length: Glub's Purification
+    fishcasting:fish/condition/biome: Fishy Biome Distillation
+    fishcasting:fish/condition/climate: Fishy Climate Distillation
+    fishcasting:fish/condition/depth: Fishy Depth Distillation
+    fishcasting:fish/condition/dimension: Fishy Dimension Distillation
+    fishcasting:fish/condition/medium: Fishy Medium Distillation
+    fishcasting:fish/condition/moon: Fishy Moon Phase Distillation
+    fishcasting:fish/condition/structure: Fishy Structure Distillation
+    fishcasting:fish/condition/daytime: Fishy Daytime Distillation
+    fishcasting:fish/condition/weather: Fishy Weather Distillation
+    fishcasting:fish/condition/precipitation: Fishy Precipitation Distillation
+    fishcasting:fish/condition/thundering: Fishy Thundering Distillation
+    fishcasting:fish/condition/length: Glub's Purification
     fishcasting:fish/rarity: Seelo's Purification
     _comment_rarity: seelo as in Coelacanth
 

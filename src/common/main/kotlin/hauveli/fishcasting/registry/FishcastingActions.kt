@@ -95,8 +95,11 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
 
     // val DEPTH_FROM_BLOCKPOS = make("environment/depth" - , HexDir.NORTH_EAST - , "wqaqwedqdqdwwdqdw", OpGetDepth)
     val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "eqqqwqqqea", OpGetPrecipitation)
+    val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
+
+
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
-    val FISH_CONDITION_WEATHER = make("fish/condition/weather", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
+    val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
 
     val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
 
