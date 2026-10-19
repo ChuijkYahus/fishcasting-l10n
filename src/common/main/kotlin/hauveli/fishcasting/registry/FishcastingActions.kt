@@ -68,23 +68,37 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     // val FISH_RARITY = make("fish/rarity", - HexDir.NORTH_EAST, "wqaqwadqdqdqdqdqd", OpGetFishRarity)
 
     // dimension, weather, moon can be their own base shape
+    // great spell wowie
     val MOVE_MOON = make("environment/moon/increment", HexDir.NORTH_WEST, "qwqwqwwqwqwqaedaqddqe", OpMoonPhaseChange)
-    val PHASE_FROM_MOON = make("environment/moon/get", HexDir.NORTH_EAST, "wqaqwedqdqdwwdqd", OpGetMoonPhase)
 
-    val DIMENSION_FROM_LEVEL = make("environment/dimension", HexDir.NORTH_EAST, "wqaqwqaeawwaeaea", OpGetDimension)
+    val PHASE_FROM_MOON = make("environment/moon/get", HexDir.WEST, "qqqdewewewewe", OpGetMoonPhase)
+    val FISH_CONDITION_MOON = make("fish/condition/moon", HexDir.NORTH_WEST, "qwqwqwqwqaeee", OpFishFoundFromMoonPhase)
+
+    // medium, biome, structure can be their own base shape
+    val BIOME_FROM_BLOCKPOS = make("environment/biome", HexDir.EAST, "awawaewawweawawa", OpGetBiome)
+    val FISH_CONDITION_BIOME = make("fish/condition/biome", HexDir.WEST, "dwdwdqwwdwqdwdwd", OpFishFoundFromBiome)
+
+    val CLIMATE_FROM_BLOCKPOS = make("environment/climate", HexDir.SOUTH_WEST, "wwdeweeeweqww", OpGetClimate)
+    val FISH_CONDITION_CLIMATE = make("fish/condition/climate", HexDir.NORTH_EAST, "wweqwqqqwqaww", OpFishFoundFromClimate)
 
     // daytime get (DISTINCT FROM GAMETIME IN HEXAL!!!!) (THIS ONE IS USEFUL FOR FISHING!!!!!)
     val DAYTIME = make("environment/daytime", HexDir.WEST, "dwdwewewewewewqeweeqee", OpGetDayTime)
+    val FISH_CONDITION_DAYTIME = make("fish/condition/daytime", HexDir.EAST, "qqeqqwqewqwqwqwqwqwawa", OpFishFoundFromTimeOfDay)
     // please dont be mean to me oh great hexdoc
     // val MOVE_SUN = // make("environment/sun", // HexDir.SOUTH_WEST, "awaw", OpSpinTheEarth)
 
-    // medium, biome, structure can be their own base shape
-    val BIOME_FROM_BLOCKPOS = make("environment/biome", HexDir.NORTH_EAST, "wqaqwdaaeaeawwaea", OpGetBiome)
-    val STRUCTURES_FROM_BLOCKPOS = make("environment/structure", HexDir.NORTH_EAST, "wqaqwdwdqdwwdqdqd", OpGetStructure)
-    val CLIMATE_FROM_BLOCKPOS = make("environment/climate", HexDir.NORTH_EAST, "wqaqweddwaeawwaea", OpGetClimate)
+    val DIMENSION_FROM_LEVEL = make("environment/dimension", HexDir.NORTH_EAST, "wwewdwwewwdwweqewdadwweqewd", OpGetDimension)
+    val FISH_CONDITION_DIMENSION = make("fish/condition/dimension", HexDir.EAST, "wqwwawqwwwawqeqwwadawqeqwwa", OpFishFoundFromDimension)
+
+    val STRUCTURES_FROM_BLOCKPOS = make("environment/structure", HexDir.EAST, "wwewdeqadeweewe", OpGetStructure)
+    val FISH_CONDITION_STRUCTURES = make("fish/condition/structure", HexDir.NORTH_WEST, "qwqqwqadeqawqww", OpFishFoundFromStructure)
+
     // val DEPTH_FROM_BLOCKPOS = make("environment/depth" - , HexDir.NORTH_EAST - , "wqaqwedqdqdwwdqdw", OpGetDepth)
     val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "eqqqwqqqea", OpGetPrecipitation)
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
+    val FISH_CONDITION_WEATHER = make("fish/condition/weather", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
+
+    val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
 
     // unused: wqaqwqaeawwaeaeaa
 

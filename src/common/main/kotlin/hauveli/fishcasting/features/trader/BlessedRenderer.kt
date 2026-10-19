@@ -11,8 +11,6 @@ import net.minecraft.client.renderer.entity.MobRenderer
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer
 import net.minecraft.resources.ResourceLocation
 
-
-// todo: cursed spawn egg should have the purple void indicator that other tide fish have for parity
 // todo: if a boss mob is detected nearby, instantly teleport out (deal damage to the mob so it triggers that way? would be funny but maybe not...)
 // todo: make them have trades based on color
 class BlessedRenderer(context: EntityRendererProvider.Context) :
