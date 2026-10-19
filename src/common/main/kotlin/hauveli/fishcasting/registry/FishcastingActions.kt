@@ -61,9 +61,12 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val ITEMIFY_FISH = make("fish/to_item", HexDir.SOUTH_EAST, "dewqeaeqqqeqadqwede", OpItemifyFish)
     val KILL_FISH = make("fish/kill", HexDir.SOUTH_EAST, "dewqeaeqqqeqadqwedewwww", OpClobberFishToDeath)
 
-    val FISH_CONDITION = make("fish/condition", HexDir.NORTH_EAST, "wqaqwawedew", OpFishFoundFromCondition) // hehe min max medium
+    // not using fish_condition atm
+    //val FISH_CONDITION = make("fish/condition", - HexDir.NORTH_EAST, "wqaqwawedew", OpFishFoundFromCondition) // hehe min max medium
+
     val FISH_MIN = make("fish/min", HexDir.NORTH_WEST, "wqaqwwewq", OpGetFishMinimum)
     val FISH_MAX = make("fish/max", HexDir.NORTH_WEST, "wqaqwwqwe", OpGetFishMaximum)
+
     // decided against rarity, it's possible to create a map using itemIota, or if I decide to add it, FishIota...
     // val FISH_RARITY = make("fish/rarity", - HexDir.NORTH_EAST, "wqaqwadqdqdqdqdqd", OpGetFishRarity)
 
@@ -85,6 +88,8 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val DAYTIME = make("environment/daytime", HexDir.WEST, "dwdwewewewewewqeweeqee", OpGetDayTime)
     val FISH_CONDITION_DAYTIME = make("fish/condition/daytime", HexDir.EAST, "qqeqqwqewqwqwqwqwqwawa", OpFishFoundFromTimeOfDay)
     // please dont be mean to me oh great hexdoc
+
+    // I couldn't think of a simple easy way to add this, and it's sort of way overboard for this mod, even just the moon one is kind of pushing it...
     // val MOVE_SUN = // make("environment/sun", // HexDir.SOUTH_WEST, "awaw", OpSpinTheEarth)
 
     val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
@@ -99,15 +104,8 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "eqqqwqqqea", OpGetPrecipitation)
     val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
 
-
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
     val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
-
-    // unused: wqaqwqaeawwaeaeaa
-
-    // I didnt check the regex but I'm hoping this stops it
-    //val CONGRATULATE = make("congratulate" - , HexDir.WEST, - "eed", OpCongratulate)
-    //val GREAT_CONGRATULATE = make("congratulate/great", - HexDir.EAST -, "qwwqqqwwqwded", OpCongratulate)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }
