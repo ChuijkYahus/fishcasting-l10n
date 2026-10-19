@@ -27,6 +27,8 @@ import java.util.function.Function;
 @Mixin(RecipeManager.class)
 public class stupidmixin {
 
+    // note: I am modifying the recipe in this mixin!!! because fabric didn't support pack.mcmeta features in 1.21.1!!!
+
     // I'm mad at fabric for not letting me load it in the correct order (after Tide) to apply pack.mcmeta filters. This mixin exists because
     // fabric somehow didn't support pack.mcmeta features because loading in a random order is epic.
     // Fabric supports loading in specified orders after 1.21.5, I think

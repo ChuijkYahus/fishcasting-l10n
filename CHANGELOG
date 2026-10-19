@@ -10,7 +10,7 @@ Spells:
     Attach/Detach Hook (hook must intersect the targets bounding box)
 
 Patterns:
-    Envirnomental:
+    Environmental:
         Get DayTime (0 args, Distinct from GameTime which Hexal adds, as DayTime takes sleeping in bed into account)
         Get Biome (From blockPos)
         Get Precipitation (From BlockPos)
@@ -23,6 +23,9 @@ Patterns:
 
     Fish:
         Patterns to check for all the conditions a fish may have (Most of the ones I could think of at least)
+
+    Bobber:
+        Check if Hook has bite
 
 Items:
     Added a chair variant

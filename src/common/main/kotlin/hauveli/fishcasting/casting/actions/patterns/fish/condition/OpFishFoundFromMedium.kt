@@ -41,7 +41,8 @@ object OpFishFoundFromMedium : ConstMediaAction {
         if (relevantConditions.isEmpty())
             return listOf(NullIota())
 
-        val medium = someMedium.mediumIdFromOrdinal()
+        //val medium = someMedium.mediumIdFromOrdinal()
+        val medium = someMedium.medium.fishingMedium
 
         val foundInMedium = relevantConditions.all { condition ->
             when (condition) {

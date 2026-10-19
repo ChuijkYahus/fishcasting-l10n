@@ -43,7 +43,7 @@ object OpFishFoundFromTimeOfDay : ConstMediaAction {
         if (relevantConditions.isEmpty())
             return listOf(NullIota()) // if it has no conditions for the dimension, it should be true?
 
-        val timeOfDay = someDaytime.value  // I'm not so sure this is the best option going forwards........ what about other mediums from other mods?
+        val timeOfDay = someDaytime.toLong()  // I'm not so sure this is the best option going forwards........ what about other mediums from other mods?
 
         val foundInTime = relevantConditions.all { condition ->
             when (condition) {

@@ -42,7 +42,7 @@ object OpFishFoundFromDepth : ConstMediaAction {
             return listOf(NullIota()) // if it has no conditions for the dimension, it should be true?
 
 
-        val depth = someDepth.value // todo: check if this is correct, I forget which way around I wrote it
+        val depth = someDepth.toInt() // todo: check if this is correct, I forget which way around I wrote it
 
         val foundInDimension = relevantConditions.all { condition ->
             when (condition) {

@@ -20,6 +20,10 @@ object FishcastingSounds : FishcastingRegistrar<SoundEvent>(
         val jukeboxSong: ResourceKey<JukeboxSong>
     )
 
+    // todo: sounds for the legendary fish (lowest priority, it would maybe just be a sound for the death)
+    // todo: sounds for the edified fish (?) low priority
+    // todo: sounds for the cursed thing (higher priority)
+
     val BLESSED_DEATH = make("blessed.death")
     val BLESSED_HURT = make("blessed.hurt")
     val BLESSED_AMBIENT = make("blessed.ambient")

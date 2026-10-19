@@ -39,7 +39,7 @@ object OpFishFoundFromMoonPhase : ConstMediaAction {
         if (relevantConditions.isEmpty())
             return listOf(NullIota()) // if it has no moonphase, it can be found... should it maybe return null if it doesn't care?
 
-        val phase = someMoonPhase.value
+        val phase = someMoonPhase
 
         val foundInMoonPhase = relevantConditions.all { condition ->
             when (condition) {

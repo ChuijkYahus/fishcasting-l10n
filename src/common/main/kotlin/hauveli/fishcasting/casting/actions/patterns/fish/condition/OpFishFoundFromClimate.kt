@@ -13,7 +13,6 @@ import com.li64.tide.data.fishing.modifiers.types.TemperatureModifier
 import com.li64.tide.util.TideUtils
 import hauveli.fishcasting.casting.iota.EnvironmentValue
 import hauveli.fishcasting.casting.iota.getClimate
-import hauveli.fishcasting.casting.iota.getEnvironment
 import hauveli.fishcasting.casting.iota.getFishData
 import net.minecraft.world.entity.item.ItemEntity
 import kotlin.math.abs
@@ -49,7 +48,7 @@ object OpFishFoundFromClimate : ConstMediaAction {
         val foundInClimates = relevantModifiers.all { modifier ->
             when (modifier) {
                 is TemperatureModifier -> {
-                    abs(modifier.preferred - someEnvironmentValue.value) < modifier.tolerance
+                    abs(modifier.preferred - someEnvironmentValue) < modifier.tolerance
                 }
 
                 else -> true // ugh

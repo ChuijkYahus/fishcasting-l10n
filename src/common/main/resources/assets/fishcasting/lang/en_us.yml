@@ -366,6 +366,8 @@ journal:
 _comment_pattern: PATTERN STUFF
 hexcasting:
   iota:
+    fishcasting:biome:
+      desc: Biome
     fishcasting:environment:
       desc: Environment
   action:
@@ -422,10 +424,10 @@ hexcasting:
         environment: Number-like
     bad_item:
       fishcasting:
+        fish_as_entity: a fish
+        fishdata_as_entity: a fish with data
         already_hooked: Catch-free Hook
         fishing_hook: Fishing Hook
-        bad_item:
-          fish_as_entity: a fish as an entity
         not_a_fish:
           .: a fish
           item: a fish item

@@ -36,12 +36,13 @@ object OpFishFoundFromWeather : ConstMediaAction {
         if (relevantConditions.isEmpty())
             return listOf(NullIota()) // if it has no moonphase, it can be found... should it maybe return null if it doesn't care?
 
-        val weather = someWeather.weatherTypeFromOrdinal()
+        //val weather = someWeather.weatherTypeFromOrdinal()
 
         val foundInWather = relevantConditions.all { condition ->
             when (condition) {
                 is WeatherCondition -> {
-                    condition.weatherTypes.contains(weather)
+                    TODO()
+                    // condition.weatherTypes.contains(weather)
                 }
 
                 else -> true // ugh

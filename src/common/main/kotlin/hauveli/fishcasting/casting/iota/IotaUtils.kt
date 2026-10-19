@@ -2,6 +2,7 @@ package hauveli.fishcasting.casting.iota
 
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getItemEntity
+import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
@@ -16,12 +17,13 @@ import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.fishing.ProfileData
 import com.li64.tide.data.item.TideItemData
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
+import hauveli.fishcasting.Fishcasting
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
-
-
+import kotlin.math.roundToInt
 
 
 fun List<Iota>.getHookable(level: ServerLevel, idx: Int, argc: Int = 0): Entity {
@@ -54,21 +56,21 @@ fun List<Iota>.getFishJournalEntry(level: ServerLevel, idx: Int, argc: Int = 0):
 
 fun List<Iota>.getFishData(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
     val entity = this.getFishEntity(level, idx, argc)
-    val possiblyFish = FishData.get(entity)
+    val possiblyFish = if (entity is ItemEntity) FishData.get(entity.item) else FishData.get(entity)
     if (possiblyFish.isPresent) {
         return possiblyFish.get()
     } else {
-        throw MishapBadEntity.of(entity, "fishdata_as_entity")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.fishdata_as_entity")
     }
 }
 
 fun List<Iota>.getFishEntity(level: ServerLevel, idx: Int, argc: Int = 0): Entity {
     val entity = this.getEntity(level, idx, argc)
-    val possiblyFish = FishData.get(entity)
+    val possiblyFish = if (entity is ItemEntity) FishData.get(entity.item) else FishData.get(entity)
     if (possiblyFish.isPresent) {
         return entity
     } else {
-        throw MishapBadEntity.of(entity, "fish_as_entity")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.fish_as_entity")
     }
 }
 
@@ -163,7 +165,7 @@ fun List<Iota>.getAliveFish(level: ServerLevel, idx: Int, argc: Int = 0): FishDa
                 throw MishapBadEntity.of(target, "fishcasting.not_a_fish.bucketable")
         }
  */
-
+/*
 
 fun List<Iota>.getEnvironment(idx: Int, argc: Int = 0): EnvironmentValue {
     val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
@@ -264,6 +266,95 @@ fun List<Iota>.getWeather(idx: Int, argc: Int = 0): EnvironmentValue.Weather {
         throw MishapInvalidIota.ofType(env, if (argc == 0) idx else argc - (idx + 1), "environment_weather")
     }
 }
+ */
+
+fun List<Iota>.getIota(idx: Int, argc: Int = 0): Iota {
+    val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
+    if (x is Iota) {
+        return x
+    } else {
+        throw MishapInvalidIota.ofType(x, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.iota")
+    }
+}
 
 
+fun List<Iota>.getBiome(idx: Int, argc: Int = 0): BiomeIota {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is BiomeIota) {
+        return maybeCorrectIota
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.biome")
+    }
+}
 
+fun List<Iota>.getClimate(idx: Int, argc: Int = 0): Double {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is DoubleIota) {
+        return maybeCorrectIota.double
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.climate")
+    }
+}
+
+fun List<Iota>.getDaytime(idx: Int, argc: Int = 0): Double {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is DoubleIota) {
+        return maybeCorrectIota.double
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.daytime")
+    }
+}
+
+fun List<Iota>.getDepth(idx: Int, argc: Int = 0): Double {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is DoubleIota) {
+        return maybeCorrectIota.double
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.daytime")
+    }
+}
+
+fun List<Iota>.getDimension(idx: Int, argc: Int = 0): DimensionIota {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is DimensionIota) {
+        return maybeCorrectIota
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.dimension")
+    }
+}
+
+fun List<Iota>.getMedium(idx: Int, argc: Int = 0): MediumIota {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is MediumIota) {
+        return maybeCorrectIota
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.medium")
+    }
+}
+
+fun List<Iota>.getMoonPhase(idx: Int, argc: Int = 0): Int {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is DoubleIota) {
+        return (maybeCorrectIota.double / Mth.PI * 4).roundToInt()
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.moonphase")
+    }
+}
+
+fun List<Iota>.getStructure(idx: Int, argc: Int = 0): StructureIota {
+    val maybeCorrectIota = this.getIota(idx, argc)
+    if (maybeCorrectIota is StructureIota) {
+        return maybeCorrectIota
+    } else {
+        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.structure")
+    }
+}
+
+fun List<Iota>.getWeather(idx: Int, argc: Int = 0): WeatherIota {
+    val env = this.getIota(idx, argc)
+    if (env is WeatherIota) {
+        return env
+    } else {
+        throw MishapInvalidIota.ofType(env, if (argc == 0) idx else argc - (idx + 1), "environment_weather")
+    }
+}
