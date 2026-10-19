@@ -48,7 +48,7 @@ object OpFishFoundFromClimate : ConstMediaAction {
         val foundInClimates = relevantModifiers.all { modifier ->
             when (modifier) {
                 is TemperatureModifier -> {
-                    abs(modifier.preferred - someEnvironmentValue) < modifier.tolerance
+                    abs(modifier.preferred - EnvironmentValue.Climate.realTempToMcTemp(someEnvironmentValue)) < modifier.tolerance
                 }
 
                 else -> true // ugh
