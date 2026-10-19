@@ -87,6 +87,8 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     // please dont be mean to me oh great hexdoc
     // val MOVE_SUN = // make("environment/sun", // HexDir.SOUTH_WEST, "awaw", OpSpinTheEarth)
 
+    val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
+
     val DIMENSION_FROM_LEVEL = make("environment/dimension", HexDir.NORTH_EAST, "wwewdwwewwdwweqewdadwweqewd", OpGetDimension)
     val FISH_CONDITION_DIMENSION = make("fish/condition/dimension", HexDir.EAST, "wqwwawqwwwawqeqwwadawqeqwwa", OpFishFoundFromDimension)
 
@@ -100,8 +102,6 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
 
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
     val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
-
-    val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
 
     // unused: wqaqwqaeawwaeaeaa
 
