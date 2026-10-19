@@ -32,7 +32,7 @@ object FishcastingArithmetic : FishcastingRegistrar<Arithmetic>(
     // this mega sucks I feel like, I would prefer to have them all just be in my EnvironmentIota, but making them all behave nicely is a bit hard then...
     // Maybe I just need to cut all the additional dummy Iota types, then implement arithmetic for the EnvironmentIota? hmm....
     val FISH_ARITHMETIC = make("fish") { FishcastingFishArithmetic() }
-    val ENVIRONMENT_ARITHMETIC = make("environment") { FishcastingEnvironmentArithmetic() }
+    // val ENVIRONMENT_ARITHMETIC = make("environment") { FishcastingEnvironmentArithmetic() }
 
     private fun <T : Arithmetic> make(name: String, builder: () -> T):
             FishcastingRegistrar<Arithmetic>.Entry<T> {

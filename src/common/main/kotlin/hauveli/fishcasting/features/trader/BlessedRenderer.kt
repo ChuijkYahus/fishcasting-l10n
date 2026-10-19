@@ -39,7 +39,8 @@ class BlessedRenderer(context: EntityRendererProvider.Context) :
         translucent: Boolean,
         glowing: Boolean
     ): RenderType? {
-        return super.getRenderType(livingEntity, bodyVisible, true, glowing) // glasses are a bit too thick otherwise.
+        val chudFix = if (livingEntity.hurtTime > 0) translucent else true
+        return super.getRenderType(livingEntity, bodyVisible, chudFix, glowing) // glasses are a bit too thick otherwise.
     }
 
     override fun render(
