@@ -14,6 +14,7 @@ import com.li64.tide.data.fishing.conditions.types.DepthRangeCondition
 import com.li64.tide.data.fishing.conditions.types.DimensionsCondition
 import hauveli.fishcasting.casting.iota.DimensionIota
 import hauveli.fishcasting.casting.iota.getDepth
+import hauveli.fishcasting.casting.iota.getFishData
 import me.fzzyhmstrs.fzzy_config.util.FcText.translation
 import net.minecraft.world.entity.item.ItemEntity
 
@@ -30,20 +31,10 @@ object OpFishFoundFromDepth : ConstMediaAction {
 
 
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-        val target = args.getEntity(env.world, 0, argc)
+        val target = args.getFishData(env.world, 0, argc)
         val someDepth = args.getDepth(1, argc)
 
-        env.assertEntityInRange(target)
-        val maybeFishData = FishData.get(target)
-        if (target is ItemEntity && FishData.get(target.item.item).isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
-        if (maybeFishData.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
-        val definitelyFish = maybeFishData.get()
-
-        val relevantConditions = definitelyFish.conditions()
+        val relevantConditions = target.conditions()
             .filter {
                 it is DepthRangeCondition
             }

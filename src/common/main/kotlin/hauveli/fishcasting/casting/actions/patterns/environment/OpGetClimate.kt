@@ -24,16 +24,16 @@ object OpGetClimate : ConstMediaAction {
         val blockPos = args.getBlockPos(0, argc)
         env.assertPosInRange(blockPos)
 
+        /*
         return listOf(RealEnvironmentIota(EnvironmentValue.Climate(
             TideUtils.getTemperatureAt(blockPos, env.world)
         )))
-        /*
+         */
         return listOf(DoubleIota(
             TideUtils.mcTempToRealTemp(
                 TideUtils.getTemperatureAt(blockPos, env.world)).toDouble()
             ))
 
-         */
         // return listOf(ClimateIota(TideUtils.getTemperatureAt(blockPos, env.world)))
     }
 }

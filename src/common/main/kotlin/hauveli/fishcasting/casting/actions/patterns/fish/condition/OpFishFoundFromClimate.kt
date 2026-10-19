@@ -14,6 +14,7 @@ import com.li64.tide.util.TideUtils
 import hauveli.fishcasting.casting.iota.EnvironmentValue
 import hauveli.fishcasting.casting.iota.getClimate
 import hauveli.fishcasting.casting.iota.getEnvironment
+import hauveli.fishcasting.casting.iota.getFishData
 import net.minecraft.world.entity.item.ItemEntity
 import kotlin.math.abs
 import kotlin.math.cbrt
@@ -35,20 +36,10 @@ object OpFishFoundFromClimate : ConstMediaAction {
 
 
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-        val target = args.getEntity(env.world, 0, argc)
+        val target = args.getFishData(env.world, 0, argc)
         val someEnvironmentValue = args.getClimate(1, argc)
 
-        env.assertEntityInRange(target)
-        val maybeFishData = FishData.get(target)
-        if (target is ItemEntity && FishData.get(target.item.item).isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
-        if (maybeFishData.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
-        val definitelyFish = maybeFishData.get()
-
-        val relevantModifiers = definitelyFish.modifiers()
+        val relevantModifiers = target.modifiers()
             .filter {
                 it is TemperatureModifier
             }

@@ -55,7 +55,7 @@ object OpDetachBobber : SpellAction {
         return SpellAction.Result(
             Spell(maybeBobberEntity),
             MediaConstants.SHARD_UNIT,
-            listOf(ParticleSpray.Companion.cloud(maybeBobberEntity.position().add(0.0, maybeBobberEntity.eyeHeight / 2.0, 0.0), 1.0))
+            listOf(ParticleSpray.cloud(maybeBobberEntity.position().add(0.0, maybeBobberEntity.eyeHeight / 2.0, 0.0), 1.0))
         )
     }
 
@@ -63,6 +63,8 @@ object OpDetachBobber : SpellAction {
         // IMPORTANT: do not throw mishaps in this method! mishaps should ONLY be thrown in SpellAction.execute
         override fun cast(env: CastingEnvironment) {
             (bobber as SetHookedEntityTideFishingHookAccessor).`fishcasting$setHookedEntity`(null)
+            if (bobber.isFishHooked)
+                bobber.restartFishingSequence()
         }
     }
 }

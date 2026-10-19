@@ -79,10 +79,10 @@ fishcasting:
       '2': For patterns with a numerical or ordinal representation, arithmetic patterns may be used to transform the environment into its corresponding numerical representation. For environments which do not have a numerical representation, attempting to transform it will mishap.
       title: Environments
       environment/daytime: Pushes the time of day onto the stack. Costs a negligible amount of _media.
-      environment/moon/get: Pushes the phase of the moon to the stack. Costs a negligible amount of _media.
+      environment/moon/get: Pushes the phase of the moon to the stack in radians. Costs a negligible amount of _media.
       environment/dimension: Pushes the dimension of the caster to the stack. Costs a negligible amount of _media.
       environment/biome: Transforms a vector on the stack into the biome at that position. Costs a negligible amount of _media.
-      environment/depth: Transforms a vector on the stack into the sea level at that position. Costs a negligible amount of _media.
+      environment/depth: Transforms a vector on the stack into the depth below sea level at that position. Costs a negligible amount of _media.
       environment/structure: Transforms a vector on the stack into a list of structures at that position. Costs a negligible amount of _media.
       environment/weather: Transforms a vector on the stack into the precipitation at that position. Costs a negligible amount of _media.
       environment/precipitation: Transforms a vector on the stack into true if there is precipitation at that position and false otherwise. Costs a negligible amount of _media.
@@ -102,7 +102,8 @@ fishcasting:
       title: Bobber Spells
       '1': A small collection of spells pertaining to the hook and bobber of the fishing rod itself.
       bobber/attach: Removes two entities from the top of the stack, then attaches the entity on the top of the stack to the bobber first on the stack. Costs about one $(l:items/amethyst)$(item)Amethyst Shard/$.
-      bobber/detach: Removes one entity from the top of the stack. Detaches the bobber from any entity hooked to it. Costs about one $(l:items/amethyst)$(item)Amethyst Shard/$.
+      bobber/detach: Removes one entity from the top of the stack. Detaches the bobber from any entity or catch hooked to it. Costs about one $(l:items/amethyst)$(item)Amethyst Shard/$.
+      bobber/pop: Removes one entity from the top of the stack. Forcibly pops any catch hooked to it, killing it if it was a common fish, or scaring it off if it was an unusual fish. Costs about one $(litems/amethyst)$(item)Amethyst Shard/$.
     fishing_spells:
       '1': On the rare occasion that I have come face to face with a finned foe, a simple spell to disable its movements is all I ever needed to deal with the issue.$(br)These spells are useless on most other more advanced beings, but for the simple creatures that fish are, they will suffice.
       title: Fish Spells
@@ -250,9 +251,9 @@ tag:
 
 
 item:
-  tide:
-    crystal_fishing_rod: Crystal Casting Rod
-    amethyst_bobber: Amethyst Focus Bobber
+  __tide:
+    __crystal_fishing_rod: Crystal Casting Rod
+    __amethyst_bobber: Amethyst Focus Bobber
   fishcasting:
     shepherds_casting_rod: Shepherd's Casting Rod
     rocky_casting_rod: Rocky Casting Rod

@@ -28,8 +28,9 @@ object OpGetMoonPhase : ConstMediaAction {
         val moonPhase = envWorld.moonPhase
 
         // return listOf(MoonPhaseIota(moonPhase))
-        // val moonPhaseInRadians = moonPhase / 4f * Mth.PI
+        val moonPhaseInRadians = moonPhase / 4.0 * Mth.PI
         //return listOf(DoubleIota(moonPhaseInRadians.toDouble()))
-        return listOf(RealEnvironmentIota(EnvironmentValue.MoonPhase(moonPhase)))
+        //return listOf(RealEnvironmentIota(EnvironmentValue.MoonPhase(moonPhase)))
+        return listOf(DoubleIota(moonPhaseInRadians))
     }
 }

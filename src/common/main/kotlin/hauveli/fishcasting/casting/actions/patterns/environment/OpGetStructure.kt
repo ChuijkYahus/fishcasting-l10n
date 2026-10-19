@@ -36,7 +36,8 @@ object OpGetStructure : ConstMediaAction {
             ListIota(
                 structuresAtBlockPos.map {
                     structure ->
-                    RealEnvironmentIota(EnvironmentValue.Structure(structure))
+                    StructureIota(structure)
+                    // RealEnvironmentIota(EnvironmentValue.Structure(structure))
                 }
             )
         )

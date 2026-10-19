@@ -42,6 +42,7 @@ object OpGetDimension : ConstMediaAction {
                 dimension = caster.level().dimension()
             }
         }
-        return listOf(RealEnvironmentIota(EnvironmentValue.Dimension(dimension)))
+        // return listOf(RealEnvironmentIota(EnvironmentValue.Dimension(dimension)))
+        return listOf(DimensionIota(dimension))
     }
 }

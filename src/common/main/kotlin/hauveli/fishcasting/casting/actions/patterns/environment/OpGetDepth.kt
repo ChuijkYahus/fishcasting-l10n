@@ -31,10 +31,11 @@ object OpGetDepth : ConstMediaAction {
         val positionY = maybePos.y.coerceIn(DepthComponent.MIN_Y.toDouble(), seaLevel.toDouble())
 
         // this is perhaps mean, but I'm leaving this without a safety check because if there is an error, I want to know.
-        val relativeDepth = (seaLevel - positionY).toInt()
+        val relativeDepth = (seaLevel - positionY)
 
         // return listOf(DepthIota(relativeDepth.toInt()))
 
-        return listOf(RealEnvironmentIota(EnvironmentValue.Depth(relativeDepth)))
+        //return listOf(RealEnvironmentIota(EnvironmentValue.Depth(relativeDepth)))
+        return listOf(DoubleIota(relativeDepth))
     }
 }

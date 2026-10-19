@@ -26,8 +26,8 @@ object OpGetDayTime : ConstMediaAction {
         val dayTime = envWorld.dayTime
 
         val dayTimeEnv = EnvironmentValue.Daytime(dayTime)
-        return listOf(RealEnvironmentIota(dayTimeEnv))
+        //return listOf(RealEnvironmentIota(dayTimeEnv))
         // return listOf(DaytimeIota(dayTime))
-        //return listOf(DoubleIota(dayTime.toDouble()))
+        return listOf(DoubleIota(dayTime.toDouble()))
     }
 }
