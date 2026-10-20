@@ -296,10 +296,11 @@ fun List<Iota>.getClimate(idx: Int, argc: Int = 0): Double {
     }
 }
 
+// todo: replace getIota with getDouble, and replace getIota with getBoolean
 fun List<Iota>.getDaytime(idx: Int, argc: Int = 0): Double {
     val maybeCorrectIota = this.getIota(idx, argc)
     if (maybeCorrectIota is DoubleIota) {
-        return maybeCorrectIota.double
+        return maybeCorrectIota.double.mod(24000.0)
     } else {
         throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.daytime")
     }
@@ -335,7 +336,7 @@ fun List<Iota>.getMedium(idx: Int, argc: Int = 0): MediumIota {
 fun List<Iota>.getMoonPhase(idx: Int, argc: Int = 0): Int {
     val maybeCorrectIota = this.getIota(idx, argc)
     if (maybeCorrectIota is DoubleIota) {
-        return (maybeCorrectIota.double / Mth.PI * 4).roundToInt()
+        return (maybeCorrectIota.double.mod(Math.TAU) / Mth.PI * 4).roundToInt()
     } else {
         throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.moonphase")
     }

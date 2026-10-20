@@ -2,37 +2,8 @@ package hauveli.fishcasting.casting.actions.patterns.fish
 
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.getEntity
-import at.petrak.hexcasting.api.casting.iota.BooleanIota
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.NullIota
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import com.li64.tide.data.TideTags
-import com.li64.tide.data.fishing.FishData
-import com.li64.tide.data.fishing.conditions.types.BiomeWhitelistCondition
-import com.li64.tide.data.fishing.conditions.types.FreshwaterCondition
-import com.li64.tide.data.fishing.conditions.types.SaltwaterCondition
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromBiome
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromClimate
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDepth
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDimension
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMedium
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMoonPhase
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromStructure
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromTimeOfDay
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromWeather
-import hauveli.fishcasting.casting.iota.BiomeIota
-import hauveli.fishcasting.casting.iota.EnvironmentIota
-import hauveli.fishcasting.casting.iota.EnvironmentValue
-import hauveli.fishcasting.casting.iota.RealEnvironmentIota
-import hauveli.fishcasting.casting.iota.getFishData
-import hauveli.fishcasting.casting.iota.getFishEntity
-import hauveli.fishcasting.mixin.environment_spells.BiomeWhitelistConditionAccessor
-import me.fzzyhmstrs.fzzy_config.util.FcText.translation
-import net.minecraft.core.registries.Registries
-import net.minecraft.world.entity.item.ItemEntity
 
 
 /*

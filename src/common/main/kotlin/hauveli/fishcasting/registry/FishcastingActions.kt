@@ -15,25 +15,20 @@ import hauveli.fishcasting.casting.actions.patterns.environment.OpGetMoonPhase
 import hauveli.fishcasting.casting.actions.patterns.bobber.OpGetOwnersBobber
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetBiome
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetClimate
-import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDayTime
-import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDepth
+import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDaytime
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetDimension
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetPrecipitation
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetStructure
 import hauveli.fishcasting.casting.actions.patterns.environment.OpGetThundering
-import hauveli.fishcasting.casting.actions.patterns.environment.unused.OpGetWeather
-import hauveli.fishcasting.casting.actions.patterns.fish.OpFishFoundFromCondition
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromBiome
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDimension
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMedium
 import hauveli.fishcasting.casting.actions.patterns.fish.OpGetFishMaximum
 import hauveli.fishcasting.casting.actions.patterns.fish.OpGetFishMinimum
-import hauveli.fishcasting.casting.actions.patterns.fish.OpGetFishRarity
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromClimate
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDepth
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMoonPhase
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromStructure
-import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromTimeOfDay
+import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDaytime
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromWeather
 import hauveli.fishcasting.casting.actions.spells.bobber.OpAttachBobber
 import hauveli.fishcasting.casting.actions.spells.bobber.OpDetachBobber
@@ -85,8 +80,8 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val FISH_CONDITION_CLIMATE = make("fish/condition/climate", HexDir.NORTH_EAST, "wweqwqqqwqaww", OpFishFoundFromClimate)
 
     // daytime get (DISTINCT FROM GAMETIME IN HEXAL!!!!) (THIS ONE IS USEFUL FOR FISHING!!!!!)
-    val DAYTIME = make("environment/daytime", HexDir.WEST, "dwdwewewewewewqeweeqee", OpGetDayTime)
-    val FISH_CONDITION_DAYTIME = make("fish/condition/daytime", HexDir.EAST, "qqeqqwqewqwqwqwqwqwawa", OpFishFoundFromTimeOfDay)
+    val DAYTIME = make("environment/daytime", HexDir.WEST, "dwdwewewewewewqeweeqee", OpGetDaytime)
+    val FISH_CONDITION_DAYTIME = make("fish/condition/daytime", HexDir.EAST, "qqeqqwqewqwqwqwqwqwawa", OpFishFoundFromDaytime)
     // please dont be mean to me oh great hexdoc
 
     // I couldn't think of a simple easy way to add this, and it's sort of way overboard for this mod, even just the moon one is kind of pushing it...
