@@ -99,10 +99,10 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
 
     // val DEPTH_FROM_BLOCKPOS = make("environment/depth" - , HexDir.NORTH_EAST - , "wqaqwedqdqdwwdqdw", OpGetDepth)
     val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "eqqqwqqqea", OpGetPrecipitation)
-    val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
+    val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.SOUTH_WEST, "dqeeeweeeq", OpFishFoundFromWeather)
 
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
-    val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_EAST, "eqqqwqqqeqeee", OpFishFoundFromWeather)
+    val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_WEST, "eqqeeeweeeq", OpFishFoundFromWeather)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }

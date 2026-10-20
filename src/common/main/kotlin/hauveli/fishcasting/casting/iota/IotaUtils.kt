@@ -1,5 +1,6 @@
 package hauveli.fishcasting.casting.iota
 
+import at.petrak.hexcasting.api.casting.getBool
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
@@ -349,6 +350,15 @@ fun List<Iota>.getStructure(idx: Int, argc: Int = 0): StructureIota {
     } else {
         throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.structure")
     }
+}
+
+fun List<Iota>.getRain(idx: Int, argc: Int = 0): Boolean {
+    return this.getBool(idx, argc)
+}
+
+
+fun List<Iota>.getStorm(idx: Int, argc: Int = 0): Boolean {
+    return this.getBool(idx, argc)
 }
 
 fun List<Iota>.getWeather(idx: Int, argc: Int = 0): WeatherIota {
