@@ -29,6 +29,7 @@ import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFr
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMoonPhase
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromStructure
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDaytime
+import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMedium
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromWeather
 import hauveli.fishcasting.casting.actions.spells.bobber.OpAttachBobber
 import hauveli.fishcasting.casting.actions.spells.bobber.OpDetachBobber
@@ -51,6 +52,7 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
 
     val BOBBER_BITING = make("bobber/biting", HexDir.SOUTH_EAST, "weeedewaa", OpGetBiting)
     val BOBBER_MEDIUM = make("bobber/medium", HexDir.SOUTH_EAST, "weeedew", OpGetMedium)
+    val FISH_CONDITION_MEDIUM = make("fish/condition/medium", HexDir.NORTH_WEST, "wqaqqqw", OpFishFoundFromMedium)
 
     val FISHIFY_ITEM = make("fish/from_item", HexDir.SOUTH_EAST, "dewqdaqeqqqeaeqwede", OpFishifyItem)
     val ITEMIFY_FISH = make("fish/to_item", HexDir.SOUTH_EAST, "dewqeaeqqqeqadqwede", OpItemifyFish)

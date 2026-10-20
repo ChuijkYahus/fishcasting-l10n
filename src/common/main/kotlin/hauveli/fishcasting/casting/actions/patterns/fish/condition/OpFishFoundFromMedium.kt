@@ -11,6 +11,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.fishing.conditions.types.FishingMediumCondition
 import com.li64.tide.data.fishing.mediums.FishingMedium
+import hauveli.fishcasting.Fishcasting
 import hauveli.fishcasting.casting.iota.EnvironmentValue
 import hauveli.fishcasting.casting.iota.MediumIota
 import hauveli.fishcasting.casting.iota.getFishData
@@ -42,12 +43,14 @@ object OpFishFoundFromMedium : ConstMediaAction {
             return listOf(NullIota())
 
         //val medium = someMedium.mediumIdFromOrdinal()
-        val medium = someMedium.medium.fishingMedium
+        val medium = someMedium.medium
 
         val foundInMedium = relevantConditions.all { condition ->
             when (condition) {
                 is FishingMediumCondition -> {
-                    condition == medium
+                    // todo: I kind of wanna use tide:water (medium.fishingMedium.id()) ...
+                    // Fishcasting.LOGGER.info("medium was: ${medium.name} but condition was ${condition.mediumId}, do I use ${medium.fishingMedium.toString()} or ${medium.fishingMedium.id()}")
+                    condition.mediumId == medium.name.lowercase()
                 }
 
                 else -> true // ugh

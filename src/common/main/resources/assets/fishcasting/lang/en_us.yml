@@ -421,6 +421,8 @@ hexcasting:
   mishap:
     invalid_value:
       class:
+        fishcasting:
+          medium: medium
         environment: Number-like
     bad_item:
       fishcasting:
