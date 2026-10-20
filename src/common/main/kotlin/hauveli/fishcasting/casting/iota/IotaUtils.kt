@@ -366,6 +366,6 @@ fun List<Iota>.getWeather(idx: Int, argc: Int = 0): WeatherIota {
     if (env is WeatherIota) {
         return env
     } else {
-        throw MishapInvalidIota.ofType(env, if (argc == 0) idx else argc - (idx + 1), "environment_weather")
+        throw MishapInvalidIota.ofType(env, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.report_to_developer")
     }
 }

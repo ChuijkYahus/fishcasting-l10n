@@ -30,6 +30,8 @@ import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFr
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromStructure
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromDaytime
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromMedium
+import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromRain
+import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromStorm
 import hauveli.fishcasting.casting.actions.patterns.fish.condition.OpFishFoundFromWeather
 import hauveli.fishcasting.casting.actions.spells.bobber.OpAttachBobber
 import hauveli.fishcasting.casting.actions.spells.bobber.OpDetachBobber
@@ -99,10 +101,10 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
 
     // val DEPTH_FROM_BLOCKPOS = make("environment/depth" - , HexDir.NORTH_EAST - , "wqaqwedqdqdwwdqdw", OpGetDepth)
     val PRECIPITATION_FROM_BLOCKPOS = make("environment/precipitation", HexDir.NORTH_EAST, "eqqqwqqqea", OpGetPrecipitation)
-    val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.SOUTH_WEST, "dqeeeweeeq", OpFishFoundFromWeather)
+    val FISH_CONDITION_RAIN = make("fish/condition/rain", HexDir.SOUTH_WEST, "dqeeeweeeq", OpFishFoundFromRain)
 
     val IS_THUNDERING = make("environment/thundering", HexDir.NORTH_EAST, "eqqqwqqqeeq", OpGetThundering)
-    val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_WEST, "eqqeeeweeeq", OpFishFoundFromWeather)
+    val FISH_CONDITION_STORM = make("fish/condition/storm", HexDir.NORTH_WEST, "eqqeeeweeeq", OpFishFoundFromStorm)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }
