@@ -1,4 +1,6 @@
 0.2.16
+supported version updated to dev-64
+
 Config:
     Config version updated (this may reset some values to the default values if already configured)
     Trader trades can be specified by weight
