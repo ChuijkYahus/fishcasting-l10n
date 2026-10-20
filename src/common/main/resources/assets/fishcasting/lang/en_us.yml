@@ -113,12 +113,12 @@ fishcasting:
       fish/kill: Removes an entity from the stack and if it was a fish, humanely excises whatever life it may have had left. Costs a negligible amount of _media.
     fishing_patterns:
       title: Fish Patterns
-      fishy_note: In order to determine if a fish can survive in a habitat, I may query Nature. Curiously, Nature won't mind answering even if the entity I provide is just an $(t:A Fishy Note may be used in place of a fish)impression of a fish$(/t).
+      fishy_note: In order to determine if a fish can survive in a habitat, I may query Nature. Curiously, Nature won't mind answering even if the entity I provide is just an $(thing)$(t:A Fishy Note may be used in place of a fish)impression of a fish$(/t)$().
       fish/condition: $(br)Evaluates if a fish could be found in the given conditions. Costs a negligible amount of _media.
-      '1': Fish. They take many shapes and sizes but some things do not change. They are either $(t:As a living entity)moving around$(/t), or if they've been caught, they typically $(t:As an item entity)remain motionless$(/t) or stay still in a bucket.
+      '1': Fish. They take many shapes and sizes but some things do not change. They are either $(thing)$(t:As a living entity)moving around$(/t)$(), or if they've been caught, they typically $(thing)$(t:As an item entity)remain motionless$(/t)$() or stay still in a bucket.
       'old_1': Transforms a fish on the stack into a boolean representing if it can be found in that environment, or $(thing)Null/$ if the given environment has no effect on the fish.
-      fish/min: Transforms a fish on the stack into the smallest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
-      fish/max: Transforms a fish on the stack into the largest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
+      fish/min: Transforms a fish on the stack into the smallest specimen caught by the caster as a number, or $(thing)Null/$ if none have been caught. Costs a negligible amount of _media.
+      fish/max: Transforms a fish on the stack into the largest specimen caught by the caster as a number, or $(thing)Null/$ if none have been caught. Costs a negligible amount of _media.
       fish/length: Transforms a fish on the stack into its length as measured by a fisher, or 0 if it was not alive.
       fish/rarity: Measure the quality of the fish entity. A common fish will have a lower quality, and a rare fish will have a higher quality.
       fish/length_all_entities: |-
@@ -139,15 +139,15 @@ fishcasting:
         showForbiddenPatchouliKnowledge field
         to false in the fishcasting config
         fishcasting.toml)[Fishcasting]$()
-      fish/condition/biome: Transforms a fish and a biome on the stack into a boolean if the fish can or can not be found in that biome, or null if the fish lives in all biomes. Costs a negligible amount of _media.
-      fish/condition/climate: Transforms a fish and a climate on the stack into a boolean if the fish can or can not be found in that climate, or null if the fish lives in all climates. Costs a negligible amount of _media.
-      fish/condition/daytime: Transforms a fish and a time of day on the stack into a boolean if the fish can or can not be found at that time of day, or null if the fish is found at all times of day. Costs a negligible amount of _media.
-      fish/condition/depth: Transforms a fish and an elevation on the stack into a boolean if the fish can or can not be found at that elevation, or null if the fish is found at all elevations. Costs a negligible amount of _media.
-      fish/condition/dimension: $(br)Transforms a fish and a dimension on the stack into a boolean if the fish can or can not be found in that dimension, or null if the fish is found in all dimensions. Costs a negligible amount of _media.$(br)
-      fish/condition/moon: Transforms a fish and an moon phase in radians on the stack into a boolean if the fish can or can not be found during that phase of the moon, or null if the fish is found during any moon phase. Costs a negligible amount of _media.$(br)
-      fish/condition/structure: $(br)Transforms a fish and a structure on the stack into a boolean if the fish can or can not be found in that structure, or null if the fish is found in any or no structure. Costs a negligible amount of _media.$(br)
-      fish/condition/rain: Transforms a fish and a boolean on the stack into true if the fish can be found during rain, false if it can be found during clear skies, or null if the fish is found in any weather. Costs a negligible amount of _media.
-      fish/condition/storm: Transforms a fish and a boolean on the stack into true if the fish can be found during a storm, false if it can be found during clear skies, or null if the fish is found in any weather. Costs a negligible amount of _media.
+      fish/condition/biome: Transforms a fish and a biome on the stack into a boolean if the fish can or can not be found in that biome, or $(thing)Null/$ if the fish lives in all biomes. Costs a negligible amount of _media.
+      fish/condition/climate: Transforms a fish and a climate on the stack into a boolean if the fish can or can not be found in that climate, or $(thing)Null/$ if the fish lives in all climates. Costs a negligible amount of _media.
+      fish/condition/daytime: Transforms a fish and a time of day on the stack into a boolean if the fish can or can not be found at that time of day, or $(thing)Null/$ if the fish is found at all times of day. Costs a negligible amount of _media.
+      fish/condition/depth: Transforms a fish and an elevation on the stack into a boolean if the fish can or can not be found at that elevation, or $(thing)Null/$ if the fish is found at all elevations. Costs a negligible amount of _media.
+      fish/condition/dimension: $(br)Transforms a fish and a dimension on the stack into a boolean if the fish can or can not be found in that dimension, or $(thing)Null/$ if the fish is found in all dimensions. Costs a negligible amount of _media.$(br)
+      fish/condition/moon: Transforms a fish and an moon phase in radians on the stack into a boolean if the fish can or can not be found during that phase of the moon, or $(thing)Null/$ if the fish is found during any moon phase. Costs a negligible amount of _media.$(br)
+      fish/condition/structure: $(br)Transforms a fish and a structure on the stack into a boolean if the fish can or can not be found in that structure, or $(thing)Null/$ if the fish is found in any or no structure. Costs a negligible amount of _media.$(br)
+      fish/condition/rain: Transforms a fish and a boolean on the stack into $(thing)True/$ if the fish can be found during rain, $(thing)False/$ if it can be found during clear skies, or $(thing)Null/$ if the fish is found in any weather. Costs a negligible amount of _media.
+      fish/condition/storm: Transforms a fish and a boolean on the stack into $(thing)True/$ if the fish can be found during a storm, $(thing)False/$ if it can be found during clear skies, or $(thing)Null/$ if the fish is found in any weather. Costs a negligible amount of _media.
   spelldata:
     fish:
       whoknows: An unknown fish
