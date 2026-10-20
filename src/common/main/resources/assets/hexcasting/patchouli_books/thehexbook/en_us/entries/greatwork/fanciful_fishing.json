@@ -11,6 +11,12 @@
       "text": "fishcasting.page.fanciful_fishing.1"
     },
     {
+      "type": "patchouli:smithing",
+      "recipe": "fishcasting:shepherds_rod_smithing",
+      "recipe2": "fishcasting:blessed_bobber_smithing",
+      "text": "fishcasting.page.fanciful_fishing.smithing"
+    },
+    {
       "advancement": "fishcasting:instructional/brainswept_trader_in_void",
       "type": "hexcasting:fishcasting/brainsweep_void",
       "recipe": "fishcasting:brainsweep/curse_wandering_trader",
