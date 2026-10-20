@@ -6,20 +6,8 @@
   sortnum: 6,
   pages: [
     {
-      type: 'hexcasting:pattern',
-      op_id: 'fishcasting:fish/min',
-      anchor: 'fishcasting:fish/min',
-      input: 'entity',
-      output: 'number | null',
-      text: 'fishcasting.book.fishing_patterns.fish/min',
-    },
-    {
-      type: 'hexcasting:pattern',
-      op_id: 'fishcasting:fish/max',
-      anchor: 'fishcasting:fish/max',
-      input: 'entity',
-      output: 'number | null',
-      text: 'fishcasting.book.fishing_patterns.fish/max',
+      type: 'patchouli:text',
+      text: 'fishcasting.book.fishing_patterns.1',
     },
     {
       type: 'hexcasting:pattern',
@@ -38,6 +26,26 @@
       output: 'number',
       flag: '!fishcasting:length_purification_only_fish',
       text: 'fishcasting.book.fishing_patterns.fish/length_all_entities',
+    },
+    {
+      type: 'patchouli:text',
+      text: 'fishcasting.book.fishing_patterns.fishy_note',
+    },
+    {
+      type: 'hexcasting:pattern',
+      op_id: 'fishcasting:fish/min',
+      anchor: 'fishcasting:fish/min',
+      input: 'entity',
+      output: 'number | null',
+      text: 'fishcasting.book.fishing_patterns.fish/min',
+    },
+    {
+      type: 'hexcasting:pattern',
+      op_id: 'fishcasting:fish/max',
+      anchor: 'fishcasting:fish/max',
+      input: 'entity',
+      output: 'number | null',
+      text: 'fishcasting.book.fishing_patterns.fish/max',
     },
     {
       type: 'hexcasting:pattern',

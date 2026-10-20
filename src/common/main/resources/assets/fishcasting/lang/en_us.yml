@@ -115,7 +115,8 @@ fishcasting:
       title: Fish Patterns
       fishy_note: In order to determine if a fish can survive in a habitat, I may query Nature. Curiously, Nature won't mind answering even if the entity I provide is just an $(t:A Fishy Note may be used in place of a fish)impression of a fish$(/t).
       fish/condition: $(br)Evaluates if a fish could be found in the given conditions. Costs a negligible amount of _media.
-      '1': Transforms a fish on the stack into a boolean representing if it can be found in that environment, or $(thing)Null/$ if the given environment has no effect on the fish.
+      '1': Fish. They take many shapes and sizes but some things do not change. They are either $(t:As a living entity)moving around$(/t), or if they've been caught, they typically $(t:As an item entity)remain motionless$(/t) or stay still in a bucket.
+      'old_1': Transforms a fish on the stack into a boolean representing if it can be found in that environment, or $(thing)Null/$ if the given environment has no effect on the fish.
       fish/min: Transforms a fish on the stack into the smallest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
       fish/max: Transforms a fish on the stack into the largest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
       fish/length: Transforms a fish on the stack into its length as measured by a fisher, or 0 if it was not alive.
