@@ -51,15 +51,27 @@ object OpGetStructure : ConstMediaAction {
         val lookup = level.registryAccess()
             .lookupOrThrow(Registries.STRUCTURE)
 
-        return level.structureManager()
+        val structureManager = level.structureManager()
+
+        return structureManager
             .getAllStructuresAt(blockPos)
             .keys
             .mapNotNull { structure ->
-                lookup.listElements()
-                    .filter { it.value() === structure }
-                    .findFirst()
-                    .orElse(null)
-                    ?.key()
+                val structureStart = structureManager.getStructureAt(blockPos, structure)
+
+                if (structureStart.isValid &&
+                    structureStart.pieces.any { piece ->
+                        piece.boundingBox.isInside(blockPos)
+                    }
+                ) {
+                    lookup.listElements()
+                        .filter { it.value() === structure }
+                        .findFirst()
+                        .orElse(null)
+                        ?.key()
+                } else {
+                    null
+                }
             }
     }
 }
