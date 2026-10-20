@@ -95,7 +95,7 @@ object FishcastingActions : FishcastingRegistrar<ActionRegistryEntry>(
     val FISH_CONDITION_DEPTH = make("fish/condition/depth", HexDir.NORTH_WEST, "wqaqwawqwqqwqwq", OpFishFoundFromDepth)
 
     val DIMENSION_FROM_LEVEL = make("environment/dimension", HexDir.NORTH_EAST, "wwewdwwewwdwweqewdadwweqewd", OpGetDimension)
-    val FISH_CONDITION_DIMENSION = make("fish/condition/dimension", HexDir.EAST, "wqwwawqwwwawqeqwwadawqeqwwa", OpFishFoundFromDimension)
+    val FISH_CONDITION_DIMENSION = make("fish/condition/dimension", HexDir.SOUTH_WEST, "awqeqwwadawqeqwwawwqwwawqww", OpFishFoundFromDimension)
 
     val STRUCTURES_FROM_BLOCKPOS = make("environment/structure", HexDir.EAST, "wwewdeqadeweewe", OpGetStructure)
     val FISH_CONDITION_STRUCTURES = make("fish/condition/structure", HexDir.NORTH_WEST, "qwqqwqadeqawqww", OpFishFoundFromStructure)

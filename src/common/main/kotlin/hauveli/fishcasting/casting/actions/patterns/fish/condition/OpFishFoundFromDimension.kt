@@ -37,9 +37,9 @@ object OpFishFoundFromDimension : ConstMediaAction {
                 it is DimensionsCondition
             }
         if (relevantConditions.isEmpty())
-            return listOf(NullIota()) // if it has no conditions for the dimension, it should be true?
+            return listOf(NullIota())
 
-        val dimension = someDimension.value  // I'm not so sure this is the best option going forwards........ what about other mediums from other mods?
+        val dimension = someDimension.value
 
         val foundInDimension = relevantConditions.all { condition ->
             when (condition) {
