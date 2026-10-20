@@ -56,7 +56,7 @@ object OpAttachBobber : SpellAction {
             || catch != TideFishingHook.CatchType.NOTHING) {
             // throw MishapAlreadyHooked() // "expected a place to attach an entity, found [other entity]"? "The bobber rejected the []"? "The hook
             // todo: better mishap
-            throw MishapBadEntity.of(someBobber, "fishcasting.already_hooked")
+            throw MishapBadEntity.of(someBobber, "${Fishcasting.MODID}.already_hooked")
         }
 
         if (!someHookable.boundingBox.intersects(someHookable.boundingBox)) {

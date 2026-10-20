@@ -97,6 +97,7 @@ class GachaBottleEntity : ThrownPotion {
             var maybeIotaHolder = loot.item
             if (maybeIotaHolder is IotaHolderItem) {
                 // Dispensing it with a machine will yield non-written-to thoughtknots/scrolls every time
+                // (this is to prevent abuse if somebody spams a bunch)
                 if (owner is ServerPlayer) {
                     if (Fishcasting.random.nextFloat() > 0.075) { // about 92.5% of the time, apply datum
                         val maybeIotaExists: Iota? = maybeIotaHolder.readIota(loot)

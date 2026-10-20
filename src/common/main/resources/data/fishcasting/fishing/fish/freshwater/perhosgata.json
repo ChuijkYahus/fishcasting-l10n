@@ -46,12 +46,12 @@
   ],
   "behavior": "jitter",
   "selection_quality": 0.5,
-  "selection_weight": 100.0,
+  "selection_weight": 4.0,
   "size": {
     "record_high_cm": 0.00002,
     "typical_high_cm": 0.000015,
     "typical_low_cm": 0.00001
   },
-  "speed": 10.0,
+  "speed": 4.0,
   "strength": 0.30
 }

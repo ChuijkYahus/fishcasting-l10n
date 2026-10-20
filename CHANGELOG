@@ -53,6 +53,8 @@ Balance Changes:
     Trade now spawns at most once every 2 hours per player (I forget if this was 0.2.15 or if I did it just after)
         These changes in practice make the trader more rare, but less tedious to encounter.
         This is configurable
+    Made Flay Mind recipe cost consistent for Budding Amethyst (This addon has seen enough changes that the standard cost is fine)
+
 
 Mechanics:
     Music Disc was made less miserable to get
