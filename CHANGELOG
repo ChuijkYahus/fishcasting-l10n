@@ -1,5 +1,6 @@
 0.2.16
 Config:
+    Config version updated (this may reset some values to the default values if already configured)
     Trader trades can be specified by weight
 
 Great Spell:
@@ -7,7 +8,7 @@ Great Spell:
 
 Spells:
     Kill Fish (makes stackable) (free)
-    Attach/Detach Hook (hook must intersect the targets bounding box)
+    Attach and Detach Hook (hook must intersect the targets bounding box)
 
 Patterns:
     Environmental:
@@ -49,10 +50,10 @@ Items:
 
 Balance Changes:
     Modified some of trader's fishing trades
-    Modified trader spawn chance
-    Trade now spawns at most once every 2 hours per player (I forget if this was 0.2.15 or if I did it just after)
+    Modified trader spawn chance to be more common, and instead
+    Trader now spawns at most once every 2 hours per player (I forget if this was 0.2.15 or if I did it just after)
         These changes in practice make the trader more rare, but less tedious to encounter.
-        This is configurable
+        The minimum time between traders (tracked per player) as well as the chance is configurable
     Made Flay Mind recipe cost consistent for Budding Amethyst (This addon has seen enough changes that the standard cost is fine)
 
 
