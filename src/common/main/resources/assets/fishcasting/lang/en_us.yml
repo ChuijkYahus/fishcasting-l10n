@@ -423,7 +423,11 @@ hexcasting:
     invalid_value:
       class:
         fishcasting:
+          biome: biome
+          dimension: dimension
           medium: medium
+          moon: moon
+          structure: structure
         environment: Number-like
     bad_item:
       fishcasting:

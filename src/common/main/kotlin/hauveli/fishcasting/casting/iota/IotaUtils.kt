@@ -1,6 +1,7 @@
 package hauveli.fishcasting.casting.iota
 
 import at.petrak.hexcasting.api.casting.getBool
+import at.petrak.hexcasting.api.casting.getDouble
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
@@ -289,31 +290,18 @@ fun List<Iota>.getBiome(idx: Int, argc: Int = 0): BiomeIota {
 }
 
 fun List<Iota>.getClimate(idx: Int, argc: Int = 0): Double {
-    val maybeCorrectIota = this.getIota(idx, argc)
-    if (maybeCorrectIota is DoubleIota) {
-        return maybeCorrectIota.double
-    } else {
-        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.climate")
-    }
+    val someDouble = this.getDouble(idx, argc)
+    return someDouble
 }
 
-// todo: replace getIota with getDouble, and replace getIota with getBoolean
 fun List<Iota>.getDaytime(idx: Int, argc: Int = 0): Double {
-    val maybeCorrectIota = this.getIota(idx, argc)
-    if (maybeCorrectIota is DoubleIota) {
-        return maybeCorrectIota.double.mod(24000.0)
-    } else {
-        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.daytime")
-    }
+    val someDouble = this.getDouble(idx, argc)
+    return someDouble.mod(24000.0)
 }
 
 fun List<Iota>.getDepth(idx: Int, argc: Int = 0): Double {
-    val maybeCorrectIota = this.getIota(idx, argc)
-    if (maybeCorrectIota is DoubleIota) {
-        return maybeCorrectIota.double
-    } else {
-        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.daytime")
-    }
+    val someDouble = this.getDouble(idx, argc)
+    return someDouble
 }
 
 fun List<Iota>.getDimension(idx: Int, argc: Int = 0): DimensionIota {
@@ -335,12 +323,8 @@ fun List<Iota>.getMedium(idx: Int, argc: Int = 0): MediumIota {
 }
 
 fun List<Iota>.getMoonPhase(idx: Int, argc: Int = 0): Int {
-    val maybeCorrectIota = this.getIota(idx, argc)
-    if (maybeCorrectIota is DoubleIota) {
-        return (maybeCorrectIota.double.mod(Math.TAU) / Mth.PI * 4).roundToInt()
-    } else {
-        throw MishapInvalidIota.ofType(maybeCorrectIota, if (argc == 0) idx else argc - (idx + 1), "${Fishcasting.MODID}.moonphase")
-    }
+    val someDouble = this.getDouble(idx, argc)
+    return (someDouble.mod(Math.TAU) / Mth.PI * 4).roundToInt()
 }
 
 fun List<Iota>.getStructure(idx: Int, argc: Int = 0): StructureIota {
