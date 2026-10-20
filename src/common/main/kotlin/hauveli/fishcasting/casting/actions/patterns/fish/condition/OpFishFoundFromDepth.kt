@@ -10,6 +10,8 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import com.li64.tide.data.fishing.FishData
+import com.li64.tide.data.fishing.conditions.types.AboveCondition
+import com.li64.tide.data.fishing.conditions.types.BelowCondition
 import com.li64.tide.data.fishing.conditions.types.DepthRangeCondition
 import com.li64.tide.data.fishing.conditions.types.DimensionsCondition
 import hauveli.fishcasting.casting.iota.DimensionIota
@@ -48,6 +50,14 @@ object OpFishFoundFromDepth : ConstMediaAction {
             when (condition) {
                 is DepthRangeCondition -> {
                     depth in condition.minY..condition.maxY
+                }
+
+                is AboveCondition -> {
+                    depth >= condition.minY
+                }
+
+                is BelowCondition -> {
+                    depth <= condition.maxY
                 }
 
                 else -> true // ugh

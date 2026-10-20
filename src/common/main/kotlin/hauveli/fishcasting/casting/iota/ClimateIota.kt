@@ -29,13 +29,6 @@ class ClimateIota : EnvironmentIota {
         return true
     }
 
-    override fun toleratesOther(otherIota: Iota?): Boolean {
-        return typesMatch(this, otherIota)
-                && otherIota is ClimateIota
-                && this.value == otherIota.value
-    }
-
-
     override fun display(): Component {
         return (InlineClimateData(value)).displayWithTextAndInline() // baseText.append(inlineValue).append("   ") // inline was being evil and this is simple
     }
@@ -61,13 +54,6 @@ class ClimateIota : EnvironmentIota {
                     { it.value },
                     ::ClimateIota
                 )
-
-            override fun validate(
-                iota: ClimateIota?,
-                level: ServerLevel
-            ): Boolean {
-                return iota != null && true // iota.isValid()
-            }
 
             override fun codec(): MapCodec<ClimateIota> {
                 return CODEC

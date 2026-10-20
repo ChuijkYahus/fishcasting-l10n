@@ -139,7 +139,7 @@ fishcasting:
       fish/condition/biome: Transforms a fish and a biome on the stack into a boolean if the fish can or can not be found in that biome, or null if the fish lives in all biomes. Costs a negligible amount of _media.
       fish/condition/climate: Transforms a fish and a climate on the stack into a boolean if the fish can or can not be found in that climate, or null if the fish lives in all climates. Costs a negligible amount of _media.
       fish/condition/daytime: Transforms a fish and a time of day on the stack into a boolean if the fish can or can not be found at that time of day, or null if the fish is found at all times of day. Costs a negligible amount of _media.
-      fish/condition/depth: Transforms a fish and a depth on the stack into a boolean if the fish can or can not be found at that depth, or null if the fish is found at all elevations. Costs a negligible amount of _media.
+      fish/condition/depth: Transforms a fish and an elevation on the stack into a boolean if the fish can or can not be found at that elevation, or null if the fish is found at all elevations. Costs a negligible amount of _media.
       fish/condition/dimension: $(br)Transforms a fish and a dimension on the stack into a boolean if the fish can or can not be found in that dimension, or null if the fish is found in all dimensions. Costs a negligible amount of _media.$(br)
       fish/condition/structure: $(br)Transforms a fish and a structure on the stack into a boolean if the fish can or can not be found in that structure, or null if the fish is found in any or no structure. Costs a negligible amount of _media.$(br)
       fish/condition/rain: Transforms a fish and a boolean on the stack into true if the fish can be found during rain, false if it can be found during clear skies, or null if the fish is found in any weather. Costs a negligible amount of _media.
@@ -387,7 +387,7 @@ hexcasting:
 
     fishcasting:fish/condition/biome: Biome Fishtillation
     fishcasting:fish/condition/climate: Climate Fishtillation
-    fishcasting:fish/condition/depth: Depth Fishtillation
+    fishcasting:fish/condition/depth: Elevation Fishtillation
     fishcasting:fish/condition/dimension: Dimension Fishtillation
     fishcasting:fish/condition/medium: Medium Fishtillation
     fishcasting:fish/condition/moon: Moon Phase Fishtillation
