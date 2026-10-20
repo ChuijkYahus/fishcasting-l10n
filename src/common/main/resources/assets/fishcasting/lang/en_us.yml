@@ -445,6 +445,8 @@ hexcasting:
         fishdata_as_entity: a fish with data
         already_hooked: Catch-free Hook
         fishing_hook: Fishing Hook
+        not_a_live_fish:
+          .: a live fish
         not_a_fish:
           .: a fish
           item: a fish item
