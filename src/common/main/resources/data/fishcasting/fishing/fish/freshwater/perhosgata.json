@@ -20,6 +20,15 @@
   },
   "conditions": [
     {
+      "type": "tide:time_of_day",
+      "ranges": [
+        {
+          "max": 20000,
+          "min": 16000
+        }
+      ]
+    },
+    {
       "type": "tide:above",
       "y": 300
     },
@@ -27,12 +36,6 @@
       "type": "tide:moon_phase",
       "any_of": [
         4
-      ]
-    },
-    {
-      "type": "tide:has_enchantments",
-      "enchantments": [
-        "minecraft:vanishing_curse"
       ]
     },
     {
