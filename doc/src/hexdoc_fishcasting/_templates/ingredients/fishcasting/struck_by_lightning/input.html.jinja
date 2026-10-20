@@ -1,7 +1,8 @@
 {% import "macros/images.html.jinja" as image_macros with context -%}
 {% import "macros/old_texture_macros.html.jinja" as texture_macros with context -%}
 
-{{ image_macros.image(
-  entityIn,
+{{ texture_macros.render_texture(
+  name=entityIn.name,
+  texture=entityIn.texture,
   class_names=["lightning-input-recipe-entity"],
 ) }}
