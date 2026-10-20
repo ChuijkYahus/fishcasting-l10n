@@ -75,8 +75,9 @@ fishcasting:
       environment/moon/increment: It is frightening to imagine the consequences of manipulating something as large as the world itself... It is nearly a consolation that it costs about one stack of $(l:items/amethyst)$(item)Charged Amethyst/$.
 
     environmental_patterns:
-      '1': Some aspects of this world are difficult to describe using just numbers, for this purpose several patterns have been devised to store this information in an environmental iota. These will all evaluate to being of the same type, even if the information stored is from a different environment.
-      '2': For patterns with a numerical or ordinal representation, arithmetic patterns may be used to transform the environment into its corresponding numerical representation. For environments which do not have a numerical representation, attempting to transform it will mishap.
+      '1': Some aspects of this world are difficult or impossible to discern without Nature's help. Some patterns which aid in classifying parts of the world are detailed in this section.
+      'old1': Some aspects of this world are difficult to describe using just numbers, for this purpose several patterns have been devised to store this information in an environmental iota. These will all evaluate to being of the same type, even if the information stored is from a different environment.
+      'old2': For patterns with a numerical or ordinal representation, arithmetic patterns may be used to transform the environment into its corresponding numerical representation. For environments which do not have a numerical representation, attempting to transform it will mishap.
       title: Environments
       environment/daytime: Pushes the time of day onto the stack. Costs a negligible amount of _media.
       environment/moon/get: Pushes the phase of the moon to the stack in radians. Costs a negligible amount of _media.
@@ -112,10 +113,11 @@ fishcasting:
       fish/kill: Removes an entity from the stack and if it was a fish, humanely excises whatever life it may have had left. Costs a negligible amount of _media.
     fishing_patterns:
       title: Fish Patterns
+      fishy_note: In order to determine if a fish can survive in a habitat, I may query Nature. Curiously, Nature won't mind answering even if the entity I provide is just an $(t:A Fishy Note may be used in place of a fish)impression of a fish$(/t).
       fish/condition: $(br)Evaluates if a fish could be found in the given conditions. Costs a negligible amount of _media.
       '1': Transforms a fish on the stack into a boolean representing if it can be found in that environment, or $(thing)Null/$ if the given environment has no effect on the fish.
-      fish/min: Transforms a fish on the stack into the smallest specimen caught by the caster as a number. Costs a negligible amount of _media.
-      fish/max: Transforms a fish on the stack into the largest specimen caught by the caster as a number. Costs a negligible amount of _media.
+      fish/min: Transforms a fish on the stack into the smallest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
+      fish/max: Transforms a fish on the stack into the largest specimen caught by the caster as a number, or _null if none have been caught. Costs a negligible amount of _media.
       fish/length: Transforms a fish on the stack into its length as measured by a fisher, or 0 if it was not alive.
       fish/rarity: Measure the quality of the fish entity. A common fish will have a lower quality, and a rare fish will have a higher quality.
       fish/length_all_entities: |-
@@ -369,6 +371,12 @@ hexcasting:
   iota:
     fishcasting:biome:
       desc: Biome
+    fishcasting:dimension:
+      desc: Dimension
+    fishcasting:medium:
+      desc: Medium
+    fishcasting:structure:
+      desc: Structure
     fishcasting:environment:
       desc: Environment
   action:
@@ -432,6 +440,7 @@ hexcasting:
     bad_item:
       fishcasting:
         fish_as_entity: a fish
+        fish_as_item_entity: a fish
         fishdata_as_entity: a fish with data
         already_hooked: Catch-free Hook
         fishing_hook: Fishing Hook

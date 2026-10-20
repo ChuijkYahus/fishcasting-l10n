@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.damagesource.DamageSource
+import net.minecraft.world.damagesource.DamageSources
 import net.minecraft.world.damagesource.DamageTypes
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
@@ -94,7 +95,7 @@ class CursedEntity(
     }
 
     override fun isInvulnerableTo(source: DamageSource): Boolean {
-        return false
+        return source.type() == DamageTypes.MAGIC
     }
 
     // these next 4 are so its goes ouch all the time

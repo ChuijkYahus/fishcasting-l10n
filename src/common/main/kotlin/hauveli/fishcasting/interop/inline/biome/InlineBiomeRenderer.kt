@@ -25,7 +25,7 @@ class InlineBiomeRenderer : InlineRenderer<InlineBiomeData> {
     private val DIMENSION_TYPES = Tide.resource("textures/gui/journal/biomes.png")
     private val MOON_PHASE_ATLAS_WIDTH = 30
     private val MOON_PHASE_ATLAS_HEIGHT = 10
-    private val FALLBACK_SIZE = 10
+    private val FALLBACK_SIZE = 16
     private val MOON_SECTION = 10 // area dedicated to one moon phase stage
     private val COLUMNS = 3
     private val ROWS = 1

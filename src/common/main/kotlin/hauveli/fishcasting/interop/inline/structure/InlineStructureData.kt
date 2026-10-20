@@ -23,7 +23,6 @@ class InlineStructureData(val structure: String) : InlineData<InlineStructureDat
         return Companion.rendererId
     }
 
-
     fun getTranslatable(): String {
         return "${rendererId.toShortLanguageKey()}.${structure.replace(":",".")}"
     }
@@ -42,7 +41,7 @@ class InlineStructureData(val structure: String) : InlineData<InlineStructureDat
         val titleCase = everythingAfterTHeNamespace.replace("_", " ").capitalizeFirstLetterOfEachWord()
         val comp = name.asTranslatedComponent.translation(titleCase)
         // what even sets this... does translation set it forever? why?
-        val nameWithColon = comp.withStyle(comp.style.withItalic(false))
+        val nameWithColon = comp.withStyle(comp.style.withItalic(false)).append(": ")
 
         val baseText = nameWithColon.styledWith(Style.EMPTY.withColor(EnvironmentIota.TYPE.color()))
         return baseText.append(asText(true)).append("   ") // inline was being evil and this is simple

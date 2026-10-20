@@ -18,13 +18,16 @@ import com.li64.tide.config.TideServerConfig
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.fishing.ProfileData
 import com.li64.tide.data.item.TideItemData
+import com.li64.tide.registries.TideItems
 import com.li64.tide.registries.entities.misc.fishing.TideFishingHook
+import com.li64.tide.registries.items.FishyNoteItem
 import hauveli.fishcasting.Fishcasting
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
+import java.util.Optional
 import kotlin.math.roundToInt
 
 
@@ -56,9 +59,33 @@ fun List<Iota>.getFishJournalEntry(level: ServerLevel, idx: Int, argc: Int = 0):
     }
 }
 
+// todo: avoid calling getSomeKindOfFishData twice because I am lazy...
+fun getSomeKindOfFish(entity: Entity): Optional<FishData> {
+    val possiblyFish = if (entity is ItemEntity) {
+        FishData.get(entity.item)
+    } else {
+        FishData.get(entity)
+    }
+    return possiblyFish
+}
+
+fun getSomeKindOfFishData(entity: Entity): Optional<FishData> {
+    val possiblyFish = if (entity is ItemEntity) {
+        val entityItem = entity.item
+        if (entityItem.item is FishyNoteItem) {
+            FishData.get(FishyNoteItem.getFish(entityItem))
+        } else {
+            FishData.get(entityItem)
+        }
+    } else {
+        FishData.get(entity)
+    }
+    return possiblyFish
+}
+
 fun List<Iota>.getFishData(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
     val entity = this.getFishEntity(level, idx, argc)
-    val possiblyFish = if (entity is ItemEntity) FishData.get(entity.item) else FishData.get(entity)
+    val possiblyFish = getSomeKindOfFishData(entity)
     if (possiblyFish.isPresent) {
         return possiblyFish.get()
     } else {
@@ -68,7 +95,7 @@ fun List<Iota>.getFishData(level: ServerLevel, idx: Int, argc: Int = 0): FishDat
 
 fun List<Iota>.getFishEntity(level: ServerLevel, idx: Int, argc: Int = 0): Entity {
     val entity = this.getEntity(level, idx, argc)
-    val possiblyFish = if (entity is ItemEntity) FishData.get(entity.item) else FishData.get(entity)
+    val possiblyFish = getSomeKindOfFishData(entity)
     if (possiblyFish.isPresent) {
         return entity
     } else {
@@ -82,17 +109,17 @@ fun List<Iota>.getFishLivingEntity(level: ServerLevel, idx: Int, argc: Int = 0):
     if (possiblyFish.isPresent && entity is LivingEntity) {
         return entity
     } else {
-        throw MishapBadEntity.of(entity, "fish_as_living_entity")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.fish_as_living_entity")
     }
 }
 
 fun List<Iota>.getFishItemEntity(level: ServerLevel, idx: Int, argc: Int = 0): ItemEntity {
     val entity = this.getItemEntity(level, idx, argc)
-    val possiblyFish = FishData.get(entity)
+    val possiblyFish = FishData.get(entity.item)
     if (possiblyFish.isPresent) {
         return entity
     } else {
-        throw MishapBadEntity.of(entity, "fish_as_item_entity")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.fish_as_item_entity")
     }
 }
 
@@ -103,7 +130,7 @@ fun List<Iota>.getFishDataFromItemEntity(level: ServerLevel, idx: Int, argc: Int
     if (possiblyFish.isPresent) {
         return possiblyFish.get()
     } else {
-        throw MishapBadEntity.of(entity, "not_a_fish")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.not_a_fish")
     }
 }
 
@@ -113,7 +140,7 @@ fun List<Iota>.getFishDataFromLivingEntity(level: ServerLevel, idx: Int, argc: I
     if (possiblyFish.isPresent) {
         return possiblyFish.get()
     } else {
-        throw MishapBadEntity.of(entity, "not_a_fish")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.not_a_fish")
     }
 }
 
@@ -133,16 +160,38 @@ fun fishIsAlive(itemEntity: ItemEntity): Boolean {
 }
 
 // assumes item Entity...
-fun List<Iota>.getAliveFish(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
+fun List<Iota>.getAliveFishItem(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
     val entity = this.getFishItemEntity(level, idx, argc)
-    val possiblyFish = FishData.get(entity)
+    val possiblyFish = FishData.get(entity.item)
     val isAlive = fishIsAlive(entity)
     if (possiblyFish.isPresent && isAlive) {
         return possiblyFish.get()
     } else {
-        throw MishapBadEntity.of(entity, "not_a_fish")
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.not_a_live_fish")
     }
 }
+
+
+fun List<Iota>.getAliveFishEntity(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
+    val entity = this.getFishEntity(level, idx, argc)
+    val possiblyFish = FishData.get(entity)
+    if (possiblyFish.isPresent) {
+        return possiblyFish.get()
+    } else {
+        throw MishapBadEntity.of(entity, "${Fishcasting.MODID}.not_a_live_fish")
+    }
+}
+
+fun List<Iota>.getAliveFish(level: ServerLevel, idx: Int, argc: Int = 0): FishData {
+    val entity = this.getEntity(level, idx, argc)
+    val aliveFish = if (entity is ItemEntity) {
+        this.getAliveFishItem(level, idx, argc)
+    } else {
+        this.getAliveFishEntity(level, idx, argc)
+    }
+    return aliveFish
+}
+
 /*
         if (target !is ItemEntity) {
             throw MishapBadEntity.of(target, "fishcasting.not_a_fish.item")

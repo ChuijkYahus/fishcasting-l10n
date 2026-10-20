@@ -12,6 +12,7 @@ import com.li64.tide.data.FishLengthHolder
 import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.item.TideItemData
 import com.li64.tide.registries.entities.fish.AmphibiousFish
+import hauveli.fishcasting.casting.iota.getAliveFish
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.item.ItemEntity
@@ -29,23 +30,14 @@ object OpItemifyFish : SpellAction {
     // todo: more flexible fish entity <-> item check somehow, maybe configurable by a json?
     // I'd prefer if it were automatic though...
     override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-        val target = args.getEntity(env.world, 0, argc)
-        env.assertEntityInRange(target)
-        /*
-        if (target !is AmphibiousFish) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish.entity")
-        }
-        */
-        val maybeTideFish = FishData.get(target) // I think this is good enough?
-        // if (target.item.item)
-        if (maybeTideFish.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish") // does this one even make sense?
-        }
+        val entity = args.getEntity(env.world, 0, OpFishifyItem.argc)
+        env.assertEntityInRange(entity)
+        val target = args.getAliveFish(env.world, 0, OpFishifyItem.argc)
 
         return SpellAction.Result(
-            Spell(target, maybeTideFish.get()),
+            Spell(entity, target),
             MediaConstants.SHARD_UNIT,
-            listOf(ParticleSpray.cloud(target.position().add(0.0, target.eyeHeight / 2.0, 0.0), 1.0))
+            listOf(ParticleSpray.cloud(entity.position().add(0.0, entity.eyeHeight / 2.0, 0.0), 1.0))
         )
     }
 

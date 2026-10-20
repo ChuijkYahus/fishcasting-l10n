@@ -10,7 +10,7 @@
       op_id: 'fishcasting:fish/min',
       anchor: 'fishcasting:fish/min',
       input: 'entity',
-      output: 'number',
+      output: 'number | null',
       text: 'fishcasting.book.fishing_patterns.fish/min',
     },
     {
@@ -18,7 +18,7 @@
       op_id: 'fishcasting:fish/max',
       anchor: 'fishcasting:fish/max',
       input: 'entity',
-      output: 'number',
+      output: 'number | null',
       text: 'fishcasting.book.fishing_patterns.fish/max',
     },
     {

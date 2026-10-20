@@ -16,6 +16,7 @@ import com.li64.tide.data.fishing.FishData
 import com.li64.tide.data.item.TideDataComponents
 import com.li64.tide.data.item.TideItemData
 import hauveli.fishcasting.Fishcasting
+import hauveli.fishcasting.casting.iota.getAliveFish
 import net.minecraft.network.chat.Component
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.entity.Entity
@@ -25,35 +26,14 @@ object OpFishifyItem : SpellAction {
     override val argc = 1
 
     override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-        val target = args.getEntity(env.world, 0, argc)
-        env.assertEntityInRange(target)
-        if (target !is ItemEntity) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish.item")
-        }
-        val maybeTideFish = FishData.get(target.item.item)
-        if (maybeTideFish.isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish")
-        }
-        if (maybeTideFish.get().bucket().isEmpty) {
-            throw MishapBadEntity.of(target, "fishcasting.not_a_fish.bucketable")
-        }
-
-        val isAlive = TideItemData.IS_BUCKETABLE.getOptional(target.item)
-        val length = TideItemData.FISH_LENGTH.getOptional(target.item)
-        if (isAlive.isPresent && isAlive.get()
-            && (length.isPresent && length.get() > 0.0
-                    || Tide.SERVER_CONFIG.items.fishItemSizes != TideServerConfig.Items.SizeMode.ALWAYS)) {
-            // a little unsure if this is what a user might expect, but it's what I would expect
-            // if ALWAYS -> always works
-            // if NEVER -> the check doesn't matter -> always works
-            if (Tide.SERVER_CONFIG.items.bucketableFishItems.equals(TideServerConfig.Items.BucketableMode.WHEN_LIVING))
-                throw MishapBadEntity.of(target, "fishcasting.not_a_fish.bucketable")
-        }
+        val entity = args.getEntity(env.world, 0, argc)
+        env.assertEntityInRange(entity)
+        val target = args.getAliveFish(env.world, 0, argc)
 
         return SpellAction.Result(
-            Spell(target, maybeTideFish.get()),
+            Spell(entity, target),
             MediaConstants.SHARD_UNIT,
-            listOf(ParticleSpray.cloud(target.position().add(0.0, target.eyeHeight / 2.0, 0.0), 1.0))
+            listOf(ParticleSpray.cloud(entity.position().add(0.0, entity.eyeHeight / 2.0, 0.0), 1.0))
         )
     }
 
