@@ -1,5 +1,6 @@
 0.2.18
-   Hopefully I've fixed the chair at this point.
+   Fix Fabric IotaHolderItems not being registered properly somehow
+   Moved the lore to a different advancement tab (I hope this is a good idea...)
 
 0.2.17
 Great Spell:

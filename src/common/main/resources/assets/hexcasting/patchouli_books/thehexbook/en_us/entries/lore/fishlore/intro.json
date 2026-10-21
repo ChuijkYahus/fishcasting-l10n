@@ -2,7 +2,7 @@
   "name": "fishcasting.entry.lore.intro",
   "icon": "fishcasting:message_in_a_bottle",
   "category": "hexcasting:lore/fishlore",
-  "advancement": "hexcasting:lore",
+  "advancement": "fishcasting:lore/intro",
   "sortnum": 0,
   "pages": [
     "fishcasting.page.lore.intro.1",

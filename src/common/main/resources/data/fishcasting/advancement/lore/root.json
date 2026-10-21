@@ -1,28 +1,35 @@
 {
-  "parent": "hexcasting:lore",
   "criteria": {
-    "grant": {
-      "trigger": "minecraft:impossible"
+    "used_item": {
+      "conditions": {
+        "item": {
+          "items": [
+            "fishcasting:fishy_fragment"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": ""
+      "translate": "advancement.fishcasting.lore.root.desc"
     },
+    "background": "minecraft:textures/block/barrel_top.png",
     "frame": "task",
-    "hidden": true,
+    "hidden": false,
     "icon": {
       "id": "fishcasting:fishy_fragment"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancement.fishcasting:lore/root"
+      "translate": "advancement.fishcasting.lore.root.title"
     }
   },
   "requirements": [
     [
-      "grant"
+      "used_item"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,8 +1,11 @@
 package hauveli.fishcasting.features
 
+import at.petrak.hexcasting.api.HexAPI.modLoc
 import at.petrak.hexcasting.common.items.ItemLoreFragment
 import at.petrak.hexcasting.common.lib.HexSounds
+import at.petrak.hexcasting.datagen.HexAdvancements
 import hauveli.fishcasting.Fishcasting.id
+import hauveli.fishcasting.datagen.FishcastingAdvancements
 import net.minecraft.advancements.AdvancementHolder
 import net.minecraft.advancements.CriteriaTriggers
 import net.minecraft.network.chat.Component
@@ -52,6 +55,13 @@ class FishcastingLoreFragment(properties: Properties?) : ItemLoreFragment(proper
         } else {
             // et voila!
             player.advancements.award(unfoundLore, CRITEREON_KEY)
+            // because the player is gaining lore here, it's worth checking if they have hexcasting:lore
+
+            val loreRoot = player.server.advancements.get(HEX_LORE_ROOT)
+            if (loreRoot != null
+                && !player.advancements.getOrStartProgress(loreRoot).isDone) {
+                player.advancements.award(loreRoot, CRITEREON_KEY)
+            }
         }
 
         CriteriaTriggers.CONSUME_ITEM.trigger(player, handStack)
@@ -62,6 +72,8 @@ class FishcastingLoreFragment(properties: Properties?) : ItemLoreFragment(proper
     }
 
     companion object {
+
+        val HEX_LORE_ROOT = modLoc("lore")
         val NAMES: MutableList<ResourceLocation> = mutableListOf(
             id("lore/newsletter"),
             id("lore/newsletter2"),

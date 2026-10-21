@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "used_item": {
+      "conditions": {
+        "item": {
+          "items": [
+            "fishcasting:fishy_fragment",
+            "hexcasting:lore_fragment"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

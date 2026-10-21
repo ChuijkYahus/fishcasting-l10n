@@ -227,7 +227,7 @@ fishcasting:
         '8': Year $(k)6666$(), Day 8.
         '9': Year $(k)6666$(), Day 9.
         '10': Year $(k)6666$(), Day 10.
-        '11': Year $(k)6666$(), Day 11.$(br2)I neglected to step away from fishing to write in my diary again this year. I won, again. I passed out as soon as I handed in my last batch of fish, raising my final score to well over two thousand points, putting me at number 1 world-wide, again. My friends put in a modest effort, reaching over a thousand points each, getting them a shared sixty-ninth place. I don't think I'll be fishing next year.$(br)I'm going to go for a walk.
+        '11': Year $(k)6666$(), Day 11.$(br2)I neglected to step away from fishing to write in my diary again this year. I won, again. I passed out as soon as I handed in my last batch of fish, raising my final score to well over two thousand points, putting me at number 1 world-wide, again. My friends put in a modest effort, reaching over a thousand points each, getting them a shared $(k)im da$()-$(k)joker$() place. I don't think I'll be fishing next year.$(br)I'm going to go for a walk.
       newsletter2:
         '1': Opinions, Discussion 1.$(br2)$(#596979)I finally did it! I beat Babs!$(br)$(#491499)Babs didn't take part in this year's competitions.$(br)$(#596979)What?
         '2': Opinions, Discussion 2.$(br2)$(#99622e)Thank god that $(#b38ef3)hexcaster/$ didn't cheat this year too. I saw they had embezzled over a $(o)billion$()$(#99622e) emeralds from somebody using a hex just a few months ago, terrible person.$(br)$(#491499)If you mean the transaction mentioned in last month's newsletter, that article was satire.
@@ -471,6 +471,11 @@ advancements:
       title: Runaway Chain Reaction
       description: Cause a fish to explode by exploding its neighbor
 advancement:
+  fishcasting:
+    lore:
+      root:
+        title: Fishcasting Lore
+        desc: Read a Lore Fragment
   fishcasting:lore/newsletter: 'Fishcasting: Newsletter #1'
   fishcasting:lore/newsletter2: 'Fishcasting: Newsletter #2'
   fishcasting:lore/notes: 'Fishcasting: Notes #1'

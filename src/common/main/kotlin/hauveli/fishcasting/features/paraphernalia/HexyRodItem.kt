@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.HexAttributes
@@ -114,24 +115,29 @@ class HexyRodItem // why does TideFishingRodItem take no baitslots here when it 
 
         //List<Iota> instrs = getHex(stack, (ServerLevel) world);
         val iota = getHex(stack, world as ServerLevel)
-        if (iota == null) {
-            return InteractionResultHolder.fail<ItemStack?>(stack)
-        }
-        if (iota.subIotas() == null) {
-            return InteractionResultHolder.fail<ItemStack?>(stack)
-        }
-        val subIotas = iota.subIotas()
-
         // ugh me monkey me lazy think about this later, want to have cake and eat too so use focus but treat like trinket
-        val iotas: MutableList<Iota> = ArrayList()
-        subIotas!!.forEach(Consumer { e: Iota -> iotas.add(e) })
+        val iotasToExecute: MutableList<Iota> = ArrayList()
+        when (iota) {
+            is PatternIota -> {
+                iotasToExecute.addLast(iota)
+            }
+
+            is ListIota -> {
+                iota.list.forEach({ e: Iota -> iotasToExecute.add(e) })
+            }
+
+            else -> {
+                return InteractionResultHolder.fail<ItemStack?>(stack)
+            }
+        }
 
         val sPlayer = player as ServerPlayer
         val ctx = BobberBasedCastEnv(sPlayer, usedHand, this.getHook(sPlayer))
         val vm: CastingVM = CastingVM.empty(ctx)
-        val clientView = vm.queueExecuteAndWrapIotas(iotas.toList(), sPlayer.serverLevel())
+        val clientView = vm.queueExecuteAndWrapIotas(iotasToExecute.toList(), sPlayer.serverLevel())
 
-        val patterns = iotas.stream()
+        // note to future self so I don't forget again, this is just for the spiral pattern
+        val patterns = iotasToExecute.stream()
             .filter { i: Iota? -> i is PatternIota }
             .map { i: Iota? -> (i as PatternIota).pattern }
             .toList()

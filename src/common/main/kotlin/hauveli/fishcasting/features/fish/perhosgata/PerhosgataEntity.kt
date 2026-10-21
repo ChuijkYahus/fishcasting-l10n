@@ -62,10 +62,8 @@ class PerhosgataEntity(
     // but this is not at all explicit in the code so I'm writing this here haha...
     val MAX_CHAIN_LENGTH = 2
     fun getChainStarterOrNull(entity: PerhosgataEntity, alreadySeen: MutableList<PerhosgataEntity>): ServerPlayer? {
-        Fishcasting.LOGGER.info("BEFORE CHAIN the: ${entity}, ${alreadySeen}")
         if (alreadySeen.size > MAX_CHAIN_LENGTH)
             return null
-        Fishcasting.LOGGER.info("AFTER CHAIn")
         return when (val lastHurtBy = entity.lastHurtByMob) {
             is PerhosgataEntity -> {
                 alreadySeen.addLast(entity)

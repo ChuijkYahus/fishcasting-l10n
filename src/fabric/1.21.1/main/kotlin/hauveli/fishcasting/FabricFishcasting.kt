@@ -1,29 +1,33 @@
 package hauveli.fishcasting
 
-import at.petrak.hexcasting.api.casting.arithmetic.Arithmetic
+import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.TreeList
-import at.petrak.hexcasting.common.lib.hex.HexActions
-import at.petrak.hexcasting.common.lib.hex.HexArithmetics
 import at.petrak.hexcasting.fabric.cc.HexCardinalComponents
+import at.petrak.hexcasting.fabric.cc.adimpl.CCIotaHolder
 import at.petrak.hexcasting.fabric.cc.adimpl.CCItemIotaHolder
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.li64.tide.registries.TideFish
 import com.li64.tide.registries.entities.fish.SmoothSwimmingFish
-import hauveli.fishcasting.casting.arithmetic.FishcastingEnvironmentArithmetic
-import hauveli.fishcasting.casting.arithmetic.FishcastingFishArithmetic
 import hauveli.fishcasting.registry.*
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
+import net.minecraft.core.HolderLookup
 import net.minecraft.core.Registry
+import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.animal.axolotl.Axolotl
 import net.minecraft.world.entity.npc.Villager
+import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.ItemLike
 import java.util.function.BiConsumer
 
 
@@ -31,6 +35,7 @@ object FabricFishcasting : ModInitializer {
     override fun onInitialize() {
         Fishcasting.init()
         registerEntityAttributes() // todo: do something better than this
+        registerIotaHolderItems() // todo: do something better than this
     }
 
     init {
@@ -47,6 +52,47 @@ object FabricFishcasting : ModInitializer {
         registerMoonPhaseFishies()
         // why is this ok in fabric but not neoforge? what...
         //registerItemModelProperties()
+        // I don't understand what changed to make this be needed but it is needed since some time in dev54+ I think, todo: figure out why and how I can simplify
+    }
+
+    fun registerIotaHolderItems() {
+        registerIotaHolderItems(FishcastingItems.BLESSED_FOCUS_BOBBER.value)
+        registerIotaHolderItems(FishcastingItems.HEXXY_FOCUS_BOBBER.value)
+        registerIotaHolderItems(FishcastingItems.SAMPLING_FOCUS_BOBBER.value)
+    }
+
+    fun registerIotaHolderItems(item: IotaHolderItem) {
+        // https://github.com/FallingColors/HexMod/blob/edba45d957b19ba9b053993f09c1bcd3cca487fd/Forge/src/main/java/at/petrak/hexcasting/forge/cap/adimpl/CapItemIotaHolder.java#L33
+        HexCardinalComponents.IOTA_HOLDER_LOOKUP.registerForItems(
+            ItemApiLookup.ItemApiProvider { stack: ItemStack?, context: Void? ->
+                object : CCIotaHolder {
+                    override fun readIota(): Iota? {
+                        return item.readIota(stack)
+                    }
+
+                    override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
+                        if (!item.canWrite(stack, iota)) {
+                            return false
+                        }
+                        if (!simulate) {
+                            item.writeDatum(stack, iota)
+                        }
+                        return true
+                    }
+
+                    override fun writeable(): Boolean {
+                        return item.writeable(stack)
+                    }
+
+                    override fun readFromNbt(compoundTag: CompoundTag, provider: HolderLookup.Provider) {
+                    }
+
+                    override fun writeToNbt(compoundTag: CompoundTag, provider: HolderLookup.Provider) {
+                    }
+                }
+            },
+            item as Item
+        )
     }
 
     // I genuinely have no fucking idea how to register these in common without an interface and doing xplat implementations like hexmod does...
