@@ -1,6 +1,7 @@
 0.2.18
    Fix Fabric IotaHolderItems not being registered properly somehow
    Moved the lore to a different advancement tab (I hope this is a good idea...)
+   Fix execution of bobber when stored iota is a plain PatternIota
 
 0.2.17
 Great Spell:
