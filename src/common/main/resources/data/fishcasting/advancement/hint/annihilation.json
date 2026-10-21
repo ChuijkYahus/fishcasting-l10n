@@ -1,5 +1,4 @@
 {
-  "parent": "fishcasting:lore/root",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:tick"
