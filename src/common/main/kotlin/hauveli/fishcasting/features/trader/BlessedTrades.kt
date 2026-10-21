@@ -330,6 +330,7 @@ object BlessedTrades {
             .toTypedArray()
 
 
+    // This trade is unused (for anyone concerned!)
     private val ALL_SECRET_TRADES = arrayOf<VillagerTrades.ItemListing>(
         // need non-void access to chorus fruit and dragfons breath
         // secretTrade(TideFish.BLUE_NEONFISH, TideFish.YELLOW_PERCH, FishcastingItems.TACKLEBOX_CHAIR_SECRET.value),

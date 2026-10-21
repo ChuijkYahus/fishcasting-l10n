@@ -47,7 +47,15 @@
     {
       "type": "patchouli:crafting",
       "recipe": "fishcasting:benign_bait",
-      "recipe2": "fishcasting:tacklebox_chair",
+      "recipe2": "fishcasting:tacklebox_chair"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "fishcasting:unlucky_bait",
+      "recipe2": "fishcasting:chain_linked_fishing_line"
+    },
+    {
+      "type": "patchouli:text",
       "text": "fishcasting.page.fishy_business.misc"
     }
   ]

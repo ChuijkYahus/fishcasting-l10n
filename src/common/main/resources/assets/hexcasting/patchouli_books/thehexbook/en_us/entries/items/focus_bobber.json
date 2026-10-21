@@ -13,6 +13,11 @@
       "type": "patchouli:crafting",
       "recipe": "fishcasting:amethyst_focus_bobber",
       "text": "fishcasting.page.focus_bobber.crafting"
+    },
+    {
+      "type": "patchouli:smithing",
+      "recipe": "fishcasting:sampling_bobber_smithing",
+      "text": "fishcasting.page.focus_bobber.smithing"
     }
   ]
 }

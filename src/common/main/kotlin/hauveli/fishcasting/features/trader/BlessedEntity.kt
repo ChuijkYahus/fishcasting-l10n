@@ -299,8 +299,11 @@ class BlessedEntity(entityType: EntityType<out WanderingTrader?>, level: Level) 
         val bedrockEaterListing = BlessedTrades.BLESSED_TRADER_TRADES.get(5) as Array<VillagerTrades.ItemListing>
         val bottleItemsListing = BlessedTrades.BLESSED_TRADER_TRADES.get(6) as Array<VillagerTrades.ItemListing>
         val fishcastingItemsListing = BlessedTrades.BLESSED_TRADER_TRADES.get(7) as Array<VillagerTrades.ItemListing>
-        // I'm not using this anymore because of how I decided to deal with the randomization... is that going to be an issue?
+
+        // adding this one by checking the config, so it's a bit unclear:
+        // addWeightedListing() weights the tiers and picks one of the trades from this ItemListing based on that
         val hexcastingItemsListing = BlessedTrades.BLESSED_TRADER_TRADES.get(8) as Array<VillagerTrades.ItemListing>
+        // unused for now! not happy with this one...
         val superSecretItemsListing = BlessedTrades.BLESSED_TRADER_TRADES.get(9) as Array<VillagerTrades.ItemListing>
 
         val merchantoffers = this.getOffers()

@@ -190,7 +190,8 @@ object FishcastingItems : FishcastingRegistrar<Item>(
     })
     val SHRIMPY_RICE = make("crystal_shrimp_fried_rice") { CrystalShrimpFriedRiceItem(unstackableRare()) }
     val TACKLEBOX_CHAIR = make("tacklebox_chair", {TackleBoxChairItem(unstackable())})
-    val TACKLEBOX_CHAIR_FLOATY = make("tacklebox_chair_floaty", { TackleBoxChairFloatyItem(unstackableUncommon())})
+    // Not happy with the behavior so I will hide it from the creative menu for now...
+    val TACKLEBOX_CHAIR_FLOATY = makeNoCreativeMenu("tacklebox_chair_floaty", { TackleBoxChairFloatyItem(unstackableUncommon())})
     //val TACKLEBOX_CHAIR_SECRET = makeNoCreativeMenu("tacklebox_chair_secret", { TackleBoxChairSecretItem(unstackableEpic()) })
     val MESSAGE_IN_A_BOTTLE =
         make("message_in_a_bottle", {GachaBottleItem(unstackableUncommon())})

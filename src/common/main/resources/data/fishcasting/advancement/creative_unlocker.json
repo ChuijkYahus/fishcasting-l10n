@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "consume_item": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "hexcasting:creative_unlocker"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "fishcasting:creative_unlocker_used"
+  }
+}
