@@ -184,7 +184,7 @@ fishcasting:
       '2': These small things seem to have some almost negligible but noticeable effect on less intelligent life. While hardly useful in my research, the sound the line makes is pleasant on the ears. If only the bait were so kind on the nose...
       hexlikes: Media-infused Paraphernalia
       '3': Recommended by a passing fisher I reluctantly exchanged a few short words with, these oddities would surely come in handy. Should I wish to subject myself to the smell of raw fish on a cold, stony shore.
-      misc: The fisher was very enthusiastic about some of these being useful.
+      misc: The fisher was very enthusiastic about some of these being useful.$(br)As sincere as it may have seemed, I must imagine some of these recommendations were intended for nitwits.
     fanciful_fishing:
       '1': Ha! That even that fisher should have gone to such lengths -- just in order to fish without pause... I shudder to imagine what over a week of non-stop fishing would do to my psyche. As different as this $(l:items/casting_rod#fishcasting:landing)$(thing)Casting Rod/$ may look, it offers me no additional benefits in my work aside from its durability, should I wish to cast using a $(l:items/focus_bobber)$(thing)Focus Bobber/$.
       smithing: A construction similar to the $(l:greatwork/fanciful_staves)$(thing)Fanciful Staves/$.
