@@ -199,7 +199,7 @@ fishcasting:
     lore:
       intro:
         '1': "'I am writing this to whomever it may concern.$(br2)I will not be returning from sea.$(br2)     I like it out here.'"
-        '2': "'If you're fishing around on the ocean, you'll come across bottles I've tossed with junk I wanted to get rid. Some of it I just wanted to get off my mind.$(br2)Break them if you're interested in finding out what's inside.$(br2)Have fun cleaning the ocean up.'"
+        '2': "'If you're fishing around on the warmer side of the ocean, you'll come across bottles I've tossed with junk I wanted to get rid. Some of it I just wanted to get off my mind.$(br2)Break them if you're interested in finding out what's inside.$(br2)Have fun cleaning the ocean up.'"
       newsletter:
         '1': Opinions, Discussion 1.$(br2)$(#000000)Stay classy champ.$()$(#5520ff)$(br)One person knocking three people out of the top six spots. Cheating by exploiting loopholes as usual.$() $(#541e18)$(br)Imagine thinking its the same person just because they are wearing the same robes.$() $(#d3d3d3)$(br)It’s probably one $(#8ef3eb)fishcaste's/$$(#d3d3d3) meme doing it though, judging by the robes being worn all being the same one.$(br)$(#596979)Next year is going to be my year, just watch.
         '2': Opinions, Discussion 2.$(br)$(#99622e)And that right there is why I while heartedly believe that the tournaments top three are either hexcasting, or rod sharing. Babs had a full three hundred point lead over second place in two days, and then the current second and third come out of nowhere to have over six hundred points each as well, matching Babs' score. Even my acquaintance who is spending between nine and twelve hours each day in there, fishing for nothing but $(l:items/fishy_business#fishcasting:carp)$(item)crystalline carp$()$(#99622e), isn't anywhere near those points$()
@@ -475,13 +475,13 @@ advancement:
     lore:
       root:
         title: Fishcasting Lore
-        desc: Read a Lore Fragment
-  fishcasting:lore/newsletter: 'Fishcasting: Newsletter #1'
-  fishcasting:lore/newsletter2: 'Fishcasting: Newsletter #2'
-  fishcasting:lore/notes: 'Fishcasting: Notes #1'
-  fishcasting:lore/notes2: 'Fishcasting: Notes #2'
-  fishcasting:lore/notes3: 'Fishcasting: Notes #3'
-  fishcasting:lore/notes4: 'Fishcasting: Notes #4'
+        desc: Read a Soggy Lore Fragment
+  fishcasting:lore/newsletter: 'Newsletter #1'
+  fishcasting:lore/newsletter2: 'Newsletter #2'
+  fishcasting:lore/notes: 'Notes #1'
+  fishcasting:lore/notes2: 'Notes #2'
+  fishcasting:lore/notes3: 'Notes #3'
+  fishcasting:lore/notes4: 'Notes #4'
 _comment_config: CONFIGURATION STUFF
 compat:
   nomansland:

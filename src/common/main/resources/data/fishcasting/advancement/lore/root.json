@@ -13,11 +13,11 @@
   },
   "display": {
     "announce_to_chat": true,
+    "background": "minecraft:textures/block/barrel_top.png",
     "description": {
       "translate": "advancement.fishcasting.lore.root.desc"
     },
-    "background": "minecraft:textures/block/barrel_top.png",
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "id": "fishcasting:fishy_fragment"

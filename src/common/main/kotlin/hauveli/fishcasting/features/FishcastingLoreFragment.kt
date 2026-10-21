@@ -60,7 +60,7 @@ class FishcastingLoreFragment(properties: Properties?) : ItemLoreFragment(proper
             val loreRoot = player.server.advancements.get(HEX_LORE_ROOT)
             if (loreRoot != null
                 && !player.advancements.getOrStartProgress(loreRoot).isDone) {
-                player.advancements.award(loreRoot, CRITEREON_KEY)
+                // player.advancements.award(loreRoot, CRITEREON_KEY)
             }
         }
 
